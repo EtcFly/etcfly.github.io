@@ -18,26 +18,27 @@
   <meta name="author" content="EtcFly">
   <meta name="keywords" content="">
   
-    <meta name="description" content="如果在程序中我们需要重复的执行某条或某些指令，例如用程序控制机器人踢足球，如果机器人持球而且还没有进入射门范围，那么我们就要一直发出让机器人向球门方向奔跑的指令。当然你可能已经注意到了，刚才的描述中其实不仅仅有需要重复的动作，还有我们上一个章节讲到的分支结构。再举一个简单的例子，比如在我们的程序中要实现每隔1秒中在屏幕上打印一个&quot;hello, world&quot;这样的字符串并持续一">
+    <meta name="description" content="安装ssh1、确认Linux主机是否安装ssh, 没有需要执行如下命令 1sudo apt install openssh-server  2、安装完毕后, 观察home 目录是否有.ssh目录, 没有请使用 ssh-keygen生成.ssh目录, 该步骤同时会生成网络ssh 登陆的公匙和密匙。 3、将源主机的id_rsa.pub内容赋值到虚拟机 home 目录下的.&#x2F;ssh&#x2F;authorized">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python之循环结构">
-<meta property="og:url" content="http://example.com/2022/07/17/python%E4%B9%8B%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:title" content="linux学习之vscode免密码登陆">
+<meta property="og:url" content="http://example.com/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bvscode%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86/index.html">
 <meta property="og:site_name" content="牵着老婆走天涯">
-<meta property="og:description" content="如果在程序中我们需要重复的执行某条或某些指令，例如用程序控制机器人踢足球，如果机器人持球而且还没有进入射门范围，那么我们就要一直发出让机器人向球门方向奔跑的指令。当然你可能已经注意到了，刚才的描述中其实不仅仅有需要重复的动作，还有我们上一个章节讲到的分支结构。再举一个简单的例子，比如在我们的程序中要实现每隔1秒中在屏幕上打印一个&quot;hello, world&quot;这样的字符串并持续一">
+<meta property="og:description" content="安装ssh1、确认Linux主机是否安装ssh, 没有需要执行如下命令 1sudo apt install openssh-server  2、安装完毕后, 观察home 目录是否有.ssh目录, 没有请使用 ssh-keygen生成.ssh目录, 该步骤同时会生成网络ssh 登陆的公匙和密匙。 3、将源主机的id_rsa.pub内容赋值到虚拟机 home 目录下的.&#x2F;ssh&#x2F;authorized">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/python.png">
-<meta property="article:published_time" content="2022-07-17T08:39:14.000Z">
-<meta property="article:modified_time" content="2022-07-17T08:44:06.666Z">
+<meta property="og:image" content="http://example.com/img/linux.png">
+<meta property="article:published_time" content="2022-07-17T11:14:02.000Z">
+<meta property="article:modified_time" content="2022-07-17T11:14:44.285Z">
 <meta property="article:author" content="EtcFly">
 <meta property="article:tag" content="原创">
-<meta property="article:tag" content="python">
-<meta property="article:tag" content="语言">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="VSCode">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/python.png">
+<meta name="twitter:image" content="http://example.com/img/linux.png">
   
   
   
-  <title>python之循环结构   牵着老婆走天涯</title>
+  <title>linux学习之vscode免密码登陆   牵着老婆走天涯</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -223,7 +224,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="python之循环结构"></span>
+            <span id="subtitle" data-typed-text="linux学习之vscode免密码登陆"></span>
           
         </div>
 
@@ -234,8 +235,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-17 16:39" pubdate>
-          2022年7月17日 下午
+        <time datetime="2022-07-17 19:14" pubdate>
+          2022年7月17日 晚上
         </time>
       </span>
     
@@ -246,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          248 字
         
       </span>
     
@@ -257,7 +258,7 @@
         
         
         
-          14 分钟
+          3 分钟
         
       </span>
     
@@ -304,12 +305,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">python之循环结构</h1>
+            <h1 style="display: none">linux学习之vscode免密码登陆</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：3 小时前
+                    本文最后更新于：2 分钟前
                   
                 
               </p>
@@ -317,57 +318,16 @@
             
               <div class="markdown-body">
                 
-                <blockquote>
-<p>如果在程序中我们需要重复的执行某条或某些指令，例如用程序控制机器人踢足球，如果机器人持球而且还没有进入射门范围，那么我们就要一直发出让机器人向球门方向奔跑的指令。当然你可能已经注意到了，刚才的描述中其实不仅仅有需要重复的动作，还有我们上一个章节讲到的分支结构。再举一个简单的例子，比如在我们的程序中要实现每隔1秒中在屏幕上打印一个<code>&quot;hello, world&quot;</code>这样的字符串并持续一个小时，我们肯定不能够将<code>print(&#39;hello, world&#39;)</code>这句代码写上<code>3600</code>遍，如果真的需要这样做，那么编程的工作就太无聊了。因此，我们还需要了解一下循环结构，有了循环结构我们就可以轻松的控制某件事或者某些事重复、重复、再重复的去执行。</p>
-</blockquote>
-<h3 id="循环类型"><a href="#循环类型" class="headerlink" title="循环类型"></a>循环类型</h3><ul>
-<li><code>for-in</code> 循环<blockquote>
-<p>明确的知道循环执行的次数或者要对一个容器进行迭代</p>
-</blockquote>
-</li>
-<li><code>while</code> 循环<blockquote>
-<p>不确定循环次数, 需要遍历使用<code>while</code></p>
-</blockquote>
-</li>
-</ul>
-<h3 id="if循环"><a href="#if循环" class="headerlink" title="if循环"></a><code>if</code>循环</h3><ul>
-<li><p>模型</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">for</span> 变量 <span class="hljs-keyword">in</span> &#123;列表<span class="hljs-regexp">/字典/</span>迭代器&#125;:<br>    执行动作<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>range</code>内置函数的使用</p>
-<ul>
-<li><code>range(x)</code>: 获取<code>0 - (x-1)</code>的值组成列表</li>
-<li><code>range(x, y)</code>: 获取已<code>x</code>为起点, <code>y-1</code>为终点的值组成列表</li>
-<li><code>range(x, y, z)</code>：获取已<code>x</code>为起点, <code>y-1</code>为终点, 步长为z的值组成列表</li>
-</ul>
-</li>
-<li><p>示例</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 计算0-9的和</span><br><span class="hljs-built_in">sum</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-number">10</span>):<br>    <span class="hljs-built_in">sum</span> += i<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">sum</span>)<br></code></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a><code>while</code>循环</h3><blockquote>
-<p>如果要构造不知道具体循环次数的循环结构，我们推荐使用while循环。while循环通过一个能够产生或转换出bool值的表达式来控制循环，表达式的值为True循环继续，表达式的值为False循环结束。</p>
-</blockquote>
-<ul>
-<li><p>模型</p>
-<figure class="highlight actionscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs actionscript"><span class="hljs-keyword">while</span> 条件:<br>    执行动作<br></code></pre></td></tr></table></figure>
-</li>
-<li><p>示例</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs vim"><span class="hljs-built_in">count</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">x</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> <span class="hljs-built_in">count</span> &gt;= <span class="hljs-keyword">x</span>:<br>    <span class="hljs-keyword">x</span> = <span class="hljs-keyword">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入x:&quot;</span>))<br></code></pre></td></tr></table></figure></li>
-</ul>
-<blockquote>
-<p>说明： 上面的代码中使用了break关键字来提前终止循环，需要注意的是<code>break</code>只能终止它所在的那个循环，这一点在使用嵌套的循环结构（下面会讲到）需要引起注意。除了<code>break</code>之外，还有另一个关键字是<code>continue</code>，它可以用来放弃本次循环后续的代码直接让循环进入下一轮。</p>
-</blockquote>
-<ul>
-<li>示例</li>
-</ul>
-<ol>
-<li>猜数游戏<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">import</span> random<br><br>rand_v = random.randint(<span class="hljs-number">0</span>, <span class="hljs-number">100</span>)<br>#<span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;随机数:%d&quot;</span> %(rand_v))<br><br><span class="hljs-keyword">count</span> = <span class="hljs-number">0</span><br><span class="hljs-keyword">for</span> i in list(range(<span class="hljs-number">0</span>, <span class="hljs-number">101</span>)):<br>    input_v = <span class="hljs-keyword">int</span>(input(<span class="hljs-string">&quot;请猜数:&quot;</span>))<br>    <span class="hljs-keyword">if</span> (input_v &gt; rand_v):<br>        <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;你猜大了&quot;</span>)<br>    elif (input_v &lt; rand_v):<br>        <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;你猜小了&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;你猜对了&quot;</span>)<br>    <span class="hljs-keyword">count</span> = <span class="hljs-keyword">count</span> + <span class="hljs-number">1</span><br>    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">count</span> &gt;= <span class="hljs-number">7</span>):<br>        <span class="hljs-keyword">print</span>(<span class="hljs-string">&quot;猜了那么多次, 大笨蛋!&quot;</span>)<br>        <span class="hljs-keyword">break</span>;<br></code></pre></td></tr></table></figure></li>
-</ol>
-<p>2、九九乘法表</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros"><span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> range(1, 10):<br>    <span class="hljs-keyword">for</span> y <span class="hljs-keyword">in</span> range(1, x+1):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%d*%d=%2d&quot;</span> %(x, y, x*y), <span class="hljs-attribute">end</span>=<span class="hljs-string">&#x27;\t&#x27;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;&quot;</span>, <span class="hljs-attribute">end</span>=<span class="hljs-string">&#x27;\n&#x27;</span>)<br></code></pre></td></tr></table></figure>
+                <h3 id="安装ssh"><a href="#安装ssh" class="headerlink" title="安装ssh"></a>安装<code>ssh</code></h3><p>1、确认<code>Linux</code>主机是否安装<code>ssh</code>, 没有需要执行如下命令</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta">sudo apt install openssh-<span class="hljs-keyword">server</span><br></code></pre></td></tr></table></figure>
 
-<p>3、圣诞树</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs routeros">x = int(input(<span class="hljs-string">&quot;请输入行数:&quot;</span>))<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> range(1, x+1):<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(x-i+1):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot; &quot;</span>, <span class="hljs-attribute">end</span>=<span class="hljs-string">&#x27;&#x27;</span>)<br>    <span class="hljs-keyword">for</span> j <span class="hljs-keyword">in</span> range(1, 2*i):<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;*&quot;</span>, <span class="hljs-attribute">end</span>=<span class="hljs-string">&#x27;&#x27;</span>)<br>    <span class="hljs-built_in">print</span>()<br></code></pre></td></tr></table></figure>
+<p>2、安装完毕后, 观察<code>home</code> 目录是否有<code>.ssh</code>目录, 没有请使用 <code>ssh-keygen</code>生成<code>.ssh</code>目录, 该步骤同时会生成网络<code>ssh</code> 登陆的公匙和密匙。</p>
+<p>3、将源主机的<code>id_rsa.pub</code>内容赋值到虚拟机 <code>home</code> 目录下的<code>./ssh/authorized_keys</code>中, 没有则新建一个并追加, 重启并登陆即可</p>
+<p><strong>Note</strong>:</p>
+<ul>
+<li><code>ssh-keygen</code> 是<code>ssh</code>服务自带的, <code>git</code> 命令行内含了<code>ssh</code> 服务</li>
+</ul>
+
                 
               </div>
             
@@ -385,7 +345,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Python%E5%85%A5%E9%97%A8/" class="category-chain-item">Python入门</a>
+  <a href="/categories/Linux%E5%85%A5%E9%97%A8/" class="category-chain-item">Linux入门</a>
   
   
 
@@ -402,9 +362,11 @@
       
         <a href="/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
       
-        <a href="/tags/python/">#python</a>
+        <a href="/tags/Linux/">#Linux</a>
       
-        <a href="/tags/%E8%AF%AD%E8%A8%80/">#语言</a>
+        <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
+      
+        <a href="/tags/VSCode/">#VSCode</a>
       
     </div>
   
@@ -416,8 +378,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>python之循环结构</div>
-      <div>http://example.com/2022/07/17/python之循环结构/</div>
+      <div>linux学习之vscode免密码登陆</div>
+      <div>http://example.com/2022/07/17/linux学习之vscode免密码登陆/</div>
     </div>
     <div class="license-meta">
       
@@ -464,18 +426,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/17/python%E4%B9%8B%E6%9E%84%E9%80%A0%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91/" title="python之构造程序逻辑">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">python之构造程序逻辑</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/07/17/python%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85/" title="python开发环境安装">
-                        <span class="hidden-mobile">python开发环境安装</span>
+                      <a href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%AE%89%E8%A3%85oh-my-zsh/" title="linux学习之安装oh-my-zsh">
+                        <span class="hidden-mobile">linux学习之安装oh-my-zsh</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

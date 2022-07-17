@@ -4,6 +4,165 @@
   
   
   <entry>
+    <title>linux学习之vscode免密码登陆</title>
+    <link href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bvscode%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86/"/>
+    <url>/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bvscode%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86/</url>
+    
+    <content type="html"><![CDATA[<h3 id="安装ssh"><a href="#安装ssh" class="headerlink" title="安装ssh"></a>安装<code>ssh</code></h3><p>1、确认<code>Linux</code>主机是否安装<code>ssh</code>, 没有需要执行如下命令</p><figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta">sudo apt install openssh-<span class="hljs-keyword">server</span><br></code></pre></td></tr></table></figure><p>2、安装完毕后, 观察<code>home</code> 目录是否有<code>.ssh</code>目录, 没有请使用 <code>ssh-keygen</code>生成<code>.ssh</code>目录, 该步骤同时会生成网络<code>ssh</code> 登陆的公匙和密匙。</p><p>3、将源主机的<code>id_rsa.pub</code>内容赋值到虚拟机 <code>home</code> 目录下的<code>./ssh/authorized_keys</code>中, 没有则新建一个并追加, 重启并登陆即可</p><p><strong>Note</strong>:</p><ul><li><code>ssh-keygen</code> 是<code>ssh</code>服务自带的, <code>git</code> 命令行内含了<code>ssh</code> 服务</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux入门</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>工具</tag>
+      
+      <tag>VSCode</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>linux学习之安装oh-my-zsh</title>
+    <link href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%AE%89%E8%A3%85oh-my-zsh/"/>
+    <url>/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%AE%89%E8%A3%85oh-my-zsh/</url>
+    
+    <content type="html"><![CDATA[<h3 id="1、检查系统是否安装zsh"><a href="#1、检查系统是否安装zsh" class="headerlink" title="1、检查系统是否安装zsh"></a>1、检查系统是否安装<code>zsh</code></h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cat <span class="hljs-regexp">/etc/</span>shells <br></code></pre></td></tr></table></figure><p>没有安装请安装<code>zsh</code></p><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt <span class="hljs-keyword">install</span> zsh<br></code></pre></td></tr></table></figure><h3 id="设置默认shell"><a href="#设置默认shell" class="headerlink" title="设置默认shell"></a>设置默认<code>shell</code></h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">chsh -s <span class="hljs-regexp">/bin/</span>zsh<br></code></pre></td></tr></table></figure><h3 id="下载安装on-my-zsh配置"><a href="#下载安装on-my-zsh配置" class="headerlink" title="下载安装on-my-zsh配置"></a>下载安装<code>on-my-zsh</code>配置</h3><ul><li><p><code>gitee</code>镜像</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(wget -O- https://gitee.com/pocmon/mirrors/raw/master/tools/install.sh)</span>&quot;</span> <br></code></pre></td></tr></table></figure></li><li><p><code>GitHub</code> 镜像</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>&quot;</span><br></code></pre></td></tr></table></figure></li></ul><h3 id="设置风格"><a href="#设置风格" class="headerlink" title="设置风格"></a>设置风格</h3><p>在<code>home</code> 目录下 <code>.zshrc</code> 文件修改</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">ZSH_THEME</span>=<span class="hljs-string">&quot;bira&quot;</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux入门</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>工具</tag>
+      
+      <tag>ZSH</tag>
+      
+      <tag>zsh插件</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>linux学习之zsh插件配置</title>
+    <link href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bzsh%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/"/>
+    <url>/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bzsh%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p><code>sudo apt install git</code></p><p><strong>注意</strong></p><ul><li>以下操作需要安装<code>oh-my-zsh</code>插件</li></ul><hr><h3 id="zsh-autosuggestions插件安装"><a href="#zsh-autosuggestions插件安装" class="headerlink" title="zsh-autosuggestions插件安装"></a>zsh-autosuggestions插件安装</h3><ul><li>下载插件<blockquote><p>把插件仓库克隆到<code>$ZSH_CUSTOM/plugins</code> (默认位置是 <code>~/.oh-my-zsh/custom/plugins</code>)</p></blockquote></li></ul><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/zsh-users/</span>zsh-autosuggestions <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span><span class="hljs-regexp">/plugins/</span>zsh-autosuggestions<br></code></pre></td></tr></table></figure><ul><li>配置插件<br>设置<code>~/.zshrc</code>，把<code>zsh-autosuggestions</code>添加到 <code>Oh My Zsh</code> 要加载的插件列表中, 如下:</li></ul><p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/git/%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE.png" alt="git/服务配置.png"></p><p>保存并重新载入:<br><code>Source ~/.zshrc</code></p><p>效果如下:<br><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/git/%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8.png" alt="git/命令补全.png"></p><h3 id="zsh-syntax-highlighting"><a href="#zsh-syntax-highlighting" class="headerlink" title="zsh-syntax-highlighting"></a>zsh-syntax-highlighting</h3><blockquote><p>高亮显示常用命令的插件</p></blockquote><ul><li><p>下载</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/zsh-users/</span>zsh-syntax-highlighting.git <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span><span class="hljs-regexp">/plugins/</span>zsh-syntax-highlighting<br></code></pre></td></tr></table></figure></li><li><p>配置<br>在<code>~/.zshrc</code>，把<code>zsh-syntax-highlighting</code>添加到 <code>Oh My Zsh</code> 的插件列表中<br><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/git/%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE.png" alt="git/服务配置.png"></p></li><li><p>使配置生效<br><code>source ~/.zshrc·</code></p></li></ul><p>效果如下<br><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/git/%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A12.png" alt="git/配置服务2.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux入门</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>工具</tag>
+      
+      <tag>Shell</tag>
+      
+      <tag>ZSH</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>linux学习之samba服务配置</title>
+    <link href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bsamba%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE/"/>
+    <url>/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bsamba%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE/</url>
+    
+    <content type="html"><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>sudo apt install cmake</code><br>通常版本较老</p><h3 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h3><h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><ul><li><p>下载<br>&amp;emsp;&amp;emsp;下载 <a href="https://cmake.org/files/">CMake</a>, 速度较慢, 请提前下载。这里下载版本为: <code>cmake-3.24.0-rc1-linux-x86_64.tar.gz</code><br>如下:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://cmake.org/files/v3.13/cmake-3.13.0-Linux-x86_64.tar.gz<br></code></pre></td></tr></table></figure></li><li><p>解压<br>&amp;emsp;&amp;emsp;下载的文件解压到特定目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xzvf cmake-3.13.0-Linux-x86_64.tar.gz<br>sudo <span class="hljs-built_in">mv</span> cmake-3.13.0-Linux-x86_64 /opt/cmake-3.13.0<br></code></pre></td></tr></table></figure></li><li><p>建立软连接</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">ln</span> -sf /opt/cmake-3.13.0/bin/*  /usr/bin/<br>cmake --version<br></code></pre></td></tr></table></figure><p>如果想要切换回低版本，重新做一下软链接就可以了。注意原文件的备份。</p></li></ul><p>结果如下图:<br><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/linux/Cmake%E7%89%88%E6%9C%AC.png" alt="Cmake"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux入门</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>工具</tag>
+      
+      <tag>samba</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>linux学习之Cmake安装和版本升级</title>
+    <link href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8BCmake%E5%AE%89%E8%A3%85%E5%92%8C%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/"/>
+    <url>/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8BCmake%E5%AE%89%E8%A3%85%E5%92%8C%E7%89%88%E6%9C%AC%E5%8D%87%E7%BA%A7/</url>
+    
+    <content type="html"><![CDATA[<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><code>sudo apt install cmake</code><br>通常版本较老</p><h3 id="版本升级"><a href="#版本升级" class="headerlink" title="版本升级"></a>版本升级</h3><h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a>下载安装</h4><ul><li><p>下载<br>&amp;emsp;&amp;emsp;下载 <a href="https://cmake.org/files/">CMake</a>, 速度较慢, 请提前下载。这里下载版本为: <code>cmake-3.24.0-rc1-linux-x86_64.tar.gz</code><br>如下:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">wget https://cmake.org/files/v3.13/cmake-3.13.0-Linux-x86_64.tar.gz<br></code></pre></td></tr></table></figure></li><li><p>解压<br>&amp;emsp;&amp;emsp;下载的文件解压到特定目录</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">tar -xzvf cmake-3.13.0-Linux-x86_64.tar.gz<br>sudo <span class="hljs-built_in">mv</span> cmake-3.13.0-Linux-x86_64 /opt/cmake-3.13.0<br></code></pre></td></tr></table></figure></li><li><p>建立软连接</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">sudo <span class="hljs-built_in">ln</span> -sf /opt/cmake-3.13.0/bin/*  /usr/bin/<br>cmake --version<br></code></pre></td></tr></table></figure><p>如果想要切换回低版本，重新做一下软链接就可以了。注意原文件的备份。</p></li></ul><p>结果如下图:<br><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/linux/Cmake%E7%89%88%E6%9C%AC.png" alt="Cmake"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux入门</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>工具</tag>
+      
+      <tag>CMake</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>linux学习之vim开发环境搭建</title>
     <link href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <url>/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bvim%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</url>
