@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>linux学习之调试工具</title>
+    <link href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/"/>
+    <url>/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/</url>
+    
+    <content type="html"><![CDATA[<h3 id="命令行nc包"><a href="#命令行nc包" class="headerlink" title="命令行nc包"></a>命令行nc包</h3><blockquote><p>用于<code>tcp</code>和<code>udp</code>数据的调试</p></blockquote><p><strong>命令行格式:</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash"> nc [-46bCDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl] [-m minttl] [-O length] [-P proxy_username]<br>        [-p source_port] [-q seconds] [-s <span class="hljs-built_in">source</span>] [-T keyword] [-V rtable] [-W recvlimit] [-w <span class="hljs-built_in">timeout</span>]<br>        [-X proxy_protocol] [-x proxy_address[:port]] [-Z peercertfile] [destination] [port]<br>````<br><br>**选项参数**<br>```bash<br>-4：  强制使用ipv4地址<br>-6：  强制使用ipv6地址<br>-d:   后台模式<br>-I length: 指定tcp接受的数据buffer<br>-i interval: 设置文本行发送和接受的延时<br>-l:   用于指定nc应该侦听传入的连接而不是发起到远程主机, 要监听的端口和目标为非可选参数<br>-M ttl:  配置输出数据的ttl<br>-m minttl: 请求内核丢弃TTL /跳数限制在minttl以下的入站数据包 <br>-n：  指定数字的IP地址，不能用hostname<br>-O length: 设置tcp发送buffer的大小<br>-P proxy_username： 设置代理服务器的用户名<br>-p source_port: 设置源地址端口<br>-q seconds: 在stdin上EOF之后，等待指定的秒数，然后退出。 如果秒是负的，一直等待 (默认)。 指定非负秒意味着-N。 <br>-r:   指定源和/或目标端口应该在内部随机选择，而不是顺序选择一个范围或按照系统分配的顺序。 <br>-s <span class="hljs-built_in">source</span>:  设置本地源ip地址 <br>-T keyword: 改变IPV4的TOS值<br>-t:   使用telent交互方式<br>-U：  使用UNIX-domain socket<br>-V rtable: 设置使用路由表<br>-v:   提供更多的输出<br>-W recvlimit: 在接收到来自网络的recvlimit数据包后终止。<br>-u:   使用则使用udp, 否则tcp<br>-z:   指定nc只扫描, 不发送数据<br></code></pre></td></tr></table></figure><hr><h3 id="tcpdump网络抓包"><a href="#tcpdump网络抓包" class="headerlink" title="tcpdump网络抓包"></a>tcpdump网络抓包</h3><blockquote><p>&amp;emsp;&amp;emsp;用于抓取网络数据包</p></blockquote><p><strong>命令行格式:</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">tcpdump [ -AbdDefhHIJKlLnNOpqStuUvxX<span class="hljs-comment"># ] [ -B buffer_size ]</span><br>        [ -c count ]<br>        [ -C file_size ] [ -G rotate_seconds ] [ -F file ]<br>        [ -i interface ] [ -j tstamp_type ] [ -m module ] [ -M secret ]<br>        [ --number ] [ -Q <span class="hljs-keyword">in</span>|out|inout ]<br>        [ -r file ] [ -V file ] [ -s snaplen ] [ -T <span class="hljs-built_in">type</span> ] [ -w file ]<br>        [ -W filecount ]<br>        [ -E spi@ipaddr algo:secret,...  ]<br>        [ -y datalinktype ] [ -z postrotate-command ] [ -Z user ]<br>        [ --time-stamp-precision=tstamp_precision ]<br>        [ --immediate-mode ] [ --version ]<br>        [ expression ]<br></code></pre></td></tr></table></figure><p><strong>参数选项</strong></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">-A: 以ASCII码打印数据包<br>-b: 数据链路层上选择协议，包括ip/arp/rarp/ipx都在这一层, 如-b udp过滤udp数据包<br>-B buffer_size: 设置数据捕获buffer<br>-c count: 接受指定的count个数据包停止<br>-e： 显示底层链路层头部信息(mac层)<br>-f: 用数字显示网际网络地址<br>-i: 指定抓取特定网口的数据<br>-D: 列出当前的网卡<br>-n: 不把主机的网络地址转换成名字。<br>-N: 不打印域名<br>-p: 不让网络界面进入混杂模式。<br>-q: 仅列出少量协议信息<br>-r: 从指定文件读取数据包数据<br>-S: 使用绝对的而不是相对的tcp <span class="hljs-built_in">seq</span> number显示<br>-t: 不现实数据包的时间戳<br>-tt: 显示未格式化的时间戳<br>-v: 显示协议信息, 报错tos以及协议校验值等等<br>-vv: 显示nfs和smb的协议解码<br>-w: 抓包并写入特定文件<br>-x: 以16进制显示接受的数据<br>-X: 以16进制显示接受的数据并打印其ASCII<br></code></pre></td></tr></table></figure><h4 id="数据包过滤"><a href="#数据包过滤" class="headerlink" title="数据包过滤"></a>数据包过滤</h4><blockquote><p>&amp;emsp;&amp;emsp;过滤器表达式由一个或多个原语组成, 原语通常由一个id(名称或数字)和一个或多个限定符组成。有三种不同的限定词:</p></blockquote><ul><li><p><code>type</code>: 定义id名称或数字的网络类型，支持的关键字是 <code>net</code>, <code>host</code>,<code>port</code>, <code>portrange</code>, 及可以通过主机 <code>IP</code>, 网段, 端口, 端口范围进行过滤。示例如下:</p><ul><li><code>tcpdump -i ens2f1 net 172.25.21.0/24</code></li><li><code>tcpdump -i ens2f1 port 12345</code></li><li><code>tcpdump -i ens2f1 portrange 8000-8100</code></li><li><code>tcpdump -i ens2f1 host 172.25.21.8</code></li></ul></li><li><p><code>dir</code>: 定义传输方向，支持的关键字是：<code>src</code>, <code>dst</code>, <code>src or dst</code>, <code>src and dst</code>, 如果没有指定 <code>dir</code> 限定值, 默认是 <code>src or dst</code>, 针对一些<code>link layers</code>, 如 <code>SLIP</code> 或者 <code>cooked linux</code> 对<code>any</code>设备使用捕获模式, <code>inbound</code> 和 <code>outbound</code>可以用于限定指定的方向。</p><ul><li><code>src net 172.31 、 src or dst port 21</code></li></ul></li><li><p><code>proto</code>: 定义使用的网络协议, 支持的关键字有：<code>ether</code>, <code>fdi</code>, <code>tr</code>, <code>wlan</code>, <code>ip</code>, <code>ip6</code>, <code>arp</code>, <code>rarp</code>, <code>decnet</code>, <code>tcp</code>, <code>udp</code>。 </p><ul><li><code>udp portrange 7000-8000</code></li></ul></li></ul><p><strong>示例</strong>:</p><ul><li><code>tcpdump -i3 -c10 -XX &#39;host 127.0.0.1 and  udp and src or dst port 45525&#39;</code><blockquote><p>抓取网口3的数据包10个, 127.0.0.1网段的udp数据, 且源或者目的端口是45525</p></blockquote></li><li>特殊抓包 <code>tcpdump -i ens2f1 -vvv -nn &#39;tcp port 12345 and (((ip[2:2] - ((ip[0]&amp;0xf)&lt;&lt;2)) - ((tcp[12]&amp;0xf0)&gt;&gt;2)) != 0)&#39;</code> <blockquote><p>抓特定ip标志的包</p></blockquote></li></ul><h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul><li><a href="https://blog.csdn.net/penriver/article/details/123932304">网络安全系列-IX: 抓包工具tcpdump命令使用、过滤规则详解</a></li><li><a href="https://biot.com/capstats/bpf.html">Berkeley Packet Filter (BPF) syntax</a></li><li><a href="https://www.tcpdump.org/manpages/libpcap-1.5.3/pcap-filter.7.html">MAN PAGE OF PCAP-FILTER</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux入门</category>
+      
+      <category>工具</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>工具</tag>
+      
+      <tag>tcpdump</tag>
+      
+      <tag>网络抓包</tag>
+      
+      <tag>nc</tag>
+      
+      <tag>tcp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>工具篇之使用阿里云OSS搭建图床服务</title>
     <link href="/2022/07/17/%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91OSS%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%E6%9C%8D%E5%8A%A1/"/>
     <url>/2022/07/17/%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91OSS%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%E6%9C%8D%E5%8A%A1/</url>

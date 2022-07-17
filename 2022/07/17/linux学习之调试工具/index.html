@@ -18,28 +18,30 @@
   <meta name="author" content="EtcFly">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、检查系统是否安装zsh1cat &#x2F;etc&#x2F;shells   没有安装请安装zsh 1sudo apt install zsh  设置默认shell1chsh -s &#x2F;bin&#x2F;zsh  下载安装on-my-zsh配置 gitee镜像 1sh -c &quot;$(wget -O- https:&#x2F;&#x2F;gitee.com&#x2F;pocmon&#x2F;mirrors&#x2F;raw&#x2F;master&#x2F;tools&#x2F;install.">
+    <meta name="description" content="命令行nc包 用于tcp和udp数据的调试  命令行格式: 123456789101112131415161718192021222324252627282930 nc [-46bCDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl] [-m minttl] [-O length] [-P proxy_username]        [-p s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux学习之安装oh-my-zsh">
-<meta property="og:url" content="http://example.com/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%AE%89%E8%A3%85oh-my-zsh/index.html">
+<meta property="og:title" content="linux学习之调试工具">
+<meta property="og:url" content="http://example.com/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/index.html">
 <meta property="og:site_name" content="牵着老婆走天涯">
-<meta property="og:description" content="1、检查系统是否安装zsh1cat &#x2F;etc&#x2F;shells   没有安装请安装zsh 1sudo apt install zsh  设置默认shell1chsh -s &#x2F;bin&#x2F;zsh  下载安装on-my-zsh配置 gitee镜像 1sh -c &quot;$(wget -O- https:&#x2F;&#x2F;gitee.com&#x2F;pocmon&#x2F;mirrors&#x2F;raw&#x2F;master&#x2F;tools&#x2F;install.">
+<meta property="og:description" content="命令行nc包 用于tcp和udp数据的调试  命令行格式: 123456789101112131415161718192021222324252627282930 nc [-46bCDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl] [-m minttl] [-O length] [-P proxy_username]        [-p s">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/linux.png">
-<meta property="article:published_time" content="2022-07-17T11:10:44.000Z">
-<meta property="article:modified_time" content="2022-07-17T11:12:42.953Z">
+<meta property="og:image" content="http://example.com/img/tool.png">
+<meta property="article:published_time" content="2022-07-17T14:40:44.000Z">
+<meta property="article:modified_time" content="2022-07-17T14:44:30.987Z">
 <meta property="article:author" content="EtcFly">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="工具">
-<meta property="article:tag" content="ZSH">
-<meta property="article:tag" content="zsh插件">
+<meta property="article:tag" content="tcpdump">
+<meta property="article:tag" content="网络抓包">
+<meta property="article:tag" content="nc">
+<meta property="article:tag" content="tcp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/linux.png">
+<meta name="twitter:image" content="http://example.com/img/tool.png">
   
   
   
-  <title>linux学习之安装oh-my-zsh   牵着老婆走天涯</title>
+  <title>linux学习之调试工具   牵着老婆走天涯</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -237,7 +239,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="linux学习之安装oh-my-zsh"></span>
+            <span id="subtitle" data-typed-text="linux学习之调试工具"></span>
           
         </div>
 
@@ -248,7 +250,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-17 19:10" pubdate>
+        <time datetime="2022-07-17 22:40" pubdate>
           2022年7月17日 晚上
         </time>
       </span>
@@ -260,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          342 字
+          2.7k 字
         
       </span>
     
@@ -271,7 +273,7 @@
         
         
         
-          3 分钟
+          23 分钟
         
       </span>
     
@@ -318,12 +320,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">linux学习之安装oh-my-zsh</h1>
+            <h1 style="display: none">linux学习之调试工具</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：4 小时前
+                    本文最后更新于：3 分钟前
                   
                 
               </p>
@@ -331,22 +333,61 @@
             
               <div class="markdown-body">
                 
-                <h3 id="1、检查系统是否安装zsh"><a href="#1、检查系统是否安装zsh" class="headerlink" title="1、检查系统是否安装zsh"></a>1、检查系统是否安装<code>zsh</code></h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cat <span class="hljs-regexp">/etc/</span>shells <br></code></pre></td></tr></table></figure>
+                <h3 id="命令行nc包"><a href="#命令行nc包" class="headerlink" title="命令行nc包"></a>命令行nc包</h3><blockquote>
+<p>用于<code>tcp</code>和<code>udp</code>数据的调试</p>
+</blockquote>
+<p><strong>命令行格式:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs bash"> nc [-46bCDdFhklNnrStUuvZz] [-I length] [-i interval] [-M ttl] [-m minttl] [-O length] [-P proxy_username]<br>        [-p source_port] [-q seconds] [-s <span class="hljs-built_in">source</span>] [-T keyword] [-V rtable] [-W recvlimit] [-w <span class="hljs-built_in">timeout</span>]<br>        [-X proxy_protocol] [-x proxy_address[:port]] [-Z peercertfile] [destination] [port]<br>````<br><br>**选项参数**<br>```bash<br>-4：  强制使用ipv4地址<br>-6：  强制使用ipv6地址<br>-d:   后台模式<br>-I length: 指定tcp接受的数据buffer<br>-i interval: 设置文本行发送和接受的延时<br>-l:   用于指定nc应该侦听传入的连接而不是发起到远程主机, 要监听的端口和目标为非可选参数<br>-M ttl:  配置输出数据的ttl<br>-m minttl: 请求内核丢弃TTL /跳数限制在minttl以下的入站数据包 <br>-n：  指定数字的IP地址，不能用hostname<br>-O length: 设置tcp发送buffer的大小<br>-P proxy_username： 设置代理服务器的用户名<br>-p source_port: 设置源地址端口<br>-q seconds: 在stdin上EOF之后，等待指定的秒数，然后退出。 如果秒是负的，一直等待 (默认)。 指定非负秒意味着-N。 <br>-r:   指定源和/或目标端口应该在内部随机选择，而不是顺序选择一个范围或按照系统分配的顺序。 <br>-s <span class="hljs-built_in">source</span>:  设置本地源ip地址 <br>-T keyword: 改变IPV4的TOS值<br>-t:   使用telent交互方式<br>-U：  使用UNIX-domain socket<br>-V rtable: 设置使用路由表<br>-v:   提供更多的输出<br>-W recvlimit: 在接收到来自网络的recvlimit数据包后终止。<br>-u:   使用则使用udp, 否则tcp<br>-z:   指定nc只扫描, 不发送数据<br></code></pre></td></tr></table></figure>
 
-<p>没有安装请安装<code>zsh</code></p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">sudo apt <span class="hljs-keyword">install</span> zsh<br></code></pre></td></tr></table></figure>
+<hr>
+<h3 id="tcpdump网络抓包"><a href="#tcpdump网络抓包" class="headerlink" title="tcpdump网络抓包"></a>tcpdump网络抓包</h3><blockquote>
+<p>&amp;emsp;&amp;emsp;用于抓取网络数据包</p>
+</blockquote>
+<p><strong>命令行格式:</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash">tcpdump [ -AbdDefhHIJKlLnNOpqStuUvxX<span class="hljs-comment"># ] [ -B buffer_size ]</span><br>        [ -c count ]<br>        [ -C file_size ] [ -G rotate_seconds ] [ -F file ]<br>        [ -i interface ] [ -j tstamp_type ] [ -m module ] [ -M secret ]<br>        [ --number ] [ -Q <span class="hljs-keyword">in</span>|out|inout ]<br>        [ -r file ] [ -V file ] [ -s snaplen ] [ -T <span class="hljs-built_in">type</span> ] [ -w file ]<br>        [ -W filecount ]<br>        [ -E spi@ipaddr algo:secret,...  ]<br>        [ -y datalinktype ] [ -z postrotate-command ] [ -Z user ]<br>        [ --time-stamp-precision=tstamp_precision ]<br>        [ --immediate-mode ] [ --version ]<br>        [ expression ]<br></code></pre></td></tr></table></figure>
 
-<h3 id="设置默认shell"><a href="#设置默认shell" class="headerlink" title="设置默认shell"></a>设置默认<code>shell</code></h3><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">chsh -s <span class="hljs-regexp">/bin/</span>zsh<br></code></pre></td></tr></table></figure>
+<p><strong>参数选项</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs bash">-A: 以ASCII码打印数据包<br>-b: 数据链路层上选择协议，包括ip/arp/rarp/ipx都在这一层, 如-b udp过滤udp数据包<br>-B buffer_size: 设置数据捕获buffer<br>-c count: 接受指定的count个数据包停止<br>-e： 显示底层链路层头部信息(mac层)<br>-f: 用数字显示网际网络地址<br>-i: 指定抓取特定网口的数据<br>-D: 列出当前的网卡<br>-n: 不把主机的网络地址转换成名字。<br>-N: 不打印域名<br>-p: 不让网络界面进入混杂模式。<br>-q: 仅列出少量协议信息<br>-r: 从指定文件读取数据包数据<br>-S: 使用绝对的而不是相对的tcp <span class="hljs-built_in">seq</span> number显示<br>-t: 不现实数据包的时间戳<br>-tt: 显示未格式化的时间戳<br>-v: 显示协议信息, 报错tos以及协议校验值等等<br>-vv: 显示nfs和smb的协议解码<br>-w: 抓包并写入特定文件<br>-x: 以16进制显示接受的数据<br>-X: 以16进制显示接受的数据并打印其ASCII<br></code></pre></td></tr></table></figure>
 
-<h3 id="下载安装on-my-zsh配置"><a href="#下载安装on-my-zsh配置" class="headerlink" title="下载安装on-my-zsh配置"></a>下载安装<code>on-my-zsh</code>配置</h3><ul>
-<li><p><code>gitee</code>镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(wget -O- https://gitee.com/pocmon/mirrors/raw/master/tools/install.sh)</span>&quot;</span> <br></code></pre></td></tr></table></figure>
-</li>
-<li><p><code>GitHub</code> 镜像</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">sh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)</span>&quot;</span><br></code></pre></td></tr></table></figure></li>
+<h4 id="数据包过滤"><a href="#数据包过滤" class="headerlink" title="数据包过滤"></a>数据包过滤</h4><blockquote>
+<p>&amp;emsp;&amp;emsp;过滤器表达式由一个或多个原语组成, 原语通常由一个id(名称或数字)和一个或多个限定符组成。有三种不同的限定词:</p>
+</blockquote>
+<ul>
+<li><p><code>type</code>: 定义id名称或数字的网络类型，支持的关键字是 <code>net</code>, <code>host</code>,<code>port</code>, <code>portrange</code>, 及可以通过主机 <code>IP</code>, 网段, 端口, 端口范围进行过滤。示例如下:</p>
+<ul>
+<li><code>tcpdump -i ens2f1 net 172.25.21.0/24</code></li>
+<li><code>tcpdump -i ens2f1 port 12345</code></li>
+<li><code>tcpdump -i ens2f1 portrange 8000-8100</code></li>
+<li><code>tcpdump -i ens2f1 host 172.25.21.8</code></li>
 </ul>
-<h3 id="设置风格"><a href="#设置风格" class="headerlink" title="设置风格"></a>设置风格</h3><p>在<code>home</code> 目录下 <code>.zshrc</code> 文件修改</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">ZSH_THEME</span>=<span class="hljs-string">&quot;bira&quot;</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><code>dir</code>: 定义传输方向，支持的关键字是：<code>src</code>, <code>dst</code>, <code>src or dst</code>, <code>src and dst</code>, 如果没有指定 <code>dir</code> 限定值, 默认是 <code>src or dst</code>, 针对一些<code>link layers</code>, 如 <code>SLIP</code> 或者 <code>cooked linux</code> 对<code>any</code>设备使用捕获模式, <code>inbound</code> 和 <code>outbound</code>可以用于限定指定的方向。</p>
+<ul>
+<li><code>src net 172.31 、 src or dst port 21</code></li>
+</ul>
+</li>
+<li><p><code>proto</code>: 定义使用的网络协议, 支持的关键字有：<code>ether</code>, <code>fdi</code>, <code>tr</code>, <code>wlan</code>, <code>ip</code>, <code>ip6</code>, <code>arp</code>, <code>rarp</code>, <code>decnet</code>, <code>tcp</code>, <code>udp</code>。 </p>
+<ul>
+<li><code>udp portrange 7000-8000</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>示例</strong>:</p>
+<ul>
+<li><code>tcpdump -i3 -c10 -XX &#39;host 127.0.0.1 and  udp and src or dst port 45525&#39;</code><blockquote>
+<p>抓取网口3的数据包10个, 127.0.0.1网段的udp数据, 且源或者目的端口是45525</p>
+</blockquote>
+</li>
+<li>特殊抓包 <code>tcpdump -i ens2f1 -vvv -nn &#39;tcp port 12345 and (((ip[2:2] - ((ip[0]&amp;0xf)&lt;&lt;2)) - ((tcp[12]&amp;0xf0)&gt;&gt;2)) != 0)&#39;</code> <blockquote>
+<p>抓特定ip标志的包</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/penriver/article/details/123932304">网络安全系列-IX: 抓包工具tcpdump命令使用、过滤规则详解</a></li>
+<li><a target="_blank" rel="noopener" href="https://biot.com/capstats/bpf.html">Berkeley Packet Filter (BPF) syntax</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.tcpdump.org/manpages/libpcap-1.5.3/pcap-filter.7.html">MAN PAGE OF PCAP-FILTER</a></li>
+</ul>
 
                 
               </div>
@@ -368,6 +409,13 @@
   <a href="/categories/Linux%E5%85%A5%E9%97%A8/" class="category-chain-item">Linux入门</a>
   
   
+    <span>></span>
+    
+  <a href="/categories/Linux%E5%85%A5%E9%97%A8/%E5%B7%A5%E5%85%B7/" class="category-chain-item">工具</a>
+  
+  
+
+  
 
       </span>
     
@@ -386,9 +434,13 @@
       
         <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
       
-        <a href="/tags/ZSH/">#ZSH</a>
+        <a href="/tags/tcpdump/">#tcpdump</a>
       
-        <a href="/tags/zsh%E6%8F%92%E4%BB%B6/">#zsh插件</a>
+        <a href="/tags/%E7%BD%91%E7%BB%9C%E6%8A%93%E5%8C%85/">#网络抓包</a>
+      
+        <a href="/tags/nc/">#nc</a>
+      
+        <a href="/tags/tcp/">#tcp</a>
       
     </div>
   
@@ -400,8 +452,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>linux学习之安装oh-my-zsh</div>
-      <div>http://example.com/2022/07/17/linux学习之安装oh-my-zsh/</div>
+      <div>linux学习之调试工具</div>
+      <div>http://example.com/2022/07/17/linux学习之调试工具/</div>
     </div>
     <div class="license-meta">
       
@@ -448,18 +500,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bvscode%E5%85%8D%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86/" title="linux学习之vscode免密码登陆">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">linux学习之vscode免密码登陆</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bzsh%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/" title="linux学习之zsh插件配置">
-                        <span class="hidden-mobile">linux学习之zsh插件配置</span>
+                      <a href="/2022/07/17/%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91OSS%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%E6%9C%8D%E5%8A%A1/" title="工具篇之使用阿里云OSS搭建图床服务">
+                        <span class="hidden-mobile">工具篇之使用阿里云OSS搭建图床服务</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
