@@ -4,6 +4,43 @@
   
   
   <entry>
+    <title>工具篇之使用阿里云OSS搭建图床服务</title>
+    <link href="/2022/07/17/%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91OSS%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%E6%9C%8D%E5%8A%A1/"/>
+    <url>/2022/07/17/%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91OSS%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%E6%9C%8D%E5%8A%A1/</url>
+    
+    <content type="html"><![CDATA[<h3 id="图床服务方案"><a href="#图床服务方案" class="headerlink" title="图床服务方案"></a>图床服务方案</h3><ul><li><code>PicGo</code> + <code>Gitee</code><blockquote><p>使用<code>Gitee</code> 作为图床服务器, 不稳定 不采用</p></blockquote></li></ul><hr><ul><li><code>PicGo</code> + <code>GitHub</code><blockquote><p>使用<code>Github</code> 作为图床服务器, 不稳定，但比<code>Gitee</code> 稳定一点 不采用</p></blockquote></li></ul><hr><ul><li><p><code>PicGo</code> + 阿里<code>OSS</code></p><ul><li>购买阿里云<code>OSS</code>服务, 价格实惠, 一年<code>9</code>块<br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528225304.png" alt="购买入口"><br>  购买入口: <a href="https://home.console.aliyun.com/home/dashboard/ProductAndService">https://home.console.aliyun.com/home/dashboard/ProductAndService</a></li></ul><p>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528225441.png" alt="套餐"></p><ul><li><p><code>OSS</code> 服务配置<br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528225659.png"><br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528225737.png"></p></li><li><p><code>accesskey</code> 创建<br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528225853.png"><br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528230004.png"></p></li><li><p>复制出<code>secret</code> 并填写到<code>picGo</code>即可<br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528230113.png"><br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528230210.png"></p></li></ul></li></ul><p>至此, 我们就可以通过<code>PicGo</code>进行图床了</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>图床服务</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>原创</tag>
+      
+      <tag>工具</tag>
+      
+      <tag>OSS</tag>
+      
+      <tag>对象存储</tag>
+      
+      <tag>图床</tag>
+      
+      <tag>PICGO</tag>
+      
+      <tag>阿里云</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>NFC学习之协议基础</title>
     <link href="/2022/07/17/NFC%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/"/>
     <url>/2022/07/17/NFC%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/</url>

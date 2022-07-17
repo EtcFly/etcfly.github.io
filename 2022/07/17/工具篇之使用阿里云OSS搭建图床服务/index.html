@@ -18,28 +18,30 @@
   <meta name="author" content="EtcFly">
   <meta name="keywords" content="">
   
-    <meta name="description" content="安装gitsudo apt install git 注意  以下操作需要安装oh-my-zsh插件   zsh-autosuggestions插件安装 下载插件 把插件仓库克隆到$ZSH_CUSTOM&#x2F;plugins (默认位置是 ~&#x2F;.oh-my-zsh&#x2F;custom&#x2F;plugins)    1git clone https:&#x2F;&#x2F;github.com&#x2F;zsh-users&#x2F;zsh-autosugg">
+    <meta name="description" content="图床服务方案 PicGo + Gitee 使用Gitee 作为图床服务器, 不稳定 不采用      PicGo + GitHub 使用Github 作为图床服务器, 不稳定，但比Gitee 稳定一点 不采用      PicGo + 阿里OSS  购买阿里云OSS服务, 价格实惠, 一年9块    购买入口: https:&#x2F;&#x2F;home.console.aliyun.com&#x2F;home&#x2F;dashbo">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux学习之zsh插件配置">
-<meta property="og:url" content="http://example.com/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bzsh%E6%8F%92%E4%BB%B6%E9%85%8D%E7%BD%AE/index.html">
+<meta property="og:title" content="工具篇之使用阿里云OSS搭建图床服务">
+<meta property="og:url" content="http://example.com/2022/07/17/%E5%B7%A5%E5%85%B7%E7%AF%87%E4%B9%8B%E4%BD%BF%E7%94%A8%E9%98%BF%E9%87%8C%E4%BA%91OSS%E6%90%AD%E5%BB%BA%E5%9B%BE%E5%BA%8A%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="牵着老婆走天涯">
-<meta property="og:description" content="安装gitsudo apt install git 注意  以下操作需要安装oh-my-zsh插件   zsh-autosuggestions插件安装 下载插件 把插件仓库克隆到$ZSH_CUSTOM&#x2F;plugins (默认位置是 ~&#x2F;.oh-my-zsh&#x2F;custom&#x2F;plugins)    1git clone https:&#x2F;&#x2F;github.com&#x2F;zsh-users&#x2F;zsh-autosugg">
+<meta property="og:description" content="图床服务方案 PicGo + Gitee 使用Gitee 作为图床服务器, 不稳定 不采用      PicGo + GitHub 使用Github 作为图床服务器, 不稳定，但比Gitee 稳定一点 不采用      PicGo + 阿里OSS  购买阿里云OSS服务, 价格实惠, 一年9块    购买入口: https:&#x2F;&#x2F;home.console.aliyun.com&#x2F;home&#x2F;dashbo">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/img/linux.png">
-<meta property="article:published_time" content="2022-07-17T11:08:24.000Z">
-<meta property="article:modified_time" content="2022-07-17T11:09:13.005Z">
+<meta property="og:image" content="http://example.com/img/oss.png">
+<meta property="article:published_time" content="2022-07-17T12:34:50.000Z">
+<meta property="article:modified_time" content="2022-07-17T12:38:19.426Z">
 <meta property="article:author" content="EtcFly">
 <meta property="article:tag" content="原创">
-<meta property="article:tag" content="Linux">
 <meta property="article:tag" content="工具">
-<meta property="article:tag" content="Shell">
-<meta property="article:tag" content="ZSH">
+<meta property="article:tag" content="OSS">
+<meta property="article:tag" content="对象存储">
+<meta property="article:tag" content="图床">
+<meta property="article:tag" content="PICGO">
+<meta property="article:tag" content="阿里云">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/img/linux.png">
+<meta name="twitter:image" content="http://example.com/img/oss.png">
   
   
   
-  <title>linux学习之zsh插件配置   牵着老婆走天涯</title>
+  <title>工具篇之使用阿里云OSS搭建图床服务   牵着老婆走天涯</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -237,7 +239,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="linux学习之zsh插件配置"></span>
+            <span id="subtitle" data-typed-text="工具篇之使用阿里云OSS搭建图床服务"></span>
           
         </div>
 
@@ -248,7 +250,7 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-17 19:08" pubdate>
+        <time datetime="2022-07-17 20:34" pubdate>
           2022年7月17日 晚上
         </time>
       </span>
@@ -260,7 +262,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          598 字
+          242 字
         
       </span>
     
@@ -271,7 +273,7 @@
         
         
         
-          5 分钟
+          3 分钟
         
       </span>
     
@@ -318,12 +320,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">linux学习之zsh插件配置</h1>
+            <h1 style="display: none">工具篇之使用阿里云OSS搭建图床服务</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2 小时前
+                    本文最后更新于：9 分钟前
                   
                 
               </p>
@@ -331,39 +333,37 @@
             
               <div class="markdown-body">
                 
-                <h3 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h3><p><code>sudo apt install git</code></p>
-<p><strong>注意</strong></p>
-<ul>
-<li>以下操作需要安装<code>oh-my-zsh</code>插件</li>
+                <h3 id="图床服务方案"><a href="#图床服务方案" class="headerlink" title="图床服务方案"></a>图床服务方案</h3><ul>
+<li><code>PicGo</code> + <code>Gitee</code><blockquote>
+<p>使用<code>Gitee</code> 作为图床服务器, 不稳定 不采用</p>
+</blockquote>
+</li>
 </ul>
 <hr>
-<h3 id="zsh-autosuggestions插件安装"><a href="#zsh-autosuggestions插件安装" class="headerlink" title="zsh-autosuggestions插件安装"></a>zsh-autosuggestions插件安装</h3><ul>
-<li>下载插件<blockquote>
-<p>把插件仓库克隆到<code>$ZSH_CUSTOM/plugins</code> (默认位置是 <code>~/.oh-my-zsh/custom/plugins</code>)</p>
+<ul>
+<li><code>PicGo</code> + <code>GitHub</code><blockquote>
+<p>使用<code>Github</code> 作为图床服务器, 不稳定，但比<code>Gitee</code> 稳定一点 不采用</p>
 </blockquote>
 </li>
 </ul>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/zsh-users/</span>zsh-autosuggestions <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span><span class="hljs-regexp">/plugins/</span>zsh-autosuggestions<br></code></pre></td></tr></table></figure>
-
+<hr>
 <ul>
-<li>配置插件<br>设置<code>~/.zshrc</code>，把<code>zsh-autosuggestions</code>添加到 <code>Oh My Zsh</code> 要加载的插件列表中, 如下:</li>
+<li><p><code>PicGo</code> + 阿里<code>OSS</code></p>
+<ul>
+<li>购买阿里云<code>OSS</code>服务, 价格实惠, 一年<code>9</code>块<br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528225304.png" srcset="/img/loading.gif" lazyload alt="购买入口"><br>  购买入口: <a target="_blank" rel="noopener" href="https://home.console.aliyun.com/home/dashboard/ProductAndService">https://home.console.aliyun.com/home/dashboard/ProductAndService</a></li>
 </ul>
-<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/git/%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="git/服务配置.png"></p>
-<p>保存并重新载入:<br><code>Source ~/.zshrc</code></p>
-<p>效果如下:<br><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/git/%E5%91%BD%E4%BB%A4%E8%A1%A5%E5%85%A8.png" srcset="/img/loading.gif" lazyload alt="git/命令补全.png"></p>
-<h3 id="zsh-syntax-highlighting"><a href="#zsh-syntax-highlighting" class="headerlink" title="zsh-syntax-highlighting"></a>zsh-syntax-highlighting</h3><blockquote>
-<p>高亮显示常用命令的插件</p>
-</blockquote>
+<p>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528225441.png" srcset="/img/loading.gif" lazyload alt="套餐"></p>
 <ul>
-<li><p>下载</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">git clone https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/zsh-users/</span>zsh-syntax-highlighting.git <span class="hljs-variable">$&#123;ZSH_CUSTOM:-~/.oh-my-zsh/custom&#125;</span><span class="hljs-regexp">/plugins/</span>zsh-syntax-highlighting<br></code></pre></td></tr></table></figure>
+<li><p><code>OSS</code> 服务配置<br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528225659.png" srcset="/img/loading.gif" lazyload><br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528225737.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p>配置<br>在<code>~/.zshrc</code>，把<code>zsh-syntax-highlighting</code>添加到 <code>Oh My Zsh</code> 的插件列表中<br><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/git/%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="git/服务配置.png"></p>
+<li><p><code>accesskey</code> 创建<br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528225853.png" srcset="/img/loading.gif" lazyload><br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528230004.png" srcset="/img/loading.gif" lazyload></p>
 </li>
-<li><p>使配置生效<br><code>source ~/.zshrc·</code></p>
+<li><p>复制出<code>secret</code> 并填写到<code>picGo</code>即可<br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528230113.png" srcset="/img/loading.gif" lazyload><br>  <img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown20220528230210.png" srcset="/img/loading.gif" lazyload></p>
 </li>
 </ul>
-<p>效果如下<br><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/git/%E9%85%8D%E7%BD%AE%E6%9C%8D%E5%8A%A12.png" srcset="/img/loading.gif" lazyload alt="git/配置服务2.png"></p>
+</li>
+</ul>
+<p>至此, 我们就可以通过<code>PicGo</code>进行图床了</p>
 
                 
               </div>
@@ -382,7 +382,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/Linux%E5%85%A5%E9%97%A8/" class="category-chain-item">Linux入门</a>
+  <a href="/categories/%E5%9B%BE%E5%BA%8A%E6%9C%8D%E5%8A%A1/" class="category-chain-item">图床服务</a>
   
   
 
@@ -399,13 +399,17 @@
       
         <a href="/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
       
-        <a href="/tags/Linux/">#Linux</a>
-      
         <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
       
-        <a href="/tags/Shell/">#Shell</a>
+        <a href="/tags/OSS/">#OSS</a>
       
-        <a href="/tags/ZSH/">#ZSH</a>
+        <a href="/tags/%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8/">#对象存储</a>
+      
+        <a href="/tags/%E5%9B%BE%E5%BA%8A/">#图床</a>
+      
+        <a href="/tags/PICGO/">#PICGO</a>
+      
+        <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">#阿里云</a>
       
     </div>
   
@@ -417,8 +421,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>linux学习之zsh插件配置</div>
-      <div>http://example.com/2022/07/17/linux学习之zsh插件配置/</div>
+      <div>工具篇之使用阿里云OSS搭建图床服务</div>
+      <div>http://example.com/2022/07/17/工具篇之使用阿里云OSS搭建图床服务/</div>
     </div>
     <div class="license-meta">
       
@@ -465,18 +469,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%AE%89%E8%A3%85oh-my-zsh/" title="linux学习之安装oh-my-zsh">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">linux学习之安装oh-my-zsh</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8Bsamba%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE/" title="linux学习之samba服务配置">
-                        <span class="hidden-mobile">linux学习之samba服务配置</span>
+                      <a href="/2022/07/17/NFC%E5%AD%A6%E4%B9%A0%E4%B9%8B%E5%8D%8F%E8%AE%AE%E5%9F%BA%E7%A1%80/" title="NFC学习之协议基础">
+                        <span class="hidden-mobile">NFC学习之协议基础</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
