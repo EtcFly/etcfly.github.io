@@ -18,16 +18,16 @@
   <meta name="author" content="EtcFly">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基础的数据类型 Number(数字类型) String(字符串类型) List(列表类型) Tuple(元组类型) Dictionary(字典类型)  其中 数字类型 又分为:  整形: (在python 2.x中有int和long两种类型, 但是这种区分对python区分不大, 在python 3.x中整数只有一种int, 删除了long, （如0b100，换算成十进制是4）、八进制（如0o10">
+    <meta name="description" content="常见接口说明   方法名 备注    基础套接字接口 -   socket 创建标准的套接字对象   gethostname 获取本地主机名   gethostbyname 根据主机名获取本地网络地址, 如果远端地址将进行DNS解析   getsockname 返回套接字自己的地址。通常是一个元组(ipaddr,port)   getpeername 返回连接套接字的远端地址, 通常是(ipadd">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python基础类型和运算符">
-<meta property="og:url" content="http://example.com/2022/07/15/love-chaichai/index.html">
+<meta property="og:title" content="python之网络应用开发">
+<meta property="og:url" content="http://example.com/2022/07/17/python%E4%B9%8B%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/index.html">
 <meta property="og:site_name" content="牵着老婆走天涯">
-<meta property="og:description" content="基础的数据类型 Number(数字类型) String(字符串类型) List(列表类型) Tuple(元组类型) Dictionary(字典类型)  其中 数字类型 又分为:  整形: (在python 2.x中有int和long两种类型, 但是这种区分对python区分不大, 在python 3.x中整数只有一种int, 删除了long, （如0b100，换算成十进制是4）、八进制（如0o10">
+<meta property="og:description" content="常见接口说明   方法名 备注    基础套接字接口 -   socket 创建标准的套接字对象   gethostname 获取本地主机名   gethostbyname 根据主机名获取本地网络地址, 如果远端地址将进行DNS解析   getsockname 返回套接字自己的地址。通常是一个元组(ipaddr,port)   getpeername 返回连接套接字的远端地址, 通常是(ipadd">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/python.png">
-<meta property="article:published_time" content="2022-07-15T15:44:05.000Z">
-<meta property="article:modified_time" content="2022-07-17T08:21:46.569Z">
+<meta property="article:published_time" content="2022-07-17T08:59:13.000Z">
+<meta property="article:modified_time" content="2022-07-17T09:01:57.967Z">
 <meta property="article:author" content="EtcFly">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="python">
@@ -37,7 +37,7 @@
   
   
   
-  <title>Python基础类型和运算符   牵着老婆走天涯</title>
+  <title>python之网络应用开发   牵着老婆走天涯</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Python基础类型和运算符"></span>
+            <span id="subtitle" data-typed-text="python之网络应用开发"></span>
           
         </div>
 
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-15 23:44" pubdate>
-          2022年7月15日 晚上
+        <time datetime="2022-07-17 16:59" pubdate>
+          2022年7月17日 下午
         </time>
       </span>
     
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.6k 字
+          4k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          39 分钟
+          34 分钟
         
       </span>
     
@@ -292,12 +292,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Python基础类型和运算符</h1>
+            <h1 style="display: none">python之网络应用开发</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：42 分钟前
+                    本文最后更新于：2 分钟前
                   
                 
               </p>
@@ -305,177 +305,150 @@
             
               <div class="markdown-body">
                 
-                <h3 id="基础的数据类型"><a href="#基础的数据类型" class="headerlink" title="基础的数据类型"></a>基础的数据类型</h3><ul>
-<li><code>Number</code>(数字类型)</li>
-<li><code>String</code>(字符串类型)</li>
-<li><code>List</code>(列表类型)</li>
-<li><code>Tuple</code>(元组类型)</li>
-<li><code>Dictionary</code>(字典类型)</li>
-</ul>
-<p>其中 <strong>数字类型</strong> 又分为:</p>
-<ul>
-<li>整形: (在<code>python 2.x</code>中有<code>int</code>和<code>long</code>两种类型, 但是这种区分对<code>python</code>区分不大, 在<code>python 3.x</code>中整数只有一种<code>int</code>, 删除了<code>long</code>, （如<code>0b100</code>，换算成十进制是<code>4</code>）、八进制（如<code>0o100</code>，换算成十进制是<code>64</code>）、十进制（<code>100</code>）和十六进制（<code>0x100</code>，换算成十进制是<code>256</code>）的表示法</li>
-<li>浮点类型: 浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，浮点数除了数学写法（如<code>123.456</code>）之外还支持科学计数法（如<code>1.23456e2</code>）</li>
-<li>复数类型:形如<code>3+5j</code>，跟数学上的复数表示一样，唯一不同的是虚部的<code>i</code>换成了<code>j</code></li>
-<li>布尔类型: 布尔值只有<code>True</code>、<code>False</code>两种值，要么是<code>True</code>，要么是<code>False</code>，在<code>Python</code>中，可以直接用<code>True</code>、<code>False</code>表示布尔值（请注意大小写），也可以通过布尔运算计算出来（例如<code>3 &lt; 5</code>会产生布尔值<code>True</code>，而<code>2 == 1</code>会产生布尔值<code>False</code>）。</li>
-</ul>
-<p><strong>字符串类型:</strong><br>　　字符串是以单引号或双引号括起来的任意文本，比如<code>&#39;hello&#39;</code>和<code>&quot;hello&quot;</code>,字符串还有原始字符串表示法、字节字符串表示法、<code>Unicode</code>字符串表示法，而且可以书写成多行的形式（用三个单引号或三个双引号开头，三个单引号或三个双引号结尾）。</p>
-<blockquote>
-<p>如:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">stc = <span class="hljs-string">&quot;&quot;&quot;this is a test1</span><br><span class="hljs-string">        this is a test2&quot;&quot;&quot;</span><br><span class="hljs-built_in">print</span>(stc)<br></code></pre></td></tr></table></figure>
-</blockquote>
-<p><code>python</code>的字串列表有2种取值顺序:</p>
-<ul>
-<li>从左到右索引默认0开始的，最大范围是字符串长度少1</li>
-<li>从右到左索引默认-1开始的，最大范围是字符串开头</li>
-</ul>
-<hr>
-<h3 id="变量的命名"><a href="#变量的命名" class="headerlink" title="变量的命名"></a>变量的命名</h3><ul>
-<li>硬性规则<ul>
-<li>变量名由字母（广义的<code>Unicode</code>字符，不包括特殊字符）、数字和下划线构成，数字不能开头</li>
-<li>大小写敏感（大写的a和小写的A是两个不同的变量）。</li>
-<li>不要跟关键字（有特殊含义的单词，后面会讲到）和系统保留字（如函数、模块等的名字）冲突。</li>
-</ul>
-</li>
-<li>PEP 8要求<ul>
-<li>用小写字母拼写，多个单词用下划线连接。</li>
-<li>受保护的实例属性用单个下划线开头</li>
-<li>私有的实例属性用两个下划线开头</li>
-</ul>
-</li>
-</ul>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">a</span> = <span class="hljs-number">123</span>  // 整数类型<br><span class="hljs-attr">a</span> = <span class="hljs-number">0</span>b10 //二进制表示法<br><span class="hljs-attr">a</span> = <span class="hljs-number">0</span>x10 // 十六进制表示<br><span class="hljs-attr">a</span> = <span class="hljs-number">0</span>o10 // 八进制表示<br><span class="hljs-attr">a</span> = <span class="hljs-number">10</span>   // 十进制表示<br><br><span class="hljs-attr">b</span> = <span class="hljs-number">12.3</span> //浮点数类型<br><span class="hljs-attr">b</span> = <span class="hljs-number">12.3</span>e2 //表示科学计数法<span class="hljs-number">1230</span>, 及<span class="hljs-number">12.3</span>X10X10 <br><br><span class="hljs-attr">c</span> = <span class="hljs-string">&quot;this is a test&quot;</span> //字符串类型<br><span class="hljs-attr">c</span> = <span class="hljs-string">&#x27;this is a test&#x27;</span><br><br><span class="hljs-attr">d</span> = <span class="hljs-literal">True</span> //布尔类型<br><br><span class="hljs-attr">e</span> = <span class="hljs-number">1</span> + <span class="hljs-number">2</span>j //复数类型<br></code></pre></td></tr></table></figure>
-
-<h3 id="Python中关键字"><a href="#Python中关键字" class="headerlink" title="Python中关键字"></a>Python中关键字</h3><blockquote>
-<p>保留字即关键字，我们不能把它们用作任何标识符名称。<code>Python</code> 的标准库提供了一个 keyword 模块，可以输出当前版本的所有关键字：</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">import keyword<br>lst = keyword<span class="hljs-selector-class">.kwlist</span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(lst)</span></span><br></code></pre></td></tr></table></figure>
-<p>输出结果为:</p>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scheme">[<span class="hljs-symbol">&#x27;False</span>&#x27;, <span class="hljs-symbol">&#x27;None</span>&#x27;, <span class="hljs-symbol">&#x27;True</span>&#x27;, <span class="hljs-symbol">&#x27;and</span>&#x27;, <span class="hljs-symbol">&#x27;as</span>&#x27;, <span class="hljs-symbol">&#x27;assert</span>&#x27;, <span class="hljs-symbol">&#x27;break</span>&#x27;, <span class="hljs-symbol">&#x27;class</span>&#x27;, <span class="hljs-symbol">&#x27;continue</span>&#x27;, <span class="hljs-symbol">&#x27;def</span>&#x27;, <span class="hljs-symbol">&#x27;del</span>&#x27;, <span class="hljs-symbol">&#x27;elif</span>&#x27;, <span class="hljs-symbol">&#x27;else</span>&#x27;, <span class="hljs-symbol">&#x27;except</span>&#x27;, <span class="hljs-symbol">&#x27;finally</span>&#x27;, <span class="hljs-symbol">&#x27;for</span>&#x27;, <span class="hljs-symbol">&#x27;from</span>&#x27;, <span class="hljs-symbol">&#x27;global</span>&#x27;, <span class="hljs-symbol">&#x27;if</span>&#x27;, <span class="hljs-symbol">&#x27;import</span>&#x27;, <span class="hljs-symbol">&#x27;in</span>&#x27;, <span class="hljs-symbol">&#x27;is</span>&#x27;, <span class="hljs-symbol">&#x27;lambda</span>&#x27;, <span class="hljs-symbol">&#x27;nonlocal</span>&#x27;, <span class="hljs-symbol">&#x27;not</span>&#x27;, <span class="hljs-symbol">&#x27;or</span>&#x27;, <span class="hljs-symbol">&#x27;pass</span>&#x27;, <span class="hljs-symbol">&#x27;raise</span>&#x27;, <span class="hljs-symbol">&#x27;return</span>&#x27;, <span class="hljs-symbol">&#x27;try</span>&#x27;, <span class="hljs-symbol">&#x27;while</span>&#x27;, <span class="hljs-symbol">&#x27;with</span>&#x27;, <span class="hljs-symbol">&#x27;yield</span>&#x27;]<br></code></pre></td></tr></table></figure>
-
-<hr>
-<h5 id="变量类型转换"><a href="#变量类型转换" class="headerlink" title="变量类型转换"></a>变量类型转换</h5><blockquote>
-<p>在对变量类型进行转换时可以使用Python的内置函数（准确的说下面列出的并不是真正意义上的函数，而是后面我们要讲到的创建对象的构造方法）。</p>
-</blockquote>
-<ul>
-<li><code>int()</code>: 将一个数值或字符串转换成整数，可以指定进制</li>
-<li><code>float()</code>：将一个字符串转换成浮点数。</li>
-<li><code>str()</code>：将指定的对象转换成字符串形式，可以指定编码</li>
-<li><code>chr()</code>：将整数转换成该编码对应的字符串（一个字符）。</li>
-<li><code>ord()</code>：将字符串（一个字符）转换成对应的编码（整数）。</li>
-</ul>
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h5><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-tag">a</span> = <span class="hljs-built_in">int</span>(<span class="hljs-number">123</span>)<br><span class="hljs-selector-tag">b</span> = <span class="hljs-attribute">float</span>(<span class="hljs-number">123</span>)<br>c = <span class="hljs-built_in">str</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br>d = <span class="hljs-built_in">chr</span>(<span class="hljs-number">123</span>) #将整型的<span class="hljs-number">123</span>转为字符<br>e = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;G&#x27;</span>) #将ASCII的字符G转为int类型编码值<br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(a)</span></span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(b)</span></span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(c)</span></span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(d)</span></span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(e)</span></span><br></code></pre></td></tr></table></figure>
-
-<p>输出结果:</p>
-<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs fsharp"><span class="hljs-number">123</span><br><span class="hljs-number">123.0</span><br><span class="hljs-keyword">hello</span><br>&#123;<br><span class="hljs-number">71</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><blockquote>
-<p>Python支持多种运算符，下表大致按照优先级从高到低的顺序列出了所有的运算符，我们会陆续使用到它们。</p>
-</blockquote>
-<table>
+                <h3 id="常见接口说明"><a href="#常见接口说明" class="headerlink" title="常见接口说明"></a>常见接口说明</h3><table>
 <thead>
 <tr>
-<th>运算符</th>
-<th>描述</th>
+<th align="left">方法名</th>
+<th align="center">备注</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>[]</code> <code>[:]</code></td>
-<td>下标，切片</td>
+<td align="left"><em><strong>基础套接字接口</strong></em></td>
+<td align="center">-</td>
 </tr>
 <tr>
-<td><code>**</code></td>
-<td>指数</td>
+<td align="left"><code>socket</code></td>
+<td align="center">创建标准的套接字对象</td>
 </tr>
 <tr>
-<td><code>~</code> <code>+</code> <code>-</code></td>
-<td>按位取反, 正负号</td>
+<td align="left"><code>gethostname</code></td>
+<td align="center">获取本地主机名</td>
 </tr>
 <tr>
-<td><code>*</code> <code>/</code> <code>%</code> <code>//</code></td>
-<td>乘，除，模，整除</td>
+<td align="left"><code>gethostbyname</code></td>
+<td align="center">根据主机名获取本地网络地址, 如果远端地址将进行<code>DNS</code>解析</td>
 </tr>
 <tr>
-<td><code>+</code> <code>-</code></td>
-<td>加，减</td>
+<td align="left"><code>getsockname</code></td>
+<td align="center">返回套接字自己的地址。通常是一个元组<code>(ipaddr,port)</code></td>
 </tr>
 <tr>
-<td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
-<td>右移，左移</td>
+<td align="left"><code>getpeername</code></td>
+<td align="center">返回连接套接字的远端地址, 通常是<code>(ipaddr, port)</code></td>
 </tr>
 <tr>
-<td><code>&amp;</code></td>
-<td>按位与</td>
+<td align="left"><code>recv</code></td>
+<td align="center">接受<code>tcp</code>数据</td>
 </tr>
 <tr>
-<td><code>^</code> <code>|</code></td>
-<td>按位异或，按位或</td>
+<td align="left"><code>send</code></td>
+<td align="center">发送<code>tcp</code>数据,将<code>string</code>中的数据发送到连接的套接字。返回值是要发送的字节数量，该数量可能小于<code>string</code>的字节大小。</td>
 </tr>
 <tr>
-<td><code>&lt;=</code> <code>&lt;</code> <code>&gt;</code> <code>&gt;=</code></td>
-<td>小于等于，小于，大于，大于等于</td>
+<td align="left"><code>sendall</code></td>
+<td align="center">完整发送<code>TCP</code>数据，完整发送<code>TCP</code>数据。将<code>string</code>中的数据发送到连接的套接字，但在返回之前会尝试发送所有数据。成功返回<code>None</code>，失败则抛出异常。</td>
 </tr>
 <tr>
-<td><code>==</code> <code>!=</code></td>
-<td>等于，不等于</td>
+<td align="left"><code>recvfrom</code></td>
+<td align="center">接收<code>UDP</code>数据，与<code>recv()</code>类似，但返回值是<code>（data,address）</code>。其中<code>data</code>是包含接收数据的字符串，<code>address</code>是发送数据的套接字地址</td>
 </tr>
 <tr>
-<td><code>is</code>  <code>is not</code></td>
-<td>身份运算符</td>
+<td align="left"><code>sendto</code></td>
+<td align="center">发送<code>UDP</code>数据，将数据发送到套接字，<code>address</code>是形式为<code>（ipaddr，port）</code>的元组，指定远程地址。返回值是发送的字节数</td>
 </tr>
 <tr>
-<td><code>in</code> <code>not in</code></td>
-<td>成员运算符</td>
+<td align="left"><code>close</code></td>
+<td align="center">关闭套接字</td>
 </tr>
 <tr>
-<td><code>not</code> <code>or</code> <code>and</code></td>
-<td>逻辑运算符</td>
+<td align="left"><code>setsockopt</code></td>
+<td align="center">设置给定套接字选项的值</td>
 </tr>
 <tr>
-<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>//=</code> <code>**=</code> <code>&amp;=</code> <code>|=</code> <code>^=</code> <code>&gt;&gt;=</code> <code>&lt;&lt;=</code></td>
-<td>（复合）赋值运算符</td>
+<td align="left"><code>getsockopt</code></td>
+<td align="center">返回套接字选项的值。</td>
+</tr>
+<tr>
+<td align="left"><code>settimeout</code></td>
+<td align="center">设置套接字操作的超时期，<code>timeout</code>是一个浮点数，单位是秒。值为<code>None</code>表示没有超时期。一般，超时期应该在刚创建套接字时设置，因为它们可能用于连接的操作（如<code>connect()</code>）</td>
+</tr>
+<tr>
+<td align="left"><code>gettimeout</code></td>
+<td align="center">返回当前超时期的值，单位是秒，如果没有设置超时期，则返回<code>None</code>。</td>
+</tr>
+<tr>
+<td align="left"><code>fileno</code></td>
+<td align="center">返回套接字的文件描述符</td>
+</tr>
+<tr>
+<td align="left"><code>setblocking</code></td>
+<td align="center">如果 <code>flag</code> 为<code>False</code>，则将套接字设为非阻塞模式，否则将套接字设为阻塞模式（默认值）。非阻塞模式下，如果调用 <code>recv()</code> 没有发现任何数据，或 <code>send()</code> 调用无法立即发送数据，那么将引起 <code>socket.error</code> 异常。</td>
+</tr>
+<tr>
+<td align="left"><code>makefile</code></td>
+<td align="center">创建一个与该套接字相关连的文件</td>
+</tr>
+<tr>
+<td align="left"><em><strong>服务器端套接字</strong></em></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left"><code>bind</code></td>
+<td align="center">接口绑定(绑定特定<code>ip</code>和端口)</td>
+</tr>
+<tr>
+<td align="left"><code>listen</code></td>
+<td align="center"><code>tcp</code>监听</td>
+</tr>
+<tr>
+<td align="left"><code>accept</code></td>
+<td align="center">被动接收<code>tcp</code>连接, 阻塞等待连接到来</td>
+</tr>
+<tr>
+<td align="left"><em><strong>客户端套接字</strong></em></td>
+<td align="center">-</td>
+</tr>
+<tr>
+<td align="left"><code>connect</code></td>
+<td align="center">主动进行<code>tcp</code>连接, 如果连接出错，返回<code>socket.error</code>错误。</td>
+</tr>
+<tr>
+<td align="left"><code>connect_ex</code></td>
+<td align="center"><code>connect()</code>函数的扩展版本,出错时返回出错码,而不是抛出异常</td>
 </tr>
 </tbody></table>
-<blockquote>
-<p><strong>说明：</strong> 在实际开发中，如果搞不清楚运算符的优先级，可以使用括号来确保运算的执行顺序。</p>
-</blockquote>
 <hr>
-<p><strong>Note:</strong></p>
-<ul>
-<li><p><code>print</code>格式化输出的几种方式</p>
-<ul>
-<li>直接输出, 无其他类型数据<ul>
-<li><code>print(&#39;hello&#39;)</code></li>
-<li><code>print(a)  # a是一个int类型数据</code></li>
-</ul>
-</li>
-<li>和其他类型输出结合输出<ul>
-<li><code>print(&quot;hello&quot;, a, b) # a,b分别是一个int类型数据5, 10, 输出结果未hello 5 10, 自动生成一个空格</code> </li>
-<li><code>print(f&quot;hello&#123;a&#125;&quot;, a) # 假设a是int类型值为5, 则结果为hello5, 这种仅仅在python 2.x上支持</code></li>
-<li><code>print(&quot;r:%.2d l:%.3f&quot;%(10, 12)) #结果为r:10 l:12.000, 浮点数.3f表示三位小数位, d表示整形输出, f表示浮点输出</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>type</code>功能函数</p>
-<ul>
-<li>获取一个变量的类型<ul>
-<li><code>print(type(123)) //输出结果为 &lt;class &#39;int&#39;&gt;</code>   </li>
-<li><code>print(type(&quot;hello&quot;)) //输出结果为&lt;class &#39;str&#39;&gt;, 表示为str类型</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>del</code>删除一个变量</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs maxima"><span class="hljs-built_in">var</span> = <span class="hljs-number">10</span><br><span class="hljs-built_in">var1</span> = <span class="hljs-number">20</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">var</span>)<br><span class="hljs-built_in">del</span> <span class="hljs-built_in">var</span>, <span class="hljs-built_in">var1</span><br><br><span class="hljs-built_in">var</span> = <span class="hljs-number">20</span><br><span class="hljs-built_in">del</span> <span class="hljs-built_in">var</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">var</span>) # <span class="hljs-built_in">error</span>: name &#x27;<span class="hljs-built_in">var</span>&#x27; <span class="hljs-built_in">is</span> <span class="hljs-keyword">not</span> defined<br></code></pre></td></tr></table></figure></li>
-<li><p><code>python</code>对变量的重新赋值会改变内存地址</p>
-</li>
-</ul>
-<hr>
-<p><em><strong>测试代码</strong></em></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs swift"># b <span class="hljs-operator">=</span> long(<span class="hljs-number">123</span>)<br># <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(b))<br><br>strc <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;&quot;this is a test</span><br><span class="hljs-string">do you know</span><br><span class="hljs-string">hello world</span><br><span class="hljs-string">no end test&quot;&quot;&quot;</span><br><br><span class="hljs-built_in">print</span>(strc)<br><br>a <span class="hljs-operator">=</span> int(<span class="hljs-number">123</span>)<br>b <span class="hljs-operator">=</span> float(<span class="hljs-number">123</span>)<br>c <span class="hljs-operator">=</span> str(&#x27;hello&#x27;)<br>d <span class="hljs-operator">=</span> chr(<span class="hljs-number">123</span>)<br>e <span class="hljs-operator">=</span> ord(&#x27;<span class="hljs-type">G</span>&#x27;)<br><br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(b)<br><span class="hljs-built_in">print</span>(c)<br><span class="hljs-built_in">print</span>(d)<br><span class="hljs-built_in">print</span>(e)<br><br><br>a <span class="hljs-operator">=</span> <span class="hljs-number">3</span><span class="hljs-operator">&amp;</span><span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(a)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;r:%.2d l:%.5f&quot;</span> <span class="hljs-operator">%</span>(<span class="hljs-number">100</span>, <span class="hljs-number">12.3</span>))<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(<span class="hljs-string">&quot;hello&quot;</span>))<br><br><br><span class="hljs-comment">/////////////////////////////////////</span><br>a <span class="hljs-operator">=</span>&#x27;hello&#x27;<br>b <span class="hljs-operator">=</span><span class="hljs-string">&quot;heallo&quot;</span><br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(b)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;welcom&quot;</span>, a, b)<br>#<span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;welcom &#123;a&#125;&quot;</span>)<br><br>f <span class="hljs-operator">=</span> <span class="hljs-type">True</span><br><span class="hljs-built_in">print</span>(f)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;welcom&quot;</span>, b)<br><br># 运算符<br><span class="hljs-built_in">print</span>(<span class="hljs-number">1</span><span class="hljs-operator">+</span><span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-number">1</span><span class="hljs-operator">-</span><span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-number">2</span><span class="hljs-operator">*</span><span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-number">14</span><span class="hljs-operator">/</span><span class="hljs-number">5</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-number">14</span><span class="hljs-comment">//5)</span><br><span class="hljs-built_in">print</span>(<span class="hljs-number">14</span><span class="hljs-operator">%</span><span class="hljs-number">5</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-number">14</span><span class="hljs-operator">**</span><span class="hljs-number">5</span>)<br><br># g <span class="hljs-operator">=</span> int(<span class="hljs-number">2.8</span>)<br># <span class="hljs-built_in">print</span>(g)<br># <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(g))<br># g <span class="hljs-operator">=</span> str(input(<span class="hljs-string">&quot;string&quot;</span>))<br># <span class="hljs-built_in">print</span>(g)<br># <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(g))<br><br># g <span class="hljs-operator">=</span> chr(int(input(<span class="hljs-string">&quot;char&quot;</span>)))<br># <span class="hljs-built_in">print</span>(g)<br># <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(g))<br><br># g <span class="hljs-operator">=</span> ord(str(input(<span class="hljs-string">&quot;char&quot;</span>)))<br># <span class="hljs-built_in">print</span>(g)<br># <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(g))<br><br><span class="hljs-built_in">print</span>(<span class="hljs-operator">-</span><span class="hljs-number">1</span><span class="hljs-operator">&gt;&gt;</span><span class="hljs-number">1</span>)<br><br>a <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br>a <span class="hljs-operator">*=</span> <span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(a)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;a =&quot;</span>, a)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;a = &quot;</span>, a)<br><br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> <span class="hljs-type">True</span>)<br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> not <span class="hljs-type">False</span>)<br><br># tmp <span class="hljs-operator">=</span>int(input(<span class="hljs-string">&quot;请输入温度:&quot;</span>))<br># res <span class="hljs-operator">=</span>(tmp <span class="hljs-operator">-</span> <span class="hljs-number">32</span>) <span class="hljs-operator">/</span> <span class="hljs-number">1.8</span><br># <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%.1f华氏度 = %5.2f摄氏度&quot;</span> <span class="hljs-operator">%</span> (tmp,res))<br># <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%.1f华氏度 = %05.2f摄氏度&quot;</span> <span class="hljs-operator">%</span> (tmp,res))<br><br># 计算圆的面积周长<br># r <span class="hljs-operator">=</span> float(input(<span class="hljs-string">&quot;输入圆的半径:&quot;</span>))<br># area <span class="hljs-operator">=</span> <span class="hljs-number">3.14</span><span class="hljs-operator">*</span>(r<span class="hljs-operator">**</span><span class="hljs-number">2</span>)<br># len <span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-operator">*</span><span class="hljs-number">3.14</span><span class="hljs-operator">*</span>r<br># <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;面积:%.2f 周长:%.2f&quot;</span><span class="hljs-operator">%</span>(area, len))<br><br>b <span class="hljs-operator">=</span> long(<span class="hljs-number">123</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(b))<br></code></pre></td></tr></table></figure>
+<h3 id="接口详情"><a href="#接口详情" class="headerlink" title="接口详情"></a>接口详情</h3><hr>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><h4 id="实现tcp-server"><a href="#实现tcp-server" class="headerlink" title="实现tcp server"></a>实现tcp server</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span><br><span class="hljs-keyword">import</span> socket<br><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>    host_name = socket.gethostname()<br>    <span class="hljs-built_in">print</span>(host_name)<br>    <span class="hljs-built_in">print</span>(socket.gethostbyname(host_name))<br>    sock.bind((host_name, <span class="hljs-number">8888</span>))<br>    sock.listen(<span class="hljs-number">2</span>)<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        client_sock,client_addr= sock.accept()<br>        <span class="hljs-built_in">print</span>(client_addr, client_sock.getsockname())<br>        <span class="hljs-built_in">print</span>(client_sock.recv(<span class="hljs-number">1024</span>*<span class="hljs-number">1024</span>).decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), end=<span class="hljs-string">&#x27;\r&#x27;</span>)<br>        client_sock.send(<span class="hljs-string">&#x27;this is a tcp server test!&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>        client_sock.close()<br>        <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
 
-<p>参考文档：<br><a target="_blank" rel="noopener" href="https://github.com/EtcFly/Python-100-Days/blob/master/Day01-15/02.%E8%AF%AD%E8%A8%80%E5%85%83%E7%B4%A0.md">1、语言元素</a></p>
+
+<p><strong>测试</strong>:</p>
+<p>条件:  <code>linux</code>宿主机, 并安装<code>nc</code>网络工具, 输入如下:<br><code> nc -n 127.0.1.1  8888</code><br><code>i love chaichai</code></p>
+<p>输出结果</p>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs axapta"><span class="hljs-keyword">this</span> <span class="hljs-keyword">is</span> a tcp <span class="hljs-keyword">server</span> test!<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="实现tcp-client"><a href="#实现tcp-client" class="headerlink" title="实现tcp client"></a>实现tcp client</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span><br><br><span class="hljs-keyword">import</span> socket<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)<br>    host_name = socket.gethostname()<br>    <span class="hljs-built_in">print</span>(host_name)<br>    <span class="hljs-built_in">print</span>(socket.gethostbyname(host_name))<br>    sock_local = sock.connect_ex((<span class="hljs-string">&#x27;127.1.1.1&#x27;</span>, <span class="hljs-number">8888</span>))<br>    <span class="hljs-built_in">print</span>(sock_local)<br>    <span class="hljs-keyword">if</span> sock_local <span class="hljs-keyword">is</span> <span class="hljs-number">0</span>: <span class="hljs-comment"># 返回错误码</span><br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            sock.send(<span class="hljs-string">&#x27;i love my wife chaichai!\r\n&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>            time.sleep(<span class="hljs-number">5</span>)<br>            <span class="hljs-keyword">pass</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;connect tcp server faill!&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<p><strong>测试</strong><br>条件: <code>linux</code>宿主机, 并安装nc网络工具, 输入如下:<br><code>nc -lv 127.1.1.1 8888</code> 绑定本地<code>127.1.1.1</code>的ip 端口为<code>8888</code></p>
+<p>结果输出:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">i love <span class="hljs-keyword">my</span> wife chaichai! <span class="hljs-comment"># 每5s 输出一次</span><br></code></pre></td></tr></table></figure>
+<hr>
+<h4 id="实现udp-client"><a href="#实现udp-client" class="headerlink" title="实现udp client"></a>实现udp client</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span><br><br><span class="hljs-keyword">import</span> socket<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)<br>    host_name = socket.gethostname()<br>    <span class="hljs-built_in">print</span>(host_name)<br>    <span class="hljs-built_in">print</span>(socket.gethostbyname(host_name))<br><br>    sock_local = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">if</span> sock_local <span class="hljs-keyword">is</span> <span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            sock.sendto(<span class="hljs-string">&#x27;i love my wife chaichai!\r\n&#x27;</span>.encode(<span class="hljs-string">&#x27;utf-8&#x27;</span>), (<span class="hljs-string">&#x27;127.1.1.1&#x27;</span>, <span class="hljs-number">8888</span>))<br>            time.sleep(<span class="hljs-number">5</span>)<br>            <span class="hljs-keyword">pass</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;connect udp server faill!&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><strong>测试</strong><br>条件: <code>linux</code>宿主机, 并安装nc网络工具, 输入如下:<br><code>nc -luv 127.1.1.1 8888</code> 绑定本地<code>127.1.1.1</code>的ip 端口为<code>8888</code>, 即使能<code>udp</code>服务器</p>
+<p>结果输出:</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs applescript">╭─etcfly@mingyang ~/Desktop/python <br>╰─$ nc -uvl <span class="hljs-number">127.1</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span> <span class="hljs-number">8888</span><br>Listening <span class="hljs-keyword">on</span> [<span class="hljs-number">127.1</span><span class="hljs-number">.1</span><span class="hljs-number">.1</span>] (family <span class="hljs-number">0</span>, port <span class="hljs-number">8888</span>)<br>Connection <span class="hljs-keyword">from</span> localhost <span class="hljs-number">47349</span> received!<br>i love <span class="hljs-keyword">my</span> wife chaichai!<br>i love <span class="hljs-keyword">my</span> wife chaichai!<br>i love <span class="hljs-keyword">my</span> wife chaichai!<br>i love <span class="hljs-keyword">my</span> wife chaichai! <span class="hljs-comment"># 每5s 输出一次</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="实现udp-server"><a href="#实现udp-server" class="headerlink" title="实现udp server"></a>实现udp server</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span><br><br><span class="hljs-keyword">import</span> socket<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)<br>    host_name = socket.gethostname()<br>    <span class="hljs-built_in">print</span>(host_name)<br>    <span class="hljs-built_in">print</span>(socket.gethostbyname(host_name))<br>    sock.bind((<span class="hljs-string">&#x27;127.1.1.1&#x27;</span>, <span class="hljs-number">8880</span>))<br><br>    sock_local = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">if</span> sock_local <span class="hljs-keyword">is</span> <span class="hljs-number">0</span>:<br>        <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>            rev_data, [addr, port] = sock.recvfrom(<span class="hljs-number">1024</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;[%s:%d] %s&#x27;</span> %(addr, port, rev_data.decode(<span class="hljs-string">&#x27;utf-8&#x27;</span>)))<br>            time.sleep(<span class="hljs-number">5</span>)<br>            <span class="hljs-keyword">pass</span><br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;connect tcp server faill!&#x27;</span>)<br></code></pre></td></tr></table></figure>
+<p><strong>测试</strong><br>条件: <code>linux</code>宿主机, 并安装nc网络工具, 输入如下:<br><code>nc -uv 127.1.1.1 8880</code>, 连接远端<code>127.1.1.1</code>且端口为<code>8880</code>的<code>udp server</code></p>
+<p>结果输出:<br><strong>客户端</strong>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">╭─etcfly@mingyang ~/Desktop/python <br>╰─$ nc -uv 127.1.1.1 8880                           <br>Connection to 127.1.1.1 8880 port [udp/*] succeeded!<br>this is a file, i love chaichai<br></code></pre></td></tr></table></figure>
+<p><strong>服务端</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs bash">╭─etcfly@mingyang ~/Desktop/python <br>╰─$ ./socket_test.py                                  <br>mingyang<br>127.0.1.1<br>[127.0.0.1:53615] X<br>[127.0.0.1:53615] X<br>[127.0.0.1:53615] X<br>[127.0.0.1:53615] X<br>[127.0.0.1:53615] X<br>[127.0.0.1:53615] this is a file, i love chaichai<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="综合联系"><a href="#综合联系" class="headerlink" title="综合联系"></a>综合联系</h3><h4 id="获取实时网络时间"><a href="#获取实时网络时间" class="headerlink" title="获取实时网络时间"></a>获取实时网络时间</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python">```<br><br>---<br><span class="hljs-comment">#### 获取实时网络天气</span><br>```python<br><br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -525,8 +498,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Python基础类型和运算符</div>
-      <div>http://example.com/2022/07/15/love-chaichai/</div>
+      <div>python之网络应用开发</div>
+      <div>http://example.com/2022/07/17/python之网络应用开发/</div>
     </div>
     <div class="license-meta">
       
@@ -538,7 +511,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月15日</div>
+          <div>2022年7月17日</div>
         </div>
       
       
@@ -573,15 +546,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/17/python%E4%B9%8B%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84/" title="python之分支结构">
+                      <a href="/2022/07/17/python%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/" title="python之基础工具使用">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">python之分支结构</span>
+                        <span class="hidden-mobile">python之基础工具使用</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/07/17/python%E4%B9%8B%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86/" title="python之线程管理">
+                        <span class="hidden-mobile">python之线程管理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>

@@ -1,0 +1,1217 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="EtcFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="线程接口列表   序号 方法 用法 备注 方法 用法 备注    1 Barrier   BoundedSemaphore     2 BrokenBarrierError   Condition     3 Event   Lock     4 RLock   Semaphore     5 Thread   ThreadError     6 Timer   WeakSet     7 act">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python之线程管理">
+<meta property="og:url" content="http://example.com/2022/07/17/python%E4%B9%8B%E7%BA%BF%E7%A8%8B%E7%AE%A1%E7%90%86/index.html">
+<meta property="og:site_name" content="牵着老婆走天涯">
+<meta property="og:description" content="线程接口列表   序号 方法 用法 备注 方法 用法 备注    1 Barrier   BoundedSemaphore     2 BrokenBarrierError   Condition     3 Event   Lock     4 RLock   Semaphore     5 Thread   ThreadError     6 Timer   WeakSet     7 act">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/python.png">
+<meta property="article:published_time" content="2022-07-17T08:58:59.000Z">
+<meta property="article:modified_time" content="2022-07-17T09:02:15.692Z">
+<meta property="article:author" content="EtcFly">
+<meta property="article:tag" content="原创">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="语言">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/python.png">
+  
+  
+  
+  <title>python之线程管理   牵着老婆走天涯</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":4},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"3AEufnWAJdp8cFODp1DXvrQU-MdYXbMMI","app_key":"mGJiL6xVvYv21ygqfynJoCyO","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>牵着老婆走天涯</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="python之线程管理"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-17 16:58" pubdate>
+          2022年7月17日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          10k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          87 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">python之线程管理</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：2 分钟前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="线程接口列表"><a href="#线程接口列表" class="headerlink" title="线程接口列表"></a>线程接口列表</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">方法</th>
+<th>用法</th>
+<th>备注</th>
+<th align="left">方法</th>
+<th>用法</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1</td>
+<td align="left"><code>Barrier</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>BoundedSemaphore</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td align="left"><code>BrokenBarrierError</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>Condition</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td align="left"><code>Event</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>Lock</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td align="left"><code>RLock</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>Semaphore</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td align="left"><code>Thread</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>ThreadError</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td align="left"><code>Timer</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>WeakSet</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td align="left"><code>activeCount</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>active_count</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td align="left"><code>currentThread</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>current_thread</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td align="left"><code>enumerate</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>get_ident</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="left"><code>local</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>main_thread</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td align="left"><code>setprofile</code></td>
+<td></td>
+<td></td>
+<td align="left"><code>settrace</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td align="left"><code>stack_size</code></td>
+<td></td>
+<td></td>
+<td align="left"></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h3><h4 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h4><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>getName</code></td>
+<td>获取线程名</td>
+</tr>
+<tr>
+<td><code>setName</code></td>
+<td>线程名</td>
+</tr>
+<tr>
+<td><code>is_alive</code></td>
+<td>线程是否处于活动状态</td>
+</tr>
+<tr>
+<td><code>isDaemon</code></td>
+<td>是否为后台线程</td>
+</tr>
+<tr>
+<td><code>setDaemon</code></td>
+<td>设置后台线程</td>
+</tr>
+<tr>
+<td><code>join</code></td>
+<td>等待线程结束</td>
+</tr>
+<tr>
+<td><code>run</code></td>
+<td>线程活动状态</td>
+</tr>
+<tr>
+<td><code>start</code></td>
+<td>开始线程执行</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>is_alive</code><br><strong>功能</strong>:<br>&amp;emsp;&amp;emsp;返回当前线程状态, 如果线程还未退出, 返回结果为<code>True</code>, 否则为<code>Flase</code></li>
+</ul>
+<p><strong>如下</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading <span class="hljs-keyword">as</span> mythread<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">task1_run</span>(<span class="hljs-params">delay, count_run</span>):<br>    count = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        thread = mythread.currentThread()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#123;0&#125; ...... &#123;1:d&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(thread.getName(), count))<br>        count += <span class="hljs-number">1</span>;<br>        time.sleep(delay)<br>        count_run -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> count_run == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">break</span>;<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">task2_run</span>(<span class="hljs-params">delay, count_run</span>):<br>    count = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        thread = mythread.current_thread()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#123;0&#125; ...... &#123;1:d&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(thread.getName(), count))<br>        count += <span class="hljs-number">1</span>;<br>        time.sleep(delay)<br>        count_run -= <span class="hljs-number">1</span><br>        <span class="hljs-keyword">if</span> count_run == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">break</span>;<br><br>thread = mythread.Thread(<span class="hljs-literal">None</span>, task1_run, <span class="hljs-literal">None</span>, (<span class="hljs-number">2</span>, <span class="hljs-number">2</span>))<br>thread1 = mythread.Thread(<span class="hljs-literal">None</span>, task2_run, <span class="hljs-literal">None</span>, (<span class="hljs-number">4</span>, <span class="hljs-number">5</span>))<br>thread.start()<br>thread1.start()<br><br>thread1.join(<span class="hljs-number">1</span>) <span class="hljs-comment">#阻塞等待线程结束1秒</span><br>thread.join()<br><br><span class="hljs-built_in">print</span>(thread.is_alive())  <span class="hljs-comment">#获取当前线程的活动状态</span><br><span class="hljs-built_in">print</span>(thread1.is_alive())<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>isDaemon</code><br><strong>功能</strong>:<br>&amp;emsp;&amp;emsp;返回当前线程是否为一个后台线程(不重要的线程, 前台线程或主线程退出后立马退出的线程, 不需要等待, 而前台线程, 主线程退出必须等待前台线程结束才能退出)</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading <span class="hljs-keyword">as</span> mythread<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">task1_run</span>(<span class="hljs-params">delay, count_run</span>):<br>    count = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        thread = mythread.currentThread()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#123;0&#125; ...... &#123;1:d&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(thread.getName(), count))<br>        count += <span class="hljs-number">1</span>;<br>        time.sleep(delay)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">task2_run</span>(<span class="hljs-params">delay, count_run</span>):<br>    count = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        thread = mythread.current_thread()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#123;0&#125; ...... &#123;1:d&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(thread.getName(), count))<br>        count += <span class="hljs-number">1</span>;<br>        time.sleep(delay)<br><br><br><span class="hljs-comment"># 主线程执行</span><br>thread = mythread.Thread(<span class="hljs-literal">None</span>, task1_run, <span class="hljs-literal">None</span>, (<span class="hljs-number">2</span>, <span class="hljs-number">2</span>))<br>thread1 = mythread.Thread(<span class="hljs-literal">None</span>, task2_run, <span class="hljs-literal">None</span>, (<span class="hljs-number">4</span>, <span class="hljs-number">5</span>))<br><br>thread.setDaemon(<span class="hljs-literal">True</span>)<br>thread1.setDaemon(<span class="hljs-literal">True</span>) <span class="hljs-comment">#设置为后台线程</span><br>thread.start()<br>thread1.start()<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;thread end!&#x27;</span>) <span class="hljs-comment"># 主线程退出后task1和task2一并退出</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>join</code><br><strong>功能</strong>:<br>&amp;emsp;&amp;emsp;用于阻塞当前线程指定时间, 如果参数无则表示一直阻塞直到指定线程结束。</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">task1_run</span>(<span class="hljs-params">delay, count_run</span>):<br>    count = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        thread = mythread.currentThread()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#123;0&#125; ...... &#123;1:d&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(thread.getName(), count))<br>        count += <span class="hljs-number">1</span>;<br>        time.sleep(delay)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">task2_run</span>(<span class="hljs-params">delay, count_run</span>):<br>    count = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        thread = mythread.current_thread()<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is &#123;0&#125; ...... &#123;1:d&#125;&#x27;</span>.<span class="hljs-built_in">format</span>(thread.getName(), count))<br>        count += <span class="hljs-number">1</span>;<br>        time.sleep(delay)<br>        <br>thread = mythread.Thread(<span class="hljs-literal">None</span>, task1_run, <span class="hljs-literal">None</span>, (<span class="hljs-number">2</span>, <span class="hljs-number">2</span>))<br>thread1 = mythread.Thread(<span class="hljs-literal">None</span>, task2_run, <span class="hljs-literal">None</span>, (<span class="hljs-number">4</span>, <span class="hljs-number">5</span>))<br><br>thread.start()<br>thread1.start()<br><br>thread.join()<br>thread1.join()<br><span class="hljs-comment">#thread1.join(10) #等待thread1线程返回, 时间为10秒</span><br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;thread end!&#x27;</span>)<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>current_thread</code><br><strong>功能</strong><br>&amp;emsp;&amp;emsp;获取当前运行的线程句柄, 是<code>threading</code>提供的静态方法</p>
+</li>
+<li><p><code>activeCount</code><br><strong>功能</strong><br>&amp;emsp;&amp;emsp;获取当前活动的线程个数, 是<code>threading</code>提供的静态方法</p>
+</li>
+<li><p><code>enumerate</code><br><strong>功能</strong><br>&amp;emsp;&amp;emsp; 返回一个包含正在运行的线程的<code>list</code>, 可用于线程名查找遍历, 是<code>threading</code>提供的静态方法</p>
+</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading <span class="hljs-keyword">as</span> mythread<br><br><span class="hljs-built_in">print</span>(mythread.<span class="hljs-built_in">enumerate</span>()[<span class="hljs-number">0</span>].getName())<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Rlock线程锁"><a href="#Rlock线程锁" class="headerlink" title="Rlock线程锁"></a>Rlock线程锁</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>acquire</code></td>
+<td>请求锁</td>
+</tr>
+<tr>
+<td><code>release</code></td>
+<td>释放锁</td>
+</tr>
+</tbody></table>
+<h3 id="Lock线程锁"><a href="#Lock线程锁" class="headerlink" title="Lock线程锁"></a>Lock线程锁</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>acquire</code></td>
+<td>请求锁</td>
+</tr>
+<tr>
+<td><code>release</code></td>
+<td>释放锁</td>
+</tr>
+<tr>
+<td><code>locked</code></td>
+<td>获取当前的锁状态</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="Barrier-栏栅"><a href="#Barrier-栏栅" class="headerlink" title="Barrier 栏栅"></a>Barrier 栏栅</h3><blockquote>
+<p><code>Barrier</code>类是一个多线程协调工具，它让多个持有<code>Barrier</code>的线程互相等待。 直到满足<code>Barrier</code>实例指定的<code>n</code>个线程（<code>parties</code>参数数值），也就是达到<code>n</code>个线程都调用了<code>Barrier</code>对象的<code>wait</code>方法。然后这些线程才能同时进入下一个阶段。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>wait</code></td>
+<td>等待线程同步</td>
+</tr>
+<tr>
+<td><code>Barrier</code></td>
+<td>创建一个栏栅</td>
+</tr>
+<tr>
+<td><code>abort</code></td>
+<td>取消栏栅</td>
+</tr>
+<tr>
+<td><code>reset</code></td>
+<td>复位栏栅</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>Barrier</code><br><strong>功能</strong>:创建一个栏栅, <code>Barrier</code>为<code>Barrier</code>类的静态函数<br><strong>参数</strong>:</li>
+<li><ul>
+<li><code>parties</code>: 同步线程个数</li>
+<li><code>action</code> : 同步后执行的回调动作</li>
+<li><code>timeout</code>: 等待同步的时间, 如果超时未同步将退出<code>abort</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>返回</strong>: <code>Barrier</code>对象</p>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">task_cb</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;task cb %d&#x27;</span>%(time.time()))<br><br>thread_barrier = mythread.Barrier(<span class="hljs-number">2</span>, task_cb, <span class="hljs-number">3</span>) <span class="hljs-comment"># 同步线程个数为2, 超时时间为3s</span><br>thread2 = mythread.Thread(<span class="hljs-literal">None</span>, task3_run, <span class="hljs-literal">None</span>, (thread_barrier, ))<br>thread3 = mythread.Thread(<span class="hljs-literal">None</span>, task4_run, <span class="hljs-literal">None</span>, (thread_barrier, ))<br></code></pre></td></tr></table></figure>
+
+<p><strong>注意</strong>:</p>
+<ul>
+<li><p>超时线程未同步, 调用<code>battier.wait()</code>的线程将会抛出异常<code>BrokenBarrierError</code></p>
+</li>
+<li><p><code>wait</code><br><strong>功能</strong>: 同步线程阻塞<br><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">task3_run</span>(<span class="hljs-params">thread_barrier</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s&quot;</span> %(mythread.current_thread().getName()))<br>    time.sleep(<span class="hljs-number">5</span>)<br><br>    thread_barrier.wait()<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is test1 %d&#x27;</span> %(time.time()))<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">task4_run</span>(<span class="hljs-params">thread_barrier</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%s&quot;</span> %(mythread.current_thread().getName()))<br><br>    thread_barrier.wait() <span class="hljs-comment">#同步阻塞</span><br><br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is test %d&#x27;</span> %(time.time()))<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-keyword">pass</span><br>        <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">task_cb</span>():<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;task cb %d&#x27;</span>%(time.time()))<br><br>thread_barrier = mythread.Barrier(<span class="hljs-number">2</span>, task_cb, <span class="hljs-number">3</span>) <span class="hljs-comment"># 同步线程个数为2, 超时时间为3s</span><br>thread2 = mythread.Thread(<span class="hljs-literal">None</span>, task3_run, <span class="hljs-literal">None</span>, (thread_barrier, )) <span class="hljs-comment">#thread_barrier作为参数参入线程</span><br>thread3 = mythread.Thread(<span class="hljs-literal">None</span>, task4_run, <span class="hljs-literal">None</span>, (thread_barrier, ))<br></code></pre></td></tr></table></figure>
+<p><strong>注意</strong>:</p>
+</li>
+<li><p>阻塞过程中调用<code>abort</code>会导致抛出<code>BrokenBarrierError</code></p>
+</li>
+<li><p><code>abort</code><br><strong>功能</strong>: 取消线程同步阻塞<br><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs python">thread0 = mythread.Thread(<span class="hljs-literal">None</span>, task1_run, <span class="hljs-literal">None</span>, (<span class="hljs-number">0.1</span>, <span class="hljs-number">2</span>))<br>thread1 = mythread.Thread(<span class="hljs-literal">None</span>, task2_run, <span class="hljs-literal">None</span>, (<span class="hljs-number">1</span>, <span class="hljs-number">5</span>))<br><br>thread_barrier = mythread.Barrier(<span class="hljs-number">2</span>, task_cb, <span class="hljs-literal">None</span>)<br>thread2 = mythread.Thread(<span class="hljs-literal">None</span>, task3_run, <span class="hljs-literal">None</span>, (thread_barrier, ))<br>thread3 = mythread.Thread(<span class="hljs-literal">None</span>, task4_run, <span class="hljs-literal">None</span>, (thread_barrier, ))<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;start:%d&quot;</span>%(time.time()))<br><br>thread0.start()<br>thread1.start()<br>thread2.start()<br>thread3.start()<br><br>time.sleep(<span class="hljs-number">0</span>)<br><span class="hljs-keyword">try</span>:<br>    thread_barrier.abort() <span class="hljs-comment">#取消同步阻塞</span><br><span class="hljs-keyword">except</span> BrokenBarrierError:<br>    <span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><code>reset</code><br><strong>功能</strong>: 复位栏栅到初始化状态<br><strong>注意</strong>:</p>
+</li>
+<li><p>阻塞过程中调用<code>reset</code>会导致抛出<code>BrokenBarrierError</code></p>
+</li>
+</ul>
+<hr>
+<h3 id="BoundedSemaphore-线程同步"><a href="#BoundedSemaphore-线程同步" class="headerlink" title="BoundedSemaphore 线程同步"></a>BoundedSemaphore 线程同步</h3><blockquote>
+<p>实现两个线程的信息同步</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>acquire</code></td>
+<td>同步资源请求</td>
+</tr>
+<tr>
+<td><code>release</code></td>
+<td>同步资源释放</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>acquire</code><br><strong>功能</strong>: 请求同步资源<br><strong>参数</strong>:</li>
+<li><ul>
+<li><code>blocking</code>: 没有请求到资源是否同步阻塞, <code>True</code>&#x2F;<code>Flase</code></li>
+<li><code>timeout</code>: 阻塞超时时间, 这个参数只有在<code>blocking</code>为<code>True</code>才有效</li>
+</ul>
+</li>
+</ul>
+<p><strong>返回:</strong> 获取到资源返回<code>True</code>, 否则为<code>False</code></p>
+<ul>
+<li><code>release</code></li>
+<li><strong>功能</strong>: 释放同步资源<br><strong>注意:</strong> 释放的资源数量不能超过初始化时设置的值, 否则会引发<code>ValueError</code>异常</li>
+</ul>
+<hr>
+<h3 id="Timer定时器类"><a href="#Timer定时器类" class="headerlink" title="Timer定时器类"></a>Timer定时器类</h3><blockquote>
+<p>实现软定时器服务, 目前只能实现单次定时, 无法实现周期定时服务</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>start</code></td>
+<td>开始一次定时</td>
+</tr>
+<tr>
+<td><code>cancel</code></td>
+<td>退出当前定时</td>
+</tr>
+</tbody></table>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> threading <span class="hljs-keyword">as</span> mythread<br><span class="hljs-keyword">import</span> time<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">timer_task</span>(<span class="hljs-params">*args, **kwargs</span>):<br>    <span class="hljs-keyword">for</span> arg <span class="hljs-keyword">in</span> args:<br>        <span class="hljs-built_in">print</span>(arg, end=<span class="hljs-string">&#x27; &#x27;</span>)<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;&#x27;</span>)<br>    <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> kwargs.items():<br>        <span class="hljs-built_in">print</span>(k, <span class="hljs-string">&quot;:&quot;</span>, v)<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;this is a timer task %d&#x27;</span> %(time.time()))<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    time_run = mythread.Timer(<span class="hljs-number">5</span>, timer_task, (<span class="hljs-string">&#x27;this&#x27;</span>, <span class="hljs-string">&#x27;love&#x27;</span>), &#123;<span class="hljs-string">&#x27;chai&#x27;</span>:<span class="hljs-number">520</span>, <span class="hljs-string">&#x27;ying&#x27;</span>:<span class="hljs-number">1314</span>&#125;)<br>    time_run.start()<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;start:%d&quot;</span>%(time.time()))<br></code></pre></td></tr></table></figure>
+
+<p>输出结果为:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python">this love <br>chai : <span class="hljs-number">520</span><br>ying : <span class="hljs-number">1314</span><br>this <span class="hljs-keyword">is</span> a timer task <span class="hljs-number">1654785022</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Event事件类"><a href="#Event事件类" class="headerlink" title="Event事件类"></a>Event事件类</h3><blockquote>
+<p>实现线程消息同步机制</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>wait</code></td>
+<td>实现消息等待</td>
+</tr>
+<tr>
+<td><code>clear</code></td>
+<td>清除<code>set</code>事件标志</td>
+</tr>
+<tr>
+<td><code>set</code></td>
+<td>设置<code>set</code>事件标志</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong></p>
+<ul>
+<li><code>set</code>、<code>wait</code>、<code>clear</code>内部维护了一个<code>flag</code>,  代码实现了对该标志的设置(<code>True</code>&#x2F;<code>Flase</code>)</li>
+<li><code>wait</code> 接口调用后, 如果此时标志为<code>True</code>, 需要调用<code>clear</code>及时清除标志</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> threading <span class="hljs-keyword">as</span> mythread<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">task1_run</span>(<span class="hljs-params">thread_sync</span>):<br>    <span class="hljs-keyword">global</span> index<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        thread = mythread.currentThread()<br>        <span class="hljs-built_in">print</span>(thread_sync.wait()) <span class="hljs-comment">#等待事件同步</span><br>        list_data.insert(<span class="hljs-number">0</span>, index)<br>        thread_sync.clear() <span class="hljs-comment"># 数据处理完毕及时清除set标志</span><br>        <span class="hljs-built_in">print</span>(list_data)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">task2_run</span>(<span class="hljs-params">thread_sync</span>):<br>    <span class="hljs-keyword">global</span> index<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        thread = mythread.current_thread()<br>        index += <span class="hljs-number">1</span><br>        thread_sync.<span class="hljs-built_in">set</span>()<br>        time.sleep(<span class="hljs-number">2</span>)<br>        <br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    thread_sync = mythread.Event()<br>    thread0 = mythread.Thread(<span class="hljs-literal">None</span>, task1_run, <span class="hljs-literal">None</span>, (thread_sync, ))<br>    thread1 = mythread.Thread(<span class="hljs-literal">None</span>, task2_run, <span class="hljs-literal">None</span>, (thread_sync, ))<br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;start:%d&quot;</span>%(time.time()))<br><br>    thread0.start()<br>    thread1.start()<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Condition条件锁"><a href="#Condition条件锁" class="headerlink" title="Condition条件锁"></a>Condition条件锁</h3><blockquote>
+<p>同时实现互斥资源的访问以及同步操作<br><strong>场景举例</strong>:<br>&amp;emsp;&amp;emsp;假设<code>A</code>生产数据, <code>B</code>消费数据, <code>A</code>每次可以生成多个数据, 且要求生产出来的数据需要尽快被<code>B</code>消费, <code>A</code>每次生产出来的数据放到一个缓存块, 缓存块有一块管理单元描述已经产出的数据信息, 则每次<code>A</code>消费需要及时同步到<code>B</code>消费, 如果<code>A</code>生成较快, 也需要避免和<code>B</code>同时访问产出的数据，即使是一个生成一个消费。<br><strong>传统解决方法</strong>：<br>&amp;emsp;&amp;emsp;以往的解决方案时将这块数据使用一个锁保护起来, 避免竞争访问, <code>A</code>生成数据时发现加锁,于是阻塞等待, <code>B</code>消费完数据后释放锁并挂起自己, 这时候<code>A</code>由于获得锁于是继续运行, 到此以及完美解决了资源互斥访问的问题, 但是当<code>A</code>生成出数据, 需要及时同步到<code>B</code>让他消费数据, 于是需要另一个信号量来同步。<br><strong>当前解决方案</strong><br>&amp;emsp;&amp;emsp;条件动作就是即其信号量+锁组合的一种新的同步机制, 本质上还是基于信号量和锁来完成的。只是封装了对上的接口。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>wait</code></td>
+<td>等待资源</td>
+</tr>
+<tr>
+<td><code>wait_for</code></td>
+<td>等待特定函数的结果并阻塞</td>
+</tr>
+<tr>
+<td><code>acquire</code></td>
+<td>请求资源</td>
+</tr>
+<tr>
+<td><code>release</code></td>
+<td>释放资源</td>
+</tr>
+<tr>
+<td><code>notify</code></td>
+<td>唤醒线程</td>
+</tr>
+<tr>
+<td><code>notify_all</code></td>
+<td>唤醒所有线程</td>
+</tr>
+</tbody></table>
+<ul>
+<li><code>wait</code></li>
+</ul>
+<p><strong>功能</strong>: 等待线程同步<br><strong>参数</strong>:</p>
+<ul>
+<li><ul>
+<li><code>timeout</code>: 超时时间, <code>None</code>表示一直阻塞</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><code>wait_for</code><br><strong>功能</strong>: 等待特定函数的结果, 结果为<code>True</code>时不阻塞, <code>False</code>时阻塞<br><strong>参数</strong>：</li>
+<li><ul>
+<li><code>predicate</code>: 需要执行的函数</li>
+<li><code>timeout</code>: 阻塞的时间, <code>None</code>一直阻塞, 否则阻塞时间以<code>s</code>为单位</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p><code>acquire</code><br><strong>功能</strong>:请求锁</p>
+</li>
+<li><p><code>release</code><br><strong>功能</strong>:释放锁</p>
+</li>
+<li><p><code>notify</code><br><strong>功能</strong>:通知任务结束等待<br><strong>参数</strong>：</p>
+</li>
+<li><ul>
+<li><code>n</code>: 结束等待的线程数, 线程时随机的</li>
+</ul>
+</li>
+<li><p><code>notify_all</code><br><strong>功能</strong>:通知所有线程结束阻塞</p>
+</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> multiprocessing <span class="hljs-keyword">import</span> Condition, RLock<br><span class="hljs-keyword">import</span> threading<br><span class="hljs-keyword">import</span> time<br><br><br>list_data = []<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">list_data_get_thread</span>(<span class="hljs-params">arg</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;enter %s&#x27;</span> %(threading.current_thread().getName()))<br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">True</span>):<br>        <span class="hljs-comment">#获取线程数据</span><br>        arg.acquire()<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(list_data) &lt;= <span class="hljs-number">0</span>:<br>            arg.wait()<br><br>        tmp = list_data.pop()<br>        <span class="hljs-built_in">print</span>(tmp)<br>        arg.notify()<br>        arg.release()<br>        <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">list_data_set_thread</span>(<span class="hljs-params">arg</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;enter %s&#x27;</span> %(threading.current_thread().getName ()))<br>    count = <span class="hljs-number">0</span><br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">True</span>):<br>        <span class="hljs-comment">#写入线程数据</span><br>        arg.acquire()<br>        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(list_data) &lt; <span class="hljs-number">100</span>:<br>            list_data.insert(<span class="hljs-number">0</span>, count)<br>            count += <span class="hljs-number">1</span><br>            count = count % <span class="hljs-number">100</span><br>            arg.notify()<br>        <span class="hljs-keyword">else</span>:<br>            arg.wait()<br>        arg.release()<br>        time.sleep(<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    thread_con = Condition(RLock())<br>    thread0 = threading.Thread(<span class="hljs-literal">None</span>, list_data_get_thread, <span class="hljs-string">&#x27;data_get_thread&#x27;</span>, (thread_con, ))<br>    thread1 = threading.Thread(<span class="hljs-literal">None</span>, list_data_set_thread, <span class="hljs-string">&#x27;data_set_thread&#x27;</span>, (thread_con, ))<br><br>    thread0.start()<br>    thread1.start()<br></code></pre></td></tr></table></figure>
+
+<p>条件锁的实现原理:<br>&amp;emsp;&amp;emsp;条件锁其实内部维持了两个锁, 分别为递归锁<code>rlock</code>和同步锁, 每次使用同步锁<code>wait</code>的时候, 释放<code>rlock</code>锁, 此时其他线程可以获取到<code>rlock</code>锁, 在数据准备完成后, <code>notify</code>通知原线程, 原线程的<code>wait</code>阻塞被释放, <code>wait</code>中将获取同步锁, 但是此时又会请求<code>rlock</code>锁, 但是此时一般情况<code>rlock</code>已经被占用了, 因此及时<code>notify</code>了, <code>wait</code>方法还是阻塞中, 因此只有等待<code>rlock</code>锁释放才能完成接下来的执行。</p>
+<hr>
+<h3 id="queue队列"><a href="#queue队列" class="headerlink" title="queue队列"></a>queue队列</h3><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>qsize</code></td>
+<td>返回队列的大小</td>
+</tr>
+<tr>
+<td><code>empty</code></td>
+<td>如果队列为空，返回<code>True</code>,反之<code>False</code></td>
+</tr>
+<tr>
+<td><code>full</code></td>
+<td>如果队列满了，返回<code>True</code>,反之<code>False</code></td>
+</tr>
+<tr>
+<td><code>get</code></td>
+<td>获取队列，<code>timeout</code>等待时间</td>
+</tr>
+<tr>
+<td><code>get_nowait</code></td>
+<td>相当<code>Queue.get(False)</code></td>
+</tr>
+<tr>
+<td><code>put</code></td>
+<td>写入队列，<code>timeout</code>等待时间</td>
+</tr>
+<tr>
+<td><code>put_nowait</code></td>
+<td>相当<code>Queue.put(item, False)</code></td>
+</tr>
+<tr>
+<td><code>task_done</code></td>
+<td>在完成一项工作之后，<code>Queue.task_done()</code>函数向任务已经完成的队列发送一个信号</td>
+</tr>
+<tr>
+<td><code>join</code></td>
+<td>实际上意味着等到队列为空，再执行别的操作</td>
+</tr>
+</tbody></table>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#!/usr/bin/python3</span><br><br><span class="hljs-keyword">from</span> multiprocessing <span class="hljs-keyword">import</span> Condition, RLock<br><span class="hljs-keyword">import</span> threading<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> queue<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">list_data_get_thread</span>(<span class="hljs-params">arg</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;enter %s&#x27;</span> %(threading.current_thread().getName()))<br>    <span class="hljs-keyword">while</span> <span class="hljs-keyword">not</span> arg.empty():<br>        data = arg.get(<span class="hljs-literal">False</span>, <span class="hljs-literal">None</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;get :&#x27;</span>, time.time(), <span class="hljs-string">&#x27; data:&#x27;</span>, data)<br>        arg.task_done() <span class="hljs-comment">#指示10个数据在一个个处理完成, 全部完成解除join阻塞</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;get queue init data done!&#x27;</span>, arg.qsize())<br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">True</span>):<br>        <span class="hljs-comment">#获取线程数据</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;beign read to buf:&#x27;</span>, time.time())<br>        data = arg.get(<span class="hljs-literal">True</span>, <span class="hljs-literal">None</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;end read to buf:&#x27;</span>, time.time(), <span class="hljs-string">&#x27; data:&#x27;</span>, data)<br>        <span class="hljs-built_in">print</span>(data)<br>        time.sleep(<span class="hljs-number">1</span>)<br>        <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">list_data_set_thread</span>(<span class="hljs-params">arg</span>):<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;enter %s&#x27;</span> %(threading.current_thread().getName ()))<br>    count = <span class="hljs-number">0</span><br>    sleep_time = <span class="hljs-number">1</span><br>    block_time = <span class="hljs-literal">False</span><br><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;curr data size:&#x27;</span>, arg.qsize())<br>    arg.join() <span class="hljs-comment">#等待前10个数据处理完成, 未完成会被阻塞在这里</span><br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;join late, curr data size:&#x27;</span>, arg.qsize())<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        <span class="hljs-comment">#写入线程数据</span><br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;beign write to buf:&#x27;</span>, time.time())<br>        <span class="hljs-keyword">if</span> arg.empty():<br>            block_time = <span class="hljs-literal">False</span><br>            sleep_time = <span class="hljs-number">0</span><br>        <span class="hljs-keyword">elif</span> arg.full():<br>            block_time = <span class="hljs-literal">True</span><br>            sleep_time = <span class="hljs-number">10</span><br>        <span class="hljs-keyword">else</span>:<br>            sleep_time = <span class="hljs-number">0.5</span><br>            block_time = <span class="hljs-literal">False</span><br><br>        arg.put(count, block_time, <span class="hljs-literal">None</span>)<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;end write to buf:&#x27;</span>, time.time(), <span class="hljs-string">&#x27; count:&#x27;</span>, count)<br>        count += <span class="hljs-number">1</span><br>        count %= arg.maxsize<br>        time.sleep(sleep_time)<br>        <span class="hljs-keyword">pass</span><br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    local_queue = queue.Queue(<span class="hljs-number">100</span>)<br>    <span class="hljs-built_in">print</span>(local_queue.maxsize)<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">10</span>):<br>        local_queue.put(i, <span class="hljs-literal">True</span>, <span class="hljs-literal">None</span>) <span class="hljs-comment">#开始put 10个数据</span><br><br>    thread0 = threading.Thread(<span class="hljs-literal">None</span>, list_data_get_thread, <span class="hljs-string">&#x27;data_get_thread&#x27;</span>, (local_queue, ))<br>    thread1 = threading.Thread(<span class="hljs-literal">None</span>, list_data_set_thread, <span class="hljs-string">&#x27;data_set_thread&#x27;</span>, (local_queue, ))<br><br>    thread0.start()<br>    thread1.start()<br></code></pre></td></tr></table></figure>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/Python%E5%85%A5%E9%97%A8/" class="category-chain-item">Python入门</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
+      
+        <a href="/tags/python/">#python</a>
+      
+        <a href="/tags/%E8%AF%AD%E8%A8%80/">#语言</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>python之线程管理</div>
+      <div>http://example.com/2022/07/17/python之线程管理/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>EtcFly</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月17日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年7月17日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/07/17/python%E4%B9%8B%E7%BD%91%E7%BB%9C%E5%BA%94%E7%94%A8%E5%BC%80%E5%8F%91/" title="python之网络应用开发">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">python之网络应用开发</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/17/python%E4%B9%8BOS%E6%A8%A1%E5%9D%97/" title="python之OS模块">
+                        <span class="hidden-mobile">python之OS模块</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"3AEufnWAJdp8cFODp1DXvrQU-MdYXbMMI","appKey":"mGJiL6xVvYv21ygqfynJoCyO","path":"window.location.pathname","placeholder":"欢迎各位留言讨论!","avatar":"wavatar","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"https://3aeufnwa.api.lncldglobal.com","count":true,"master":"d3ebbea1ed788cbceffb15b783740c2f","tagMeta":["博主","小伙伴","访客"],"friends":["4300ec68e82de7bb12cff79d3893d1c5"],"emojiCDN":"https://i0.hdslb.com/bfs/emote/","emojiMaps":{"2020":"dc709fac0d361370bcf0d36d32adb97df7c95824.png","2021":"14d8996128d46dabd3a2ed6c172c8af918d7a5d2.png","微笑":"685612eadc33f6bc233776c6241813385844f182.png","OK":"4683fd9ffc925fa6423110979d7dcac5eda297f4.png","星星眼":"63c9d1a31c0da745b61cdb35e0ecb28635675db2.png","doge":"bba7c12aa51fed0199c241465560dfc2714c593e.png","妙啊":"b4cb77159d58614a9b787b91b1cd22a81f383535.png","吃瓜":"4191ce3c44c2b3df8fd97c33f85d3ab15f4f3c84.png","辣眼睛":"35d62c496d1e4ea9e091243fa812866f5fecc101.png","滑稽":"d15121545a99ac46774f1f4465b895fe2d1411c3.png","笑哭":"c3043ba94babf824dea03ce500d0e73763bf4f40.png","呲牙":"b5a5898491944a4268360f2e7a84623149672eb6.png","打call":"431432c43da3ee5aab5b0e4f8931953e649e9975.png","歪嘴":"4384050fbab0586259acdd170b510fe262f08a17.png","嫌弃":"de4c0783aaa60ec03de0a2b90858927bfad7154b.png","喜欢":"8a10a4d73a89f665feff3d46ca56e83dc68f9eb8.png","哦呼":"362bded07ea5434886271d23fa25f5d85d8af06c.png","酸了":"92b1c8cbceea3ae0e8e32253ea414783e8ba7806.png","大哭":"2caafee2e5db4db72104650d87810cc2c123fc86.png","害羞":"9d2ec4e1fbd6cb1b4d12d2bbbdd124ccb83ddfda.png","疑惑":"b7840db4b1f9f4726b7cb23c0972720c1698d661.png","调皮":"8290b7308325e3179d2154327c85640af1528617.png","喜极而泣":"485a7e0c01c2d70707daae53bee4a9e2e31ef1ed.png","奸笑":"bb84906573472f0a84cebad1e9000eb6164a6f5a.png","笑":"81edf17314cea3b48674312b4364df44d5c01f17.png","偷笑":"6c49d226e76c42cd8002abc47b3112bc5a92f66a.png","惊讶":"f8e9a59cad52ae1a19622805696a35f0a0d853f3.png","捂脸":"6921bb43f0c634870b92f4a8ad41dada94a5296d.png","阴险":"ba8d5f8e7d136d59aab52c40fd3b8a43419eb03c.png","囧":"12e41d357a9807cc80ef1e1ed258127fcc791424.png","呆":"33ad6000d9f9f168a0976bc60937786f239e5d8c.png","抠鼻":"cb89184c97e3f6d50acfd7961c313ce50360d70f.png","大笑":"ca94ad1c7e6dac895eb5b33b7836b634c614d1c0.png","惊喜":"0afecaf3a3499479af946f29749e1a6c285b6f65.png","无语":"44667b7d9349957e903b1b62cb91fb9b13720f04.png","鼓掌":"895d1fc616b4b6c830cf96012880818c0e1de00d.png","点赞":"1a67265993913f4c35d15a6028a30724e83e7d35.png","尴尬":"cb321684ed5ce6eacdc2699092ab8fe7679e4fda.png","灵魂出窍":"43d3db7d97343c01b47e22cfabeca84b4251f35a.png","委屈":"d2f26cbdd6c96960320af03f5514c5b524990840.png","傲娇":"010540d0f61220a0db4922e4a679a1d8eca94f4e.png","冷":"cb0ebbd0668640f07ebfc0e03f7a18a8cd00b4ed.png","疼":"905fd9a99ec316e353b9bd4ecd49a5f0a301eabf.png","吓":"9c10c5ebc7bef27ec641b8a1877674e0c65fea5d.png","生病":"0f25ce04ae1d7baf98650986454c634f6612cb76.png","吐":"06946bfe71ac48a6078a0b662181bb5cad09decc.png","捂眼":"c5c6d6982e1e53e478daae554b239f2b227b172b.png","嘘声":"e64af664d20716e090f10411496998095f62f844.png","思考":"cfa9b7e89e4bfe04bbcd34ccb1b0df37f4fa905c.png","再见":"fc510306bae26c9aec7e287cdf201ded27b065b9.png","翻白眼":"eba54707c7168925b18f6f8b1f48d532fe08c2b1.png","哈欠":"888d877729cbec444ddbd1cf4c9af155a7a06086.png","奋斗":"bb2060c15dba7d3fd731c35079d1617f1afe3376.png","墨镜":"3a03aebfc06339d86a68c2d893303b46f4b85771.png","难过":"a651db36701610aa70a781fa98c07c9789b11543.png","撇嘴":"531863568e5668c5ac181d395508a0eeb1f0cda4.png","抓狂":"4c87afff88c22439c45b79e9d2035d21d5622eba.png","生气":"3195714219c4b582a4fb02033dd1519913d0246d.png","口罩":"3ad2f66b151496d2a5fb0a8ea75f32265d778dd3.png","鸡腿":"c7860392815d345fa69c4f00ef18d67dccfbd574.png","月饼":"89b19c5730e08d6f12fadf6996de5bc2e52f81fe.png","雪花":"a41813c4edf8782047e172c884ebd4507ce5e449.png","视频卫星":"dce6fc7d6dfeafff01241924db60f8251cca5307.png","11周年":"d3b2d5dc028c75ae4df379f4c3afbe186d0f6f9b.png","干杯":"8da12d5f55a2c7e9778dcc05b40571979fe208e6.png","爱心":"ed04066ea7124106d17ffcaf75600700e5442f5c.png","锦鲤":"643d6c19c8164ffd89e3e9cdf093cf5d773d979c.png","胜利":"b49fa9f4b1e7c3477918153b82c60b114d87347c.png","加油":"c7aaeacb21e107292d3bb053e5abde4a4459ed30.png","抱拳":"89516218158dbea18ab78e8873060bf95d33bbbe.png","响指":"1b5c53cf14336903e1d2ae3527ca380a1256a077.png","保佑":"fafe8d3de0dc139ebe995491d2dac458a865fb30.png","支持":"3c210366a5585706c09d4c686a9d942b39feeb50.png","拥抱":"41780a4254750cdaaccb20735730a36044e98ef3.png","跪了":"f2b3aee7e521de7799d4e3aa379b01be032698ac.png","怪我咯":"07cc6077f7f7d75b8d2c722dd9d9828a9fb9e46d.png","黑洞":"e90ec4c799010f25391179118ccd9f66b3b279ba.png","老鼠":"8e6fb491eb1bb0d5862e7ec8ccf9a3da12b6c155.png","福到了":"5de5373d354c373cf1617b6b836f3a8d53c5a655.png","W-哈哈":"83d527303c8f62f494e6971c48836487e7d87b1b.png","凛冬-生气":"d90bd2fbc13a3cb8d313f6d675f20caf109f60a7.png","霜叶-疑问":"ada3aea8594e724511c1daad15fb3b23900d8e24.png","煌-震撼":"7bb39ac289bc97fe52af047020a9bf324ecdebe1.png","哭泣":"a61abafb8c39defc323b045f30072198007b1c89.png","哈哈":"e6449b0bae13b8c97cc65976ff8cdc2c16be0015.png","狗子":"6a997106af5bf490f22c80a7acf3be813ee755fc.png","羞羞":"f4f9171e4d8c3f30827a8b96ea1ce1beb825ad50.png","亲亲":"2f72bae7b834d499f259c833f7011d5ed8748fd1.png","耍帅":"d7a38b08d1f1cc35b19c35041f29ffcc48808e87.png","气愤":"069b029d17a086ab475fd331697a649e234850bb.png","高兴":"416570a8aca7be12fb2c36e4b846906653f6d294.png","doge-圣诞":"1afb5eb96846e0876071eeecb47be95dbf55f08d.png","妙啊-圣诞":"1cdb10e4b6c6743a1ec96f1579e3ef3045a8f225.png","呲牙-圣诞":"ae4395c1e29e9a2db0c9ccc4c0db05c414816e68.png","OK-圣诞":"75d1c99cce001d6d103a8fd406616be9f51621ab.png","星星眼-圣诞":"195641c30c55f34f9cd82c5e5c32d66a425c7723.png","吃瓜-圣诞":"aa6a3022e47b441c7f84d02cacc063a728a561e0.png","滑稽-圣诞":"5874276ea716d0e9797f827dcfca4332acf8f0de.png","辣眼睛-圣诞":"8080adfe5acdfd0b6b09bd91db24ea7334ac7b44.png","打call-圣诞":"2b04dd2d0e55d978ee485e1f7f3c5e355493ab78.png","捂脸-圣诞":"9af59557383770c398daac81583e6c4d27d83da7.png","十周年":"1eacd3f7816e70aff9c1b1a2e9605240466f599b.png","加油武汉":"eb966aaa5b690d3f9308a9f936f5b5a72a7f956b.png","粽子":"177999fb7d70d891fbf63b161f26b272e08dc1de.png","画风突变":"ba4de7a3f97644038b15195bdc9f82a8fd118e77.png","福":"802429a301ac5b35a0480d9526a070ce67cd8097.png","热词系列-知识增加":"142409b595982b8210b2958f3d340f3b47942645.png","热词系列-知识增加-圣诞":"d0cc76a75405413771f0a55453af3a12062cb64c.png","热词系列-爷青回":"a26189ff1e681bddef7f6533f9aabe7604731a3e.png","热词系列-好家伙":"63ec80dea3066bd9f449ba999ba531fa61f7b4eb.png","热词系列-芜湖起飞":"78d04c6ce78a613c90d510cd45fe7e25c57ba00b.png","热词系列-梦幻联动":"4809416be5ca787c2ec3e897e4fd022a58da6e0e.png","热词系列-泪目":"bba3703ab90b7d16fe9dbcb85ed949db687f8331.png","热词系列-保护":"55f8f6445ca7c3170cdfc5b16036abf639ce9b57.png","热词系列-害怕":"d77e2de26da143249f0c0ad7a608c27152c985bf.png","热词系列-爱了爱了":"2a165b555ba20391316366c664ed7891883dc5aa.png","热词系列-吹爆":"b528220f9c37256ed6a37f05bf118e44b08b81e5.png","热词系列-三连":"21f15fe11b7a84d2f2121c16dec50a4e4556f865.png","热词系列-可以":"e08543c71202b36c590094417fcfbb80c3506cd8.png","热词系列-希望没事":"6c0d2e6c486d1ba5afd6204a96e102652464a01d.png","热词系列-打卡":"a9cf77c78e1b9b40aa3ed4862402fba008ee2f51.png","热词系列-skr":"bd285ff94db16ad52557c3effe930d64663e8375.png","热词系列-battle":"f2f81c8e47db6252becd633a5d1ee14e15df2ea8.png","热词系列-DNA":"f6eb74f8230588f61a298af89061a7d75c5762e5.png","热词系列-妙啊":"0e98299d7decf5eaffad854977946075c3e91cb8.png","热词系列-这次一定":"a01ca28923daa7cc896c42f27deb4914e20dd572.png","热词系列-AWSL":"c37f88cf799f9badf9d84b7671dc3dd98c0fc0c2.png","热词系列-递话筒":"98e6950e39fbb4dd1c576042063ca632074070ba.png","热词系列-你细品":"535e00658e7e47966f154d3a167fa2365ebc4321.png","热词系列-咕咕":"d8065c2e7ce48c929317a94553499a46fecc262a.png","热词系列-标准结局":"3de98174b510cf7dc5fd1bd08c5d881065e79137.png","热词系列-危":"5cc6c3357c4df544dd8de9d5c5c0cec97c7c9a56.png","热词系列-张三":"255a938f39cea625032b6650036b31aa26c50a3c.png","热词系列-害":"cbe798a194612958537c5282fcca7c3bcd2aa15c.png","热词系列-我裂开了":"29bd57ec4e8952880fea6c9e47aee924e91f10c4.png","热词系列-有内味了":"7ca61680a905b5b6e2e335c630e725b648b03b4d.png","热词系列-猛男必看":"c97064450528a0e45c7e7c365a15fbb13fd61d8c.png","热词系列-奥力给":"c9b8683827ec6c00fea5327c9bec14f581cef2aa.png","热词系列-问号":"c1d1e76c12180adc8558f47006fe0e7ded4154bb.png","热词系列-我哭了":"9e0b3877d649aaf6538fbdd3f937e240a9d808e4.png","热词系列-高产":"9db817cba4a7f4a42398f3b2ec7c0a8e0c247c42.png","热词系列-我酸了":"a8cbf3f6b8cd9377eeb15b9172f3cd683b2e4650.png","热词系列-真香":"e68497c775feaac1c3b1a6cd63a50cfb11b767c4.png","热词系列-我全都要":"d424d1ad8d14c1c9b8367842bc68c658b9229bc1.png","热词系列-神仙UP":"a49e0d0db1e7d35a0f7411be13208951ab448f03.png","热词系列-你币有了":"84820c2b147a8ca02f3c4006b63f76c6313cbfa0.png","热词系列-不愧是你":"9ff2e356797c57ee3b1675ade0883d2d2247be9b.png","热词系列-锤":"35668cc12ae25b9545420e4a85bf21a0bfc03e5d.png","热词系列-秀":"50782fbf5d9b7f48f9467b5c53932981e321eedc.png","热词系列-爷关更":"faad40c56447f1f8abcb4045c17ce159d113d1fd.png","热词系列-有生之年":"f41fdafe2d0fbb8e8bc1598d2cf37e355560103a.png","热词系列-镇站之宝":"24e7a6a6e6383c987215fb905e3ee070aca259b5.png","热词系列-我太南了":"a523f3e4c63e4db1232365765d0ec452f83be97e.png","热词系列-完结撒花":"ea9db62ff5bca8e069cd70c4233353a802835422.png","热词系列-大师球":"f30089248dd137c568edabcb07cf67e0f6e98cf3.png","热词系列-知识盲区":"ccc94600b321a28116081e49ecedaa4ee8728312.png","热词系列-“狼火”":"33ccd3617bfa89e9d1498b13b7542b63f163e5de.png","热词系列-你可真星":"54c8ddff400abfe388060cabfbb579280fdea1be.png","双生视界-星星眼":"8660b2eeb15d9cf6a7ecb4fdad66b15366623a33.png","双生视界-二胡爱豆":"9dcf4bc97143b64574cbb1865c74850eda5f554a.png","双生视界-惊讶":"67dd0a4443eaf2ec43d90bdcfd3011d9ed84dbf8.png","双生视界-问号":"018e9f627a5f0ae5fd8a54cd6c0b6f368b38b59c.png","双生视界-为友谊干杯":"587dc47855c47f5147689d7fd2cabd65ed878243.png","双生视界-无所谓":"cad0261d1b8afee6b26c6044bb0f89a16c313554.png","双生视界-傲娇脸":"d33421f2b2d8e07359c2468579155dc2609b326a.png","双生视界-叹气":"d471550062990d2aab313756b314ed1dcd0eef01.png","双生视界-暗中观察":"f47dcd2d6c5902ff050a59b60b705222c3fbc041.png","双生视界-推眼镜":"e602c2d6248b394fdfed808f8d82ef59e907ab38.png","双生视界-祈祷":"9159c23e7d3f7f52852b4dd8b3d8090f3c8c6365.png","双生视界-加油":"0f9bc49ee7bea906014dabab5925b9e94d5f4e04.png","双生视界-摸头":"055949523a71fd36902e164840baa99d56bfa7be.png","双生视界-比心":"9c9cc7f0be191832c8edfc6f9f72f66ea016f26b.png","碧蓝航线2020-在干嘛":"9c06bdeb30020a371ddc7e270a28c7e9258d015b.png","碧蓝航线2020-肚子饿":"bff006e519a559efb9de40650fc9380896d93cd7.png","碧蓝航线2020-心动":"52292b36f79846eab78fcf2d0c12968a3f275974.png","碧蓝航线2020-hentai":"35412053f8ff647dbe212da23732d40d9d199fe9.png","碧蓝航线2020-？！":"186d60f1c56ede58e90a80dab547707bad76d890.png","碧蓝航线2020-睡着了":"53a8e58439b1167e49bb12321ceba5ce1bc6ee11.png","碧蓝航线2020-对不起":"1155bccc622cff541a464ced243032162c24bcc9.png","碧蓝航线2020-加油":"b599816346acb31167fe2c9c8d8f73f54fdf368d.png","碧蓝航线2020-委屈":"01fab29ac4abffe30f08fca4b7649cf00b1c3152.png","碧蓝航线2020-晕":"a9e56cb4e2b0f3a8350304877d7c1142f65fe70c.png","明日方舟-喷喷":"10e7f252d5106d46cb47c666e4c2e693bfa66959.png","明日方舟-溜了":"a103c00f0f4be3bd674723802d712980196817f4.png","明日方舟-嘿嘿":"14dd3de8f576204ee6d9c4948f8fa360ae82041c.png","明日方舟-怎么回事":"6cb24d88e87d34584350559fb92da9104ad14d77.png","明日方舟-吃瓜":"b0c87e42fdb27b6683a3ae873a89383e789a38f3.png","明日方舟-不可以哦":"1a4e9cfe14ca3d5e35e25671f1dd3451d0f1e562.png","明日方舟-喧嚣的风":"c4d1b6fb903d2e6d74c0ab0a31029fe184c95c14.png","明日方舟-哭了":"553937828ebbacd15edb7f4c8b0d6ff94b2aafd0.png","明日方舟-不好意思":"9a411c1930b4679fd5ef5419ce5268c4271efe5c.png","明日方舟-一下就好":"7ec17d337981a9a01062160812324289801ed78c.png","萌妻食神-awsl":"98c3159d9f5a9b430673fd2c890a8702446e39e3.png","萌妻食神-喝奶茶":"0cd3fb06310a895966d9b995d6da607b1b273d42.png","萌妻食神-加鸡腿":"dea9dc10bc01a53b38d014812b2dff0c4803247e.png","萌妻食神-撒娇":"9ba56aa6b47883baa0c13e4dd651dab27ef714fb.png","萌妻食神-秀":"bcf0242ff713557a7fedd4eccaa216803ea8fcbc.png","萌妻食神-危":"da7f4a8543a58dea684e654b8322a489fbc61544.png","萌妻食神-中毒":"46672e56ad0cca4eb7f3d1eda8206613ae47f100.png","萌妻食神-主角buff":"c1e8a70bc76d928a9e78d59208774aaec930b7ef.png","萌妻食神-馋":"d1979c5ba302541a047bc13463b3dc167919a5fa.png","萌妻食神-饱了":"d0d8725c1c0a429a193ed1b5995f3a36cf78db14.png","百鬼幼儿园-加油":"bfa0cf8377987c81edb0e55c9d0664c863f509fd.png","百鬼幼儿园-惊讶":"9252fdff361ed5cce4ca6607f49f5b4d496bd224.png","百鬼幼儿园-尴尬":"ae923d9550c363b5d71cea40dc374d2bfb375d52.png","百鬼幼儿园-噗嗤":"fe0773c465d917b7e823641e21194ae6fc9937ff.png","百鬼幼儿园-气抖冷":"392142cb6e0c89e159b4c27cb9419a0650c54c04.png","百鬼幼儿园-点赞":"b51cc481fee291491eded5e25378ca1e2edcf416.png","百鬼幼儿园-小问号":"472c2454945fbf1288055f7028fe34bc463264c2.png","百鬼幼儿园-晕了":"6a78a11767714a9dab0a59c2ede37088d76e2ab4.png","百鬼幼儿园-哭哭":"e6d6bb9e209ca0215b1368f6a08803bde49419f1.png","百鬼幼儿园-生气":"983c8bb5cc65a673c83a5afab435299c0400e8a1.png","BW2020-欢迎":"ba2b81cdf3118c703c1ad4ef7e424087a33618cf.png","BW2020-请":"d775ba5c6f6f58ee272c869a58dd7dae1d1e9355.png","BW2020-你币没了":"b89e1742ac98ecdc37dbe08b3f01459ba83ca116.png","BW2020-你号没了":"46031209d17352d86821d5eab36e8a82c6e87e1c.png","BW2020-棒棒哦":"9c88ffb02d2e2904ca682871584f3b3a696c2348.png","BW2020-我全都要":"36408633cf896e73451b59ea1c87382aedfa1bd6.png","BW2020-贫穷":"ea42044e11e949ff221c7746db766e75378ac9eb.png","BW2020-期待":"9ce557b7630660ea80b313f0acfcae8b12c12114.png","BW2020-我太难了":"efb76d2fa70ee51382f90f239fe65a98cc13c5b5.png","BW2020-震惊":"8a1eef67bd3ede9bc29fbd76e9a8df091403d108.png","洛天依-goodjob":"a781b75de326488ba00c937f0d89b4eaba6a0ca0.png","洛天依-啊这":"dadc58388430910b08339280054f3a776e6a9968.png","BML云live-打call":"04b4fb889ad1c462eafda2828cae80fe532f14eb.png","天宝伏妖录-不满":"b056b1793891e5a3b34a46eed38ab21effa90ef6.png","天宝伏妖录-疑惑":"657818b36a8e33e8683a8ff371ad80dc960ebc4d.png","中国绊爱-吃惊":"c590a359bb2c9ec43f695dbe6a40ab03dddc0fcd.png","中国绊爱-疑惑":"e85f0568167fe5ecbc1c11911503ac9cd6f98339.png","雾山五行-6到无语":"ac4d94e66ae9b8f1deca0627acebe81a114f68e7.png","雾山五行-冲鸭":"b365b7324c9481d0eba0fb0acd6842628316d8d8.png","雾山五行-滑稽":"69b5d92f512c238dc8aa495fe53ab78984ddca33.png","雾山五行-3连":"55f0ad3a4e5eee6b2dbf748ef0dbc99e759bc98d.png","雾山五行-我可以":"74818081982d161516f8430fce4a3ea407398eb0.png","雾山五行-emmm":"592176e73766c397c7251f8016cbecdd82924278.png","雾山五行-爷关更":"0dcbc65e50ea0e9f842e00afe35a9fc9e40c99b8.png","雾山五行-真香":"ec8d6180e3251efd14e150f63238bfba0aebafaa.png","雾山五行-震惊":"023168735f6eef4de55624ad34669095bc643a7c.png","雾山五行-抓狂":"444647343e876f2966917bd3e372dca103bb9ed7.png","hanser-冲鸭":"24a647e732334db4b480fdceed213da5ad5b397f.png","hanser-问号":"cc068ea0960f979aa97f127f643b3258d4131ffd.png","hanser-打咩":"4e7bfda719083660577661517139e2216c2ab94a.png","hanser-暗中观察":"3d69c4b4f3a609a981ea7e3d0ee57271eecc63b9.png","hanser-痛哭":"6233f4a3e5ab2463fe8b1ad0be9ea44a251a011c.png","hanser-小天使":"397ff298ca19d058dcdb3e4819bff397f5677978.png","hanser-嚯牛奶":"2c15a8b64f5ef17391f811203d6d77b0fcb7f1da.png","最强蜗牛西能-Hi":"cacd7cd54a1d210cfacd79f5b1f061708c3dba4e.png","凹凸世界-你看看你":"0744b0d90986537934305d19447fd4ddfb877994.png","凹凸世界-hi":"023bf3b1f2ffbc5c40e93444c4282aeeb8dcffbd.png","凹凸世界-无语":"99b6a029aadd9b12f435460f6dbaf69b9d06f421.png","Cat-escort":"81784f53f5ca7004a90d316c81889d8161dc05a6.png","Cat-coffeebath":"f80cfd44e0f216f4171a549e869aab32d80d4c39.png","Cat-stealth":"21f7d24b1e8de29f2c61f64e70af9f6aec14e394.png","Cat-hightouch":"3d7264b8349bc1be6d45beebbcfab69e7b9895fc.png","Cat-lonely":"72a9d2f20fb79883bbed3cac914187545ac3a0cc.png","Cat-heart":"3f98c4debfe792a1969b99ae71f7f5d4bf00c3d5.png","Cat-slip":"a6e45e065ed17e2af03f7263784bc36d94b25e74.png","Cat-chips":"12d2d3ce0e72749c45706444cca580dc22148876.png","Cat-study":"9f6d28ecd7e33c3f5e7cd74cc36f4feedb42e995.png","Cat-dash":"0f2d1f99efd5df816c694da76e91a173fa643589.png","Cat-pressure":"c6c270e9989e7152457b907595a6e34064d0c1b2.png","Cat-hibye":"9e4955f479a1211d401fbaa71ceaf5186b9e57bd.png","Cat-confuse":"107ebcbd4dd5895f4595ea6db963dc4566809c6e.png","Cat-ignore":"94de4f63a5f965ee8312a88e4c57c07c0174acce.png","Cat-agree":"48b00f75518a727d64c385fe8ca2fa49aeb08c77.png","Cat-fight":"e39c491906d0fcd0176eede702305655d44044c5.png","Cat-splash":"9513157fed2425ed2caa4eb9bc84a0bca80df9bc.png","Cat-calledme":"aacb6fb852f6acbbc8386ecef76c98b77178e23e.png","Cat-sleep":"39b964d10bde1634f136b662f5b624fcb3bcedb8.png","Cat-congrats":"98f6e73340d9ed43403242fc842e42508d38bba6.png","约战-咕咕咕":"259e9c54962481ad9d602f3964cfc53480aec319.png","约战-抱抱":"6b4a875cf8337c8303cf5d50e83abd5c8ac98b89.png","约战-优秀":"5c258df3f2b293d38c46b5a6d1cc1b23c15bcd1e.png","约战-哈哈哈":"102429ef4472311f4302d090f1cfca17d5c22578.png","阿库娅-才女才女":"17a7afaabf31847bfe9b6a876f9abbab5c772197.png","阿库娅-害羞":"8953fa1c257c48c9ad62363cd6e2de103d77fa85.png","阿库娅-不关我事":"2d4dbec9642e9a76859a33eef49705aa0957ba85.png","阿库娅-惊讶":"01c6134e28b3de73b7af38dad8f6176523604830.png","阿库娅-洋葱问号":"cd8ece00df1c19075077187bfb3aeb259678a5c5.png","神楽Mea-拜托拜托":"2acfdf866cb9d5bc6efa4dcfbe1baebd0bbb3550.png","神楽Mea-不可以":"21b61235610e77bd43e9b7dcd382cfc2cbc7feb9.png","神楽Mea-给我钱":"974c4f3235570125e72eda6c664300d882945000.png","神楽Mea-哈哈哈":"d4e82312c2b7ae24db07dc0748e82ed3f6a88d1b.png","神楽Mea-哭给你看":"d167505d1c2ce0b39ec8c8067b28dae02152873c.png","神楽Mea-理解一下":"d21660312d5bcc063cdcae2022b3e68a5b57e3da.png","神楽Mea-略略略":"dd0870cc8d7245f89c02dbe32ecf94c4d28e05c6.png","神楽Mea-啾咪":"50bc780ccba96dc0d8170f70b9671eea69f02abf.png","神楽Mea-咩":"80bfbba75128aaff8cf6dfe2ee427543aa28e9a5.png","神楽Mea-你很可爱":"dade9e98431c10884291e7fd1f5e94a04234a4ec.png","神楽Mea-不满么":"85d4f513ea20b1328ca82bf35979577b7841dd51.png","神楽Mea-我错了":"b17d7f543cee4ee00716e4ba8b88d1e0e7d9d410.png","神楽Mea-嘲讽":"fc54866b7729bdc1bd7b013c31c1b5a26eeba78e.png","神楽Mea-kimo":"644c67b7e47042dddeb29c4e4ed8ccc576fabe8a.png","神楽Mea-戳便便":"c2f1414549d0ab115ff6c8c3f15efbd22a4eab26.png","新科娘-点赞":"5bfe27f5e4a6ad02ee59d9b8bd20fc9d8184587a.png","新科娘-这题不会":"78a1b73de15a4755764bfe8bbac45cde681ac7c0.png","新科娘-我哭了":"2ae4ae0d6e52569984b41c9b41e9f66fc123bdc3.png","初音未来-抱抱":"193259652bf6d72a9c52f8111fcd412b31d79298.png","初音未来-nice":"7f3445c37e0cacaeeeb9a9bbbc7138872ddfbc19.png","初音未来-GKD":"44caa7ec800837d8860482c214ac792f4c37c490.png","初音未来-问号":"eaa4e51f78ff3ba6b7a1606d0fb44482515b4424.png","初音未来-吃惊":"4c262d6c0686391ef129f0c2dcca0a600018f47d.png","初音未来-干杯":"c5d1de20038102c003c04bb7505de51b91e39fd5.png","初音未来-端碗":"3de27d6f8e01b1a8db09a64a56d3a744b33ad435.png","初音未来-害怕":"7fedbd2eb20d6e30985b02c086392f1386db2b9c.png","初音未来-加油":"4943a9be0a3134125c7d585b4dafde79a9a1990a.png","初音未来-哭了":"db9b01e5808967a32ed644b490ab47faf0f29ce3.png","七海-比心":"ecb4142b45c98f3f9938a45baf7b5a56017328af.png","七海-尴尬":"c15eff7ae3425cb2cf8b9fd666b19ee98b5c3bf3.png","元龙-嘲讽":"4e6916a48a28c35e6ccf0bcf117fe131d8da247a.png","元龙-偷笑":"f2d1b3369cd101c7e76b9e622c52946e12eab8e7.png","元龙-生气":"839729a7cf43d960d4c0a0c57386f6ad3ec8929d.png","元龙-哭哭":"bd017024114ddccbe78e91d513fdde2fc2137ed3.png","元龙-嫌弃":"9705f85463bde8e1f8be939a5caaed2f82ad096b.png","元龙-时代变了":"08579c27468224cc2c03d142f57f9c09ffa534fa.png","元龙-好汉饶命":"3e267ed30aa9be74ed59e77e75b64e3ac5a9d2a1.png","元龙-捂脸":"acd37e3530f80e88ea6b8b4fa2e1bd1b1912e114.png","元龙-我错了":"d4a061a8473929187962f1ff675ccb6a773f7122.png","元龙-我投降":"31caf8622e4d1a919e10dc825259500c38aa6fa3.png","琉绮Ruki-？？？":"043a092820fe53ce92e817c4479450abb9f6e46a.png","三周年-问号":"50c4d94a0c1c43cc0faa211f6c9db1cefa892e05.png","三周年-诚信互点":"275d8d1704202bffeea873e8987fbd66e93adab4.png","三周年-这次一定":"3b8efa08b5e13cda9a07b2cea7de4ed6ee19e644.png","三周年-我全都要":"c829dbb621e5b1a8580d2ffee76c9551a4e58e76.png","三周年-谢谢老板":"ae0832fbcf2c3649f4bdd5ae4703917d688350f2.png","三周年-预定一时爽":"c22d58c33fc322e1aaa260c7fbe2e1cbcc8fb15a.png","海国之境-爱你哦":"c54402eb7d3dff754f48b38208b2da68d12a4b9a.png","天秤座01-完美":"40102381f4d5aa1f9a00496483aa1c9f1b30b249.png","七濑胡桃-吧唧吧唧":"f546bd678e03bd8e6c69cfdd261371f1d92b4af0.png","七濑胡桃-熬夜":"6644424251c41faa839baea017b3fe0883403a5f.png","狂三-哒哒哒":"2545a15ae77e75d5e29f2b9f64c333654b3680d6.png","全职高手-点赞":"7bb36cd11f1282e5ce817d7e99b9f2f356901f6a.png","一起看电竞-别浪":"34c78804e4761dbadbd925e59e9a2073f6696c60.png","一起看电竞-冲冲冲":"50f4bb75fea784b790cfd6f702b301060d6f9814.png","一起看电竞-别奶了":"7f3888ce359c09519820699b80b7e99b78ac0d73.png","一起看电竞-救心丸":"0032bf807a4098c5a51d3babcca80cd0987b6f2a.png","乐正龙牙3rd-打鼓":"926d6ab8fa50d07124f3fc7cae2f7125b774ae37.png","宇宙机器人-AWSL":"a456a86658c2d4654b8411c983776c5df88ff88f.png","宇宙机器人-佛":"41d252382b1d6fc2b45f01285469fc757ac11a75.png","宇宙机器人-衰":"22d5c0654aa65609683ce4ac5352bfb27af5e013.png","宇宙机器人-我可以":"a8650d0f2632410621a5f3cfe0a909fd3a16eafa.png","宇宙机器人-凝视":"0cfadc834d6206dfcf3412191f1d8a12b4e21c28.png","宇宙机器人-炸裂":"8d94ccb211716e2b33ad6e341b5e95807374fe36.png","宇宙机器人-起飞":"69a8bd062e7a13cea4161b87be6d0ce0a02b4247.png","宇宙机器人-前方高能":"7106278224fb7c9650c2a94931220869851c74fb.png","宇宙机器人-快跑":"06856b2d9030842e40ed25f617f3e3b7f6bc947c.png","登乐V计划-心动":"2bf7e8afe9abf70966bec404e9d0d7104e8f50b2.png"},"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+<style>
+.v[data-class=v] .veditor {
+    background-image: url(https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/blog/welcome1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+</style>
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/EtcFly" target="_blank" rel="nofollow noopener"><span>EtcFly</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/EtcFly/" target="_blank" rel="nofollow noopener"><span>ChaiChai</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

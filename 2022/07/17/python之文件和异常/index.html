@@ -18,16 +18,16 @@
   <meta name="author" content="EtcFly">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基础的数据类型 Number(数字类型) String(字符串类型) List(列表类型) Tuple(元组类型) Dictionary(字典类型)  其中 数字类型 又分为:  整形: (在python 2.x中有int和long两种类型, 但是这种区分对python区分不大, 在python 3.x中整数只有一种int, 删除了long, （如0b100，换算成十进制是4）、八进制（如0o10">
+    <meta name="description" content="标准的输入输出 repr() 的参数可以是 Python 的任何对象, repr用于产生一个解释器易读的表达形式。对一些转义字符不做任何处理。str() 函数返回一个用户易读的表达形式。  字符串对象操作:  zfill操作: 1234&amp;#x27;12&amp;#x27;.zfill(5)输出结果为:00012 rjust操作 1234&amp;#x27;12&amp;#x27;.rjust(5, &amp;#x27;&#x3D;&amp;#x2">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Python基础类型和运算符">
-<meta property="og:url" content="http://example.com/2022/07/15/love-chaichai/index.html">
+<meta property="og:title" content="python之文件和异常">
+<meta property="og:url" content="http://example.com/2022/07/17/python%E4%B9%8B%E6%96%87%E4%BB%B6%E5%92%8C%E5%BC%82%E5%B8%B8/index.html">
 <meta property="og:site_name" content="牵着老婆走天涯">
-<meta property="og:description" content="基础的数据类型 Number(数字类型) String(字符串类型) List(列表类型) Tuple(元组类型) Dictionary(字典类型)  其中 数字类型 又分为:  整形: (在python 2.x中有int和long两种类型, 但是这种区分对python区分不大, 在python 3.x中整数只有一种int, 删除了long, （如0b100，换算成十进制是4）、八进制（如0o10">
+<meta property="og:description" content="标准的输入输出 repr() 的参数可以是 Python 的任何对象, repr用于产生一个解释器易读的表达形式。对一些转义字符不做任何处理。str() 函数返回一个用户易读的表达形式。  字符串对象操作:  zfill操作: 1234&amp;#x27;12&amp;#x27;.zfill(5)输出结果为:00012 rjust操作 1234&amp;#x27;12&amp;#x27;.rjust(5, &amp;#x27;&#x3D;&amp;#x2">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/python.png">
-<meta property="article:published_time" content="2022-07-15T15:44:05.000Z">
-<meta property="article:modified_time" content="2022-07-17T08:21:46.569Z">
+<meta property="article:published_time" content="2022-07-17T08:55:54.000Z">
+<meta property="article:modified_time" content="2022-07-17T08:56:36.609Z">
 <meta property="article:author" content="EtcFly">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="python">
@@ -37,7 +37,7 @@
   
   
   
-  <title>Python基础类型和运算符   牵着老婆走天涯</title>
+  <title>python之文件和异常   牵着老婆走天涯</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -211,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Python基础类型和运算符"></span>
+            <span id="subtitle" data-typed-text="python之文件和异常"></span>
           
         </div>
 
@@ -222,8 +222,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-07-15 23:44" pubdate>
-          2022年7月15日 晚上
+        <time datetime="2022-07-17 16:55" pubdate>
+          2022年7月17日 下午
         </time>
       </span>
     
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.6k 字
+          3.5k 字
         
       </span>
     
@@ -245,7 +245,7 @@
         
         
         
-          39 分钟
+          30 分钟
         
       </span>
     
@@ -292,12 +292,12 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Python基础类型和运算符</h1>
+            <h1 style="display: none">python之文件和异常</h1>
             
               <p class="note note-info">
                 
                   
-                    本文最后更新于：42 分钟前
+                    本文最后更新于：7 分钟前
                   
                 
               </p>
@@ -305,178 +305,199 @@
             
               <div class="markdown-body">
                 
-                <h3 id="基础的数据类型"><a href="#基础的数据类型" class="headerlink" title="基础的数据类型"></a>基础的数据类型</h3><ul>
-<li><code>Number</code>(数字类型)</li>
-<li><code>String</code>(字符串类型)</li>
-<li><code>List</code>(列表类型)</li>
-<li><code>Tuple</code>(元组类型)</li>
-<li><code>Dictionary</code>(字典类型)</li>
-</ul>
-<p>其中 <strong>数字类型</strong> 又分为:</p>
-<ul>
-<li>整形: (在<code>python 2.x</code>中有<code>int</code>和<code>long</code>两种类型, 但是这种区分对<code>python</code>区分不大, 在<code>python 3.x</code>中整数只有一种<code>int</code>, 删除了<code>long</code>, （如<code>0b100</code>，换算成十进制是<code>4</code>）、八进制（如<code>0o100</code>，换算成十进制是<code>64</code>）、十进制（<code>100</code>）和十六进制（<code>0x100</code>，换算成十进制是<code>256</code>）的表示法</li>
-<li>浮点类型: 浮点数也就是小数，之所以称为浮点数，是因为按照科学记数法表示时，一个浮点数的小数点位置是可变的，浮点数除了数学写法（如<code>123.456</code>）之外还支持科学计数法（如<code>1.23456e2</code>）</li>
-<li>复数类型:形如<code>3+5j</code>，跟数学上的复数表示一样，唯一不同的是虚部的<code>i</code>换成了<code>j</code></li>
-<li>布尔类型: 布尔值只有<code>True</code>、<code>False</code>两种值，要么是<code>True</code>，要么是<code>False</code>，在<code>Python</code>中，可以直接用<code>True</code>、<code>False</code>表示布尔值（请注意大小写），也可以通过布尔运算计算出来（例如<code>3 &lt; 5</code>会产生布尔值<code>True</code>，而<code>2 == 1</code>会产生布尔值<code>False</code>）。</li>
-</ul>
-<p><strong>字符串类型:</strong><br>　　字符串是以单引号或双引号括起来的任意文本，比如<code>&#39;hello&#39;</code>和<code>&quot;hello&quot;</code>,字符串还有原始字符串表示法、字节字符串表示法、<code>Unicode</code>字符串表示法，而且可以书写成多行的形式（用三个单引号或三个双引号开头，三个单引号或三个双引号结尾）。</p>
-<blockquote>
-<p>如:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">stc = <span class="hljs-string">&quot;&quot;&quot;this is a test1</span><br><span class="hljs-string">        this is a test2&quot;&quot;&quot;</span><br><span class="hljs-built_in">print</span>(stc)<br></code></pre></td></tr></table></figure>
+                <h3 id="标准的输入输出"><a href="#标准的输入输出" class="headerlink" title="标准的输入输出"></a>标准的输入输出</h3><blockquote>
+<p><code>repr()</code> 的参数可以是 <code>Python</code> 的任何对象, <code>repr</code>用于产生一个解释器易读的表达形式。对一些转义字符不做任何处理。<br><code>str()</code> 函数返回一个用户易读的表达形式。</p>
 </blockquote>
-<p><code>python</code>的字串列表有2种取值顺序:</p>
+<p>字符串对象操作:</p>
 <ul>
-<li>从左到右索引默认0开始的，最大范围是字符串长度少1</li>
-<li>从右到左索引默认-1开始的，最大范围是字符串开头</li>
+<li><p><code>zfill</code>操作:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;12&#x27;</span>.zfill(<span class="hljs-number">5</span>)<br><br>输出结果为:<br>00012<br></code></pre></td></tr></table></figure></li>
+<li><p><code>rjust</code>操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-string">&#x27;12&#x27;</span>.rjust(<span class="hljs-number">5</span>, <span class="hljs-string">&#x27;=&#x27;</span>)<br><br>输出结果为:<br>===<span class="hljs-number">12</span><br></code></pre></td></tr></table></figure>
+</li>
+<li><p><code>format</code>操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><br></code></pre></td></tr></table></figure></li>
 </ul>
 <hr>
-<h3 id="变量的命名"><a href="#变量的命名" class="headerlink" title="变量的命名"></a>变量的命名</h3><ul>
-<li>硬性规则<ul>
-<li>变量名由字母（广义的<code>Unicode</code>字符，不包括特殊字符）、数字和下划线构成，数字不能开头</li>
-<li>大小写敏感（大写的a和小写的A是两个不同的变量）。</li>
-<li>不要跟关键字（有特殊含义的单词，后面会讲到）和系统保留字（如函数、模块等的名字）冲突。</li>
-</ul>
-</li>
-<li>PEP 8要求<ul>
-<li>用小写字母拼写，多个单词用下划线连接。</li>
-<li>受保护的实例属性用单个下划线开头</li>
-<li>私有的实例属性用两个下划线开头</li>
-</ul>
-</li>
-</ul>
-<h5 id="示例"><a href="#示例" class="headerlink" title="示例:"></a>示例:</h5><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">a</span> = <span class="hljs-number">123</span>  // 整数类型<br><span class="hljs-attr">a</span> = <span class="hljs-number">0</span>b10 //二进制表示法<br><span class="hljs-attr">a</span> = <span class="hljs-number">0</span>x10 // 十六进制表示<br><span class="hljs-attr">a</span> = <span class="hljs-number">0</span>o10 // 八进制表示<br><span class="hljs-attr">a</span> = <span class="hljs-number">10</span>   // 十进制表示<br><br><span class="hljs-attr">b</span> = <span class="hljs-number">12.3</span> //浮点数类型<br><span class="hljs-attr">b</span> = <span class="hljs-number">12.3</span>e2 //表示科学计数法<span class="hljs-number">1230</span>, 及<span class="hljs-number">12.3</span>X10X10 <br><br><span class="hljs-attr">c</span> = <span class="hljs-string">&quot;this is a test&quot;</span> //字符串类型<br><span class="hljs-attr">c</span> = <span class="hljs-string">&#x27;this is a test&#x27;</span><br><br><span class="hljs-attr">d</span> = <span class="hljs-literal">True</span> //布尔类型<br><br><span class="hljs-attr">e</span> = <span class="hljs-number">1</span> + <span class="hljs-number">2</span>j //复数类型<br></code></pre></td></tr></table></figure>
-
-<h3 id="Python中关键字"><a href="#Python中关键字" class="headerlink" title="Python中关键字"></a>Python中关键字</h3><blockquote>
-<p>保留字即关键字，我们不能把它们用作任何标识符名称。<code>Python</code> 的标准库提供了一个 keyword 模块，可以输出当前版本的所有关键字：</p>
-</blockquote>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs stylus">import keyword<br>lst = keyword<span class="hljs-selector-class">.kwlist</span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(lst)</span></span><br></code></pre></td></tr></table></figure>
-<p>输出结果为:</p>
-<figure class="highlight scheme"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs scheme">[<span class="hljs-symbol">&#x27;False</span>&#x27;, <span class="hljs-symbol">&#x27;None</span>&#x27;, <span class="hljs-symbol">&#x27;True</span>&#x27;, <span class="hljs-symbol">&#x27;and</span>&#x27;, <span class="hljs-symbol">&#x27;as</span>&#x27;, <span class="hljs-symbol">&#x27;assert</span>&#x27;, <span class="hljs-symbol">&#x27;break</span>&#x27;, <span class="hljs-symbol">&#x27;class</span>&#x27;, <span class="hljs-symbol">&#x27;continue</span>&#x27;, <span class="hljs-symbol">&#x27;def</span>&#x27;, <span class="hljs-symbol">&#x27;del</span>&#x27;, <span class="hljs-symbol">&#x27;elif</span>&#x27;, <span class="hljs-symbol">&#x27;else</span>&#x27;, <span class="hljs-symbol">&#x27;except</span>&#x27;, <span class="hljs-symbol">&#x27;finally</span>&#x27;, <span class="hljs-symbol">&#x27;for</span>&#x27;, <span class="hljs-symbol">&#x27;from</span>&#x27;, <span class="hljs-symbol">&#x27;global</span>&#x27;, <span class="hljs-symbol">&#x27;if</span>&#x27;, <span class="hljs-symbol">&#x27;import</span>&#x27;, <span class="hljs-symbol">&#x27;in</span>&#x27;, <span class="hljs-symbol">&#x27;is</span>&#x27;, <span class="hljs-symbol">&#x27;lambda</span>&#x27;, <span class="hljs-symbol">&#x27;nonlocal</span>&#x27;, <span class="hljs-symbol">&#x27;not</span>&#x27;, <span class="hljs-symbol">&#x27;or</span>&#x27;, <span class="hljs-symbol">&#x27;pass</span>&#x27;, <span class="hljs-symbol">&#x27;raise</span>&#x27;, <span class="hljs-symbol">&#x27;return</span>&#x27;, <span class="hljs-symbol">&#x27;try</span>&#x27;, <span class="hljs-symbol">&#x27;while</span>&#x27;, <span class="hljs-symbol">&#x27;with</span>&#x27;, <span class="hljs-symbol">&#x27;yield</span>&#x27;]<br></code></pre></td></tr></table></figure>
-
-<hr>
-<h5 id="变量类型转换"><a href="#变量类型转换" class="headerlink" title="变量类型转换"></a>变量类型转换</h5><blockquote>
-<p>在对变量类型进行转换时可以使用Python的内置函数（准确的说下面列出的并不是真正意义上的函数，而是后面我们要讲到的创建对象的构造方法）。</p>
-</blockquote>
-<ul>
-<li><code>int()</code>: 将一个数值或字符串转换成整数，可以指定进制</li>
-<li><code>float()</code>：将一个字符串转换成浮点数。</li>
-<li><code>str()</code>：将指定的对象转换成字符串形式，可以指定编码</li>
-<li><code>chr()</code>：将整数转换成该编码对应的字符串（一个字符）。</li>
-<li><code>ord()</code>：将字符串（一个字符）转换成对应的编码（整数）。</li>
-</ul>
-<h5 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h5><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs stylus"><span class="hljs-selector-tag">a</span> = <span class="hljs-built_in">int</span>(<span class="hljs-number">123</span>)<br><span class="hljs-selector-tag">b</span> = <span class="hljs-attribute">float</span>(<span class="hljs-number">123</span>)<br>c = <span class="hljs-built_in">str</span>(<span class="hljs-string">&#x27;hello&#x27;</span>)<br>d = <span class="hljs-built_in">chr</span>(<span class="hljs-number">123</span>) #将整型的<span class="hljs-number">123</span>转为字符<br>e = <span class="hljs-built_in">ord</span>(<span class="hljs-string">&#x27;G&#x27;</span>) #将ASCII的字符G转为int类型编码值<br><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(a)</span></span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(b)</span></span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(c)</span></span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(d)</span></span><br><span class="hljs-function"><span class="hljs-title">print</span><span class="hljs-params">(e)</span></span><br></code></pre></td></tr></table></figure>
-
-<p>输出结果:</p>
-<figure class="highlight fsharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs fsharp"><span class="hljs-number">123</span><br><span class="hljs-number">123.0</span><br><span class="hljs-keyword">hello</span><br>&#123;<br><span class="hljs-number">71</span><br></code></pre></td></tr></table></figure>
-
-<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><blockquote>
-<p>Python支持多种运算符，下表大致按照优先级从高到低的顺序列出了所有的运算符，我们会陆续使用到它们。</p>
-</blockquote>
-<table>
+<h3 id="文件操作"><a href="#文件操作" class="headerlink" title="文件操作"></a>文件操作</h3><h4 id="文件模式视图"><a href="#文件模式视图" class="headerlink" title="文件模式视图"></a>文件模式视图</h4><table>
 <thead>
 <tr>
-<th>运算符</th>
-<th>描述</th>
+<th align="center">模式</th>
+<th align="left">r</th>
+<th align="center">r+</th>
+<th align="center">w</th>
+<th align="center">w+</th>
+<th align="center">a</th>
+<th align="center">a+</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>[]</code> <code>[:]</code></td>
-<td>下标，切片</td>
+<td align="center">读</td>
+<td align="left">+</td>
+<td align="center">+</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td><code>**</code></td>
-<td>指数</td>
+<td align="center">写</td>
+<td align="left"></td>
+<td align="center">+</td>
+<td align="center">+</td>
+<td align="center">+</td>
+<td align="center">+</td>
+<td align="center">+</td>
 </tr>
 <tr>
-<td><code>~</code> <code>+</code> <code>-</code></td>
-<td>按位取反, 正负号</td>
+<td align="center">创建</td>
+<td align="left"></td>
+<td align="center"></td>
+<td align="center">+</td>
+<td align="center">+</td>
+<td align="center">+</td>
+<td align="center">+</td>
 </tr>
 <tr>
-<td><code>*</code> <code>/</code> <code>%</code> <code>//</code></td>
-<td>乘，除，模，整除</td>
+<td align="center">覆盖</td>
+<td align="left"></td>
+<td align="center"></td>
+<td align="center">+</td>
+<td align="center">+</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td><code>+</code> <code>-</code></td>
-<td>加，减</td>
+<td align="center">指针在开始</td>
+<td align="left">+</td>
+<td align="center">+</td>
+<td align="center">+</td>
+<td align="center">+</td>
+<td align="center"></td>
+<td align="center"></td>
 </tr>
 <tr>
-<td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
-<td>右移，左移</td>
-</tr>
-<tr>
-<td><code>&amp;</code></td>
-<td>按位与</td>
-</tr>
-<tr>
-<td><code>^</code> <code>|</code></td>
-<td>按位异或，按位或</td>
-</tr>
-<tr>
-<td><code>&lt;=</code> <code>&lt;</code> <code>&gt;</code> <code>&gt;=</code></td>
-<td>小于等于，小于，大于，大于等于</td>
-</tr>
-<tr>
-<td><code>==</code> <code>!=</code></td>
-<td>等于，不等于</td>
-</tr>
-<tr>
-<td><code>is</code>  <code>is not</code></td>
-<td>身份运算符</td>
-</tr>
-<tr>
-<td><code>in</code> <code>not in</code></td>
-<td>成员运算符</td>
-</tr>
-<tr>
-<td><code>not</code> <code>or</code> <code>and</code></td>
-<td>逻辑运算符</td>
-</tr>
-<tr>
-<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>//=</code> <code>**=</code> <code>&amp;=</code> <code>|=</code> <code>^=</code> <code>&gt;&gt;=</code> <code>&lt;&lt;=</code></td>
-<td>（复合）赋值运算符</td>
+<td align="center">指针在结尾</td>
+<td align="left"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">+</td>
+<td align="center">+</td>
 </tr>
 </tbody></table>
+<ul>
+<li><code>open</code><br>打开文件, 并返回文件句柄。 <code>mode</code>, 打开文件的模式, 如果没有指定模式则默认<code>r</code></li>
+</ul>
+<p><strong>实例：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;E:\\python.py&quot;</span>, <span class="hljs-string">&#x27;r&#x27;</span>) <span class="hljs-comment"># python.py 文件必须存在否则报错</span><br><span class="hljs-built_in">print</span>(file.read())<br>file.close()<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>write</code><br>写入一个文件, 并返回文件的长度。</li>
+</ul>
+<p><strong>实例：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;wangyang.txt&quot;</span>, <span class="hljs-string">&#x27;w+&#x27;</span>)<br>file.write(<span class="hljs-string">&#x27;i love my baby chaiying!&#x27;</span>)<br>file.close()<br></code></pre></td></tr></table></figure>
+<ul>
+<li><code>flush</code><br>刷新数据流到文件</li>
+</ul>
+<p><strong>实例：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python">file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;wangyang.txt&quot;</span>, <span class="hljs-string">&#x27;w+&#x27;</span>)<br>file.write(<span class="hljs-string">&#x27;i love my baby chaiying!&#x27;</span>)<br>file.flush()<br><br>file.seek(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br><span class="hljs-built_in">print</span>(file.read())<br>file.close()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>close</code><br>关闭文件</li>
+</ul>
+<p><strong>实例：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;wangyang.txt&quot;</span>, <span class="hljs-string">&#x27;w+&#x27;</span>)<br>file.close()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>seek</code><br>设置文件偏移。 0 表示开头, 如果是 1 表示当前位置, 2 表示文件的结尾，例如：<ul>
+<li>seek(x,  0) ： 从起始位置即文件首行首字符开始移动 x 个字符</li>
+<li>seek(x,  1) ： 表示从当前位置往后移动x个字符</li>
+<li>seek(-x, 2)：表示从文件的结尾往前移动x个字符</li>
+</ul>
+</li>
+</ul>
+<p><strong>实例：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;wangyang.txt&quot;</span>, <span class="hljs-string">&#x27;w+&#x27;</span>)<br>file.seek(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(file.tell()) <span class="hljs-comment"># 文件的长度</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>tell</code><br>获取文件到当前位置的偏移量</li>
+</ul>
+<p><strong>实例：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;wangyang.txt&quot;</span>, <span class="hljs-string">&#x27;w+&#x27;</span>)<br>file.seek(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(file.tell()) <span class="hljs-comment"># 文件的长度</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>readline</code><br>从文件中读取单独的一行。换行符为 ‘\n’。f.readline() 如果返回一个空字符串, 说明已经已经读取到最后一行。</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./test.txt&#x27;</span>, <span class="hljs-string">&#x27;a+&#x27;</span>)<br>file.write(<span class="hljs-string">&#x27;this is a test\r\a2、i like python\n\a3、setthing json file\n&#x27;</span>)<br><span class="hljs-comment"># file.flush()</span><br>file.seek(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br><br>lines = file.readline()<br><span class="hljs-built_in">print</span>(lines)<br>file.close()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>readlines</code><br>返回该文件中包含的所有行。并形成一个列表返回</li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">Tuple</span><br><br><br>file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./test.txt&#x27;</span>, <span class="hljs-string">&#x27;a+&#x27;</span>)<br>file.write(<span class="hljs-string">&#x27;this is a test\r\a2、i like python\n\a3、setthing json file\n&#x27;</span>)<br><span class="hljs-comment"># file.flush()</span><br>file.seek(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>)<br><br>lines = file.readlines()<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(lines)):<br>    <span class="hljs-built_in">print</span>(lines[i], end=<span class="hljs-string">&#x27;&#x27;</span>)<br>file.close()<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><code>writelines</code><br>写入若干行, 换行需要手动<code>\n</code></li>
+</ul>
+<p><strong>示例</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs python">file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&quot;wangyang.txt&quot;</span>, <span class="hljs-string">&#x27;w+&#x27;</span>)<br>lines = [<span class="hljs-string">&quot;love &quot;</span>, <span class="hljs-string">&#x27;chaichai\r&#x27;</span>, <span class="hljs-string">&#x27;json script\n&#x27;</span>, <span class="hljs-string">&#x27;this is ok\n&#x27;</span>]<br>file.writelines(lines)<br>file.close()<br><br><span class="hljs-comment"># 输出结果为:</span><br>love chaichai<br>json script<br>this <span class="hljs-keyword">is</span> ok<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="异常模型"><a href="#异常模型" class="headerlink" title="异常模型"></a>异常模型</h4><blockquote>
+<p>即 Python 程序的语法是正确的，在运行它的时候，也有可能发生错误。运行期检测到的错误被称为异常。</p>
+</blockquote>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdownpython/except_type.png" srcset="/img/loading.gif" lazyload alt="异常类型"></p>
+<p>异常分为两类:</p>
+<ul>
+<li><code>ASSART</code> 主动抛出的异常</li>
+<li><code>Except</code> 系统抛出的异常</li>
+</ul>
+<p><strong>Note:</strong></p>
 <blockquote>
-<p><strong>说明：</strong> 在实际开发中，如果搞不清楚运算符的优先级，可以使用括号来确保运算的执行顺序。</p>
+<p>在异常<code>try</code>代码块只要<code>return 0</code>则产生异常</p>
 </blockquote>
 <hr>
-<p><strong>Note:</strong></p>
-<ul>
-<li><p><code>print</code>格式化输出的几种方式</p>
-<ul>
-<li>直接输出, 无其他类型数据<ul>
-<li><code>print(&#39;hello&#39;)</code></li>
-<li><code>print(a)  # a是一个int类型数据</code></li>
-</ul>
-</li>
-<li>和其他类型输出结合输出<ul>
-<li><code>print(&quot;hello&quot;, a, b) # a,b分别是一个int类型数据5, 10, 输出结果未hello 5 10, 自动生成一个空格</code> </li>
-<li><code>print(f&quot;hello&#123;a&#125;&quot;, a) # 假设a是int类型值为5, 则结果为hello5, 这种仅仅在python 2.x上支持</code></li>
-<li><code>print(&quot;r:%.2d l:%.3f&quot;%(10, 12)) #结果为r:10 l:12.000, 浮点数.3f表示三位小数位, d表示整形输出, f表示浮点输出</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>type</code>功能函数</p>
-<ul>
-<li>获取一个变量的类型<ul>
-<li><code>print(type(123)) //输出结果为 &lt;class &#39;int&#39;&gt;</code>   </li>
-<li><code>print(type(&quot;hello&quot;)) //输出结果为&lt;class &#39;str&#39;&gt;, 表示为str类型</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><code>del</code>删除一个变量</p>
-<figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs maxima"><span class="hljs-built_in">var</span> = <span class="hljs-number">10</span><br><span class="hljs-built_in">var1</span> = <span class="hljs-number">20</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">var</span>)<br><span class="hljs-built_in">del</span> <span class="hljs-built_in">var</span>, <span class="hljs-built_in">var1</span><br><br><span class="hljs-built_in">var</span> = <span class="hljs-number">20</span><br><span class="hljs-built_in">del</span> <span class="hljs-built_in">var</span><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">var</span>) # <span class="hljs-built_in">error</span>: name &#x27;<span class="hljs-built_in">var</span>&#x27; <span class="hljs-built_in">is</span> <span class="hljs-keyword">not</span> defined<br></code></pre></td></tr></table></figure></li>
-<li><p><code>python</code>对变量的重新赋值会改变内存地址</p>
-</li>
-</ul>
+<p><strong>如下</strong><br>就是一个系统抛出的异常, 当程序里出现除0异常时, 系统自动抛出异常。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-number">10</span> * / (<span class="hljs-number">1</span> / <span class="hljs-number">0</span>) <span class="hljs-comment"># 除零异常</span><br><br>输出错误：<br>Traceback (most recent call last):<br>  File <span class="hljs-string">&quot;&lt;stdin&gt;&quot;</span>, line <span class="hljs-number">1</span>, <span class="hljs-keyword">in</span> ?<br>ZeroDivisionError: division by zero<br></code></pre></td></tr></table></figure>
+
 <hr>
-<p><em><strong>测试代码</strong></em></p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><code class="hljs swift"># b <span class="hljs-operator">=</span> long(<span class="hljs-number">123</span>)<br># <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(b))<br><br>strc <span class="hljs-operator">=</span> <span class="hljs-string">&quot;&quot;&quot;this is a test</span><br><span class="hljs-string">do you know</span><br><span class="hljs-string">hello world</span><br><span class="hljs-string">no end test&quot;&quot;&quot;</span><br><br><span class="hljs-built_in">print</span>(strc)<br><br>a <span class="hljs-operator">=</span> int(<span class="hljs-number">123</span>)<br>b <span class="hljs-operator">=</span> float(<span class="hljs-number">123</span>)<br>c <span class="hljs-operator">=</span> str(&#x27;hello&#x27;)<br>d <span class="hljs-operator">=</span> chr(<span class="hljs-number">123</span>)<br>e <span class="hljs-operator">=</span> ord(&#x27;<span class="hljs-type">G</span>&#x27;)<br><br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(b)<br><span class="hljs-built_in">print</span>(c)<br><span class="hljs-built_in">print</span>(d)<br><span class="hljs-built_in">print</span>(e)<br><br><br>a <span class="hljs-operator">=</span> <span class="hljs-number">3</span><span class="hljs-operator">&amp;</span><span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(a)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;r:%.2d l:%.5f&quot;</span> <span class="hljs-operator">%</span>(<span class="hljs-number">100</span>, <span class="hljs-number">12.3</span>))<br><br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(<span class="hljs-string">&quot;hello&quot;</span>))<br><br><br><span class="hljs-comment">/////////////////////////////////////</span><br>a <span class="hljs-operator">=</span>&#x27;hello&#x27;<br>b <span class="hljs-operator">=</span><span class="hljs-string">&quot;heallo&quot;</span><br><span class="hljs-built_in">print</span>(a)<br><span class="hljs-built_in">print</span>(b)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;welcom&quot;</span>, a, b)<br>#<span class="hljs-built_in">print</span>(f<span class="hljs-string">&quot;welcom &#123;a&#125;&quot;</span>)<br><br>f <span class="hljs-operator">=</span> <span class="hljs-type">True</span><br><span class="hljs-built_in">print</span>(f)<br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;welcom&quot;</span>, b)<br><br># 运算符<br><span class="hljs-built_in">print</span>(<span class="hljs-number">1</span><span class="hljs-operator">+</span><span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-number">1</span><span class="hljs-operator">-</span><span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-number">2</span><span class="hljs-operator">*</span><span class="hljs-number">2</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-number">14</span><span class="hljs-operator">/</span><span class="hljs-number">5</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-number">14</span><span class="hljs-comment">//5)</span><br><span class="hljs-built_in">print</span>(<span class="hljs-number">14</span><span class="hljs-operator">%</span><span class="hljs-number">5</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-number">14</span><span class="hljs-operator">**</span><span class="hljs-number">5</span>)<br><br># g <span class="hljs-operator">=</span> int(<span class="hljs-number">2.8</span>)<br># <span class="hljs-built_in">print</span>(g)<br># <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(g))<br># g <span class="hljs-operator">=</span> str(input(<span class="hljs-string">&quot;string&quot;</span>))<br># <span class="hljs-built_in">print</span>(g)<br># <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(g))<br><br># g <span class="hljs-operator">=</span> chr(int(input(<span class="hljs-string">&quot;char&quot;</span>)))<br># <span class="hljs-built_in">print</span>(g)<br># <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(g))<br><br># g <span class="hljs-operator">=</span> ord(str(input(<span class="hljs-string">&quot;char&quot;</span>)))<br># <span class="hljs-built_in">print</span>(g)<br># <span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(g))<br><br><span class="hljs-built_in">print</span>(<span class="hljs-operator">-</span><span class="hljs-number">1</span><span class="hljs-operator">&gt;&gt;</span><span class="hljs-number">1</span>)<br><br>a <span class="hljs-operator">=</span> <span class="hljs-number">10</span><br>a <span class="hljs-operator">*=</span> <span class="hljs-number">2</span><br><span class="hljs-built_in">print</span>(a)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;a =&quot;</span>, a)<br><br><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;a = &quot;</span>, a)<br><br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> <span class="hljs-type">True</span>)<br><span class="hljs-built_in">print</span>(a <span class="hljs-keyword">is</span> not <span class="hljs-type">False</span>)<br><br># tmp <span class="hljs-operator">=</span>int(input(<span class="hljs-string">&quot;请输入温度:&quot;</span>))<br># res <span class="hljs-operator">=</span>(tmp <span class="hljs-operator">-</span> <span class="hljs-number">32</span>) <span class="hljs-operator">/</span> <span class="hljs-number">1.8</span><br># <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%.1f华氏度 = %5.2f摄氏度&quot;</span> <span class="hljs-operator">%</span> (tmp,res))<br># <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;%.1f华氏度 = %05.2f摄氏度&quot;</span> <span class="hljs-operator">%</span> (tmp,res))<br><br># 计算圆的面积周长<br># r <span class="hljs-operator">=</span> float(input(<span class="hljs-string">&quot;输入圆的半径:&quot;</span>))<br># area <span class="hljs-operator">=</span> <span class="hljs-number">3.14</span><span class="hljs-operator">*</span>(r<span class="hljs-operator">**</span><span class="hljs-number">2</span>)<br># len <span class="hljs-operator">=</span><span class="hljs-number">2</span><span class="hljs-operator">*</span><span class="hljs-number">3.14</span><span class="hljs-operator">*</span>r<br># <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;面积:%.2f 周长:%.2f&quot;</span><span class="hljs-operator">%</span>(area, len))<br><br>b <span class="hljs-operator">=</span> long(<span class="hljs-number">123</span>)<br><span class="hljs-built_in">print</span>(<span class="hljs-built_in">type</span>(b))<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    <span class="hljs-comment"># 检测代码</span><br><span class="hljs-keyword">except</span> [error code]:<br>    <span class="hljs-comment"># 匹配的异常处理程序</span><br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-comment"># 没有出错时处理代码</span><br><span class="hljs-keyword">finally</span>:<br>    <span class="hljs-comment"># 无论是否发生异常都会运行</span><br></code></pre></td></tr></table></figure>
 
-<p>参考文档：<br><a target="_blank" rel="noopener" href="https://github.com/EtcFly/Python-100-Days/blob/master/Day01-15/02.%E8%AF%AD%E8%A8%80%E5%85%83%E7%B4%A0.md">1、语言元素</a></p>
+<p><strong>执行流程:</strong></p>
+<ul>
+<li>首先执行检测代码, 代码发生异常, 检测代码余下部分被忽略, 跳到异常处理代码</li>
+<li>代码异常执行 <code>except</code>, 正常时不执行, <code>[error code]</code> 为异常代码, 可以是单个匹配, 也可以是元组, 多个异常公用一个处理程序, 如果忽律不写, 那么默认处理所有异常。<ul>
+<li>如果一个异常没有与任何的 except 匹配，那么这个异常将会传递给上层的 <code>try</code> 中。</li>
+<li>一个 <code>try</code> 语句可能包含多个except子句，分别来处理不同的特定的异常。最多只有一个分支会被执行  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span>:<br>    x = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;请输入一个数字: &quot;</span>))<br>    <span class="hljs-keyword">break</span><br><span class="hljs-keyword">except</span> ValueError:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;您输入的不是数字，请再次尝试输入！&quot;</span>)<br></code></pre></td></tr></table></figure></li>
+<li>一个 <code>except</code> 子句可以同时处理多个异常，这些异常将被放在一个括号里成为一个元组  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">except</span> (RuntimeError, TypeError, NameError):<br><span class="hljs-keyword">pass</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>代码正常时执行, 抛出异常时不执行</li>
+<li><code>finally</code> 无论是否异常都会执行</li>
+</ul>
+<h4 id="主动抛出异常"><a href="#主动抛出异常" class="headerlink" title="主动抛出异常"></a>主动抛出异常</h4><blockquote>
+<p>顾名思义, 就是程序中检测到了非法的输入, 非法的操作，可能会导致程序异常，这时候程序员们会主动排除一个异常。</p>
+</blockquote>
+<p><strong>如下:</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">try</span> :<br>    file = <span class="hljs-built_in">open</span>(<span class="hljs-string">&#x27;./new.file&#x27;</span>, <span class="hljs-string">&#x27;w&#x27;</span>)<br>    <span class="hljs-keyword">assert</span> <span class="hljs-number">0</span>, <span class="hljs-string">&#x27;error code&#x27;</span><br><span class="hljs-keyword">except</span> AssertionError <span class="hljs-keyword">as</span> codee:<br>    <span class="hljs-built_in">print</span>(codee)<br><span class="hljs-keyword">except</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;other file error&#x27;</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;open file ok&#x27;</span>)<br>    file.close()<br><span class="hljs-keyword">finally</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;file close&#x27;</span>)<br></code></pre></td></tr></table></figure>
 
+<p><code>assert</code> 表示主动抛出异常, <code>0</code>表示触发异常, 一般是<code>Ture</code>表示正常, <code>False</code>触发异常, 然后抛出后面参数<code>2</code>为异常代码。代码输出结果为:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">error code<br>file close<br></code></pre></td></tr></table></figure>
+
+<p><code>assert</code> 异常可以表示为:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">assert</span> [expression]<br></code></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> expression:<br>    <span class="hljs-keyword">raise</span> AssertionError<br></code></pre></td></tr></table></figure>
+
+<p>注意如下示例:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():<br>	<span class="hljs-keyword">try</span>:<br>		<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;i am run!&#x27;</span>)<br>		<span class="hljs-keyword">return</span><br>	<span class="hljs-keyword">except</span>:<br>		<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;i am error!&#x27;</span>)<br>	<span class="hljs-keyword">else</span>:<br>		<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;i am ok!&#x27;</span>)<br>	<span class="hljs-keyword">finally</span>:<br>		<span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;i am end!&#x27;</span>)<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">None</span><br><br>main()<br></code></pre></td></tr></table></figure>
+
+<p>输出结果为:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs python">i am run!<br>i am end!<br></code></pre></td></tr></table></figure>
+
+<p>如果函数<code>try</code>中没有<code>return</code>, 输出结果为:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs python">i am run!<br>i am ok!<br>i am end!<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -525,8 +546,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Python基础类型和运算符</div>
-      <div>http://example.com/2022/07/15/love-chaichai/</div>
+      <div>python之文件和异常</div>
+      <div>http://example.com/2022/07/17/python之文件和异常/</div>
     </div>
     <div class="license-meta">
       
@@ -538,7 +559,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年7月15日</div>
+          <div>2022年7月17日</div>
         </div>
       
       
@@ -573,15 +594,21 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/07/17/python%E4%B9%8B%E5%88%86%E6%94%AF%E7%BB%93%E6%9E%84/" title="python之分支结构">
+                      <a href="/2022/07/17/python%E4%B9%8B%E5%85%B3%E9%94%AE%E5%AD%97%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/" title="python之关键字使用总结">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">python之分支结构</span>
+                        <span class="hidden-mobile">python之关键字使用总结</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2022/07/17/python%E4%B9%8B%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%BC%96%E7%A8%8B/" title="python之面向对象编程">
+                        <span class="hidden-mobile">python之面向对象编程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
