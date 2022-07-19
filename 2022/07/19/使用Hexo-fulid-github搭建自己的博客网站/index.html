@@ -1,0 +1,985 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="EtcFly">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="工作准备注册GitHub账号 　　由于博客是基于GitHub Page托管的, 所以需要一个Github账号, 可通过 官网 进行注册。  安装git 　　安装git工具, git 工具用于上传博客到 GitHub 平台, 将 hexo 部署到GitHub上。安装 Git比较简单, 直接下载进行安装即可。官网  安装NideJs下载安装包工具　　NodeJs 安装包可在 官网 下载, 官网包含了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用Hexo+fulid+github搭建自己的博客网站">
+<meta property="og:url" content="http://example.com/2022/07/19/%E4%BD%BF%E7%94%A8Hexo-fulid-github%E6%90%AD%E5%BB%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E5%8D%9A%E5%AE%A2%E7%BD%91%E7%AB%99/index.html">
+<meta property="og:site_name" content="牵着老婆走天涯">
+<meta property="og:description" content="工作准备注册GitHub账号 　　由于博客是基于GitHub Page托管的, 所以需要一个Github账号, 可通过 官网 进行注册。  安装git 　　安装git工具, git 工具用于上传博客到 GitHub 平台, 将 hexo 部署到GitHub上。安装 Git比较简单, 直接下载进行安装即可。官网  安装NideJs下载安装包工具　　NodeJs 安装包可在 官网 下载, 官网包含了">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/page_image.png">
+<meta property="article:published_time" content="2022-07-19T13:15:36.000Z">
+<meta property="article:modified_time" content="2022-07-19T13:26:50.637Z">
+<meta property="article:author" content="EtcFly">
+<meta property="article:tag" content="原创">
+<meta property="article:tag" content="工具">
+<meta property="article:tag" content="博客搭建">
+<meta property="article:tag" content="Hexo">
+<meta property="article:tag" content="GitHub">
+<meta property="article:tag" content="Leancloud">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/img/page_image.png">
+  
+  
+  
+  <title>使用Hexo+fulid+github搭建自己的博客网站   牵着老婆走天涯</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.2","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":4},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"3AEufnWAJdp8cFODp1DXvrQU-MdYXbMMI","app_key":"mGJiL6xVvYv21ygqfynJoCyO","server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+  
+
+
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>牵着老婆走天涯</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="使用Hexo+fulid+github搭建自己的博客网站"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-07-19 21:15" pubdate>
+          2022年7月19日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          57 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="leancloud-page-views-container" class="post-meta" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="leancloud-page-views"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用Hexo+fulid+github搭建自己的博客网站</h1>
+            
+              <p class="note note-info">
+                
+                  
+                    本文最后更新于：1 分钟前
+                  
+                
+              </p>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="工作准备"><a href="#工作准备" class="headerlink" title="工作准备"></a>工作准备</h3><h4 id="注册GitHub账号"><a href="#注册GitHub账号" class="headerlink" title="注册GitHub账号"></a>注册GitHub账号</h4><blockquote>
+<p>　　由于博客是基于<code>GitHub Page</code>托管的, 所以需要一个<code>Github</code>账号, 可通过 <a href="www.github.com">官网</a> 进行注册。</p>
+</blockquote>
+<h4 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h4><blockquote>
+<p>　　安装<code>git</code>工具, <code>git</code> 工具用于上传博客到 <code>GitHub</code> 平台, 将 <code>hexo</code> 部署到<code>GitHub</code>上。安装 <code>Git</code>比较简单, 直接下载进行安装即可。<a target="_blank" rel="noopener" href="https://git-scm.com/">官网</a></p>
+</blockquote>
+<h4 id="安装NideJs"><a href="#安装NideJs" class="headerlink" title="安装NideJs"></a>安装NideJs</h4><h5 id="下载安装包工具"><a href="#下载安装包工具" class="headerlink" title="下载安装包工具"></a>下载安装包工具</h5><p>　　<code>NodeJs</code> 安装包可在 <a target="_blank" rel="noopener" href="https://nodejs.org/zh-cn/download/">官网</a> 下载, 官网包含了 <code>Windowns</code>、<code>macOS</code>、<code>Linux</code> 等多个平台安装包, 一般推荐使用最新的安装包, 本文使用的版本是 <code>node-v16.16.0-x64.msi</code>, 注意根据自身系统进行选择, 如32位系统应选择32位安装包。如下：</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/nodejs%E4%B8%8B%E8%BD%BD.png" srcset="/img/loading.gif" lazyload alt="nodejs下载.png"></p>
+<p>双击安装包开始安装，一路点击 <code>Next</code> 即可，安装完成后，<code>msi</code> 格式的安装包会自动添加环境变量。安装完成后打开 <code>cmd</code> 窗口, 执行命令 <code>node -v</code> 查看 <code>node</code> 版本。正确应该如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/node%E7%89%88%E6%9C%AC.png" srcset="/img/loading.gif" lazyload alt="node版本.png"></p>
+<p>上图之所以有其他插件版本是因为作者已经安装好其他插件, 正常情况下应该只显示红色方框内容。</p>
+<hr>
+<p><strong>Node</strong>:<br>有可能出现如下错误:  <code>npm WARN config global --global, --local are deprecated. Use --location</code></p>
+<p><strong>解决方案:</strong></p>
+<p>1、打开nodejs安装目录。并打开其根目录下两个文件 <code>npm</code> 和 <code>npm.cmd</code>, 如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/nodejs%E7%89%88%E6%9C%AC%E6%8A%A5%E9%94%99.png" srcset="/img/loading.gif" lazyload alt="nodejs版本报错.png"></p>
+<p>修改文件如下: </p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/npm%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9.png" srcset="/img/loading.gif" lazyload alt="npm文件修改.png"></p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/npm_cmd.png" srcset="/img/loading.gif" lazyload alt="npm_cmd.png"></p>
+<p>2、初次修改可能没有修改权限, 如果没有可以在属性中进行修改</p>
+<p>3、修改完之后、关闭之前的命令行窗口。重新打开一个新的命令行窗口，重新使用 <code>node -v</code>查看。</p>
+<hr>
+<h5 id="修改全局包路径"><a href="#修改全局包路径" class="headerlink" title="修改全局包路径"></a>修改全局包路径</h5><p>　　博客搭建会用很多其他包,称为全局包, 下载全局包时默认保存在C盘下, 可通过 <code>npm root -g</code> 命令查看当前路径, 有时候想把全局包放到其他目录避免占用c盘空间。<br>　　分别在安装目录(<code>nodejs</code>安装目录)创建两个文件夹, <code>node_cache</code>(<code>node</code>缓存) 和 <code>node_global</code>(全局包存放)</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E5%85%A8%E5%B1%80%E5%8C%85%E5%AD%98%E6%94%BE.png" srcset="/img/loading.gif" lazyload alt="全局包存放.png"></p>
+<p>在命令行 <code>cmd</code> 中执行如下命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">npm config <span class="hljs-built_in">set</span> prefix <span class="hljs-string">&quot;D:\Program Files\nodejs\node_global&quot;</span><br>npm config <span class="hljs-built_in">set</span> cache <span class="hljs-string">&quot;D:\Program Files\nodejs\node_cache&quot;</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h5 id="修改环境变量"><a href="#修改环境变量" class="headerlink" title="修改环境变量"></a>修改环境变量</h5><p>　　上面步骤里更改了 <code>npm</code> 全局模块的存放路径和 <code>cache</code> 路径，但是系统还不知道，所以需要修改环境变量。
+　　</p>
+<ol>
+<li>修改用户变量 <code>path</code>，添加 <code>node_global</code> 的路径</li>
+</ol>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/node_global%E5%8F%98%E9%87%8F%E4%BF%AE%E6%94%B9.png" srcset="/img/loading.gif" lazyload alt="node_global变量修改.png"></p>
+<ol start="2">
+<li>添加系统变量 <code>NODE_PATH</code></li>
+</ol>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/node_path%E5%8F%98%E9%87%8F%E4%BF%AE%E6%94%B9.png" srcset="/img/loading.gif" lazyload alt="node_path变量修改.png"></p>
+<p>到这里, <code>NodeJs</code> 已经安装完成了！！！</p>
+<hr>
+<h3 id="创建仓库"><a href="#创建仓库" class="headerlink" title="创建仓库"></a>创建仓库</h3><p>　　在 <code>GitHub</code> 上创建一个新的代码仓库用于保存我们的网页。创建自己的 <code>GitHub</code> 仓库, 如下:<br>　　<br><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/github_create.png" srcset="/img/loading.gif" lazyload alt="github_create.png"></p>
+<p>填写仓库名，格式必须为: <code>&lt;用户名&gt;.github.io</code>,  仓库选为 <code>public</code>。然后创建。上图报错是因为该仓库我已经创建了。<br>点击<code>creating a new file</code> 创建一个新文件，作为我们网站的主页。</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/github%E4%B8%BB%E9%A1%B5index.png" srcset="/img/loading.gif" lazyload alt="github主页index.png"></p>
+<p>新文件的名字必须为<code>index.html</code>，内容先随便写一个简单的， 如下: 填写之后点击<code>commit new file</code>提交</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-keyword">html</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;en&quot;</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">&quot;UTF-8&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>EtcFly<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>EtcFly的个人主页<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Hello ~<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/bog/index%E6%BC%94%E7%A4%BA.png" srcset="/img/loading.gif" lazyload alt="index演示.png"></p>
+<p>从仓库的<code>Setting</code> 进入 <code>Pages</code> 主页找到地址为:<code>https://etcfly.github.io</code> 访问</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/github_pages.png" srcset="/img/loading.gif" lazyload alt="github_pages.png"></p>
+<p>这里之所以不是<code>https://etcfly.github.io</code> , 是因为我做了域名映射。后面会介绍, 先默认为:<code>https://etcfly.github.io</code> , 至此, 我们已经可以通过这个域名访问我们的网页了。这里创建的网页是非常简陋的，只是为了演示下<code>GitHub Pages</code>的使用方式。</p>
+<hr>
+<h3 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><p>　　采用 <code>Hexo</code> 来创建博客网站, <code>Hexo</code> 是一个基于 <code>NodeJs</code> 的静态博客网站生成器, 使用 <code>Hexo</code> 不需要开发, 只要进行一些必要的配置即可生成一个个性化的博客网站, 非常方便。<a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/">官网</a>
+　　</p>
+<h4 id="安装-Hexo"><a href="#安装-Hexo" class="headerlink" title="安装 Hexo"></a>安装 Hexo</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">npm install -g hexo-cli # 安装hexo-cli<br>hexo -v # 查看版本<br></code></pre></td></tr></table></figure>
+
+<h4 id="创建博客项目"><a href="#创建博客项目" class="headerlink" title="创建博客项目"></a>创建博客项目</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo init blog<br>cd blog<br>npm install<br></code></pre></td></tr></table></figure>
+
+<h4 id="本地启动"><a href="#本地启动" class="headerlink" title="本地启动"></a>本地启动</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo g # 静态构建<br>hexo server # 启动本地服务<br></code></pre></td></tr></table></figure>
+
+<p>此时可以通过浏览器访问: <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000</a>, 默认风格如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog%E9%BB%98%E8%AE%A4%E9%A3%8E%E6%A0%BC.png" srcset="/img/loading.gif" lazyload alt="blog默认风格.png"></p>
+<hr>
+<h3 id="更换主题风格"><a href="#更换主题风格" class="headerlink" title="更换主题风格"></a>更换主题风格</h3><p>　　<code>Hexo</code> 默认的主题不太好看，不过官方提供了数百种主题供用户选择，可以根据个人喜好更换，官网主题点 这里 查看。这里主要讲解<code>Fluid</code>主题。</p>
+<h4 id="主题安装"><a href="#主题安装" class="headerlink" title="主题安装"></a>主题安装</h4><ul>
+<li><p>进入博客根目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">cd blog<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>克隆对应的主题仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git clone https://github.com/iissnan/hexo-theme-next themes/next<br></code></pre></td></tr></table></figure>
+</li>
+<li><p>修改博客目录配置文件</p>
+</li>
+</ul>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E6%A0%B9%E7%9B%AE%E5%BD%95%E6%96%87%E4%BB%B6.png" srcset="/img/loading.gif" lazyload alt="根目录文件.png"></p>
+<p>修改主题如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/fulid%E4%B8%BB%E9%A2%98.png" srcset="/img/loading.gif" lazyload alt="fulid主题.png"></p>
+<p>主题名为对应克隆的主题仓库名。(<strong>注意</strong>: 主题克隆下来最好不要修改仓库名, 避免出现路径问题！！！)</p>
+<ul>
+<li>启动服务<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">hexo</span> g -d <span class="hljs-comment">#生成静态文件并上传git</span><br>hexo s <span class="hljs-comment"># 启动本地服务</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>执行<code>hexo g -d</code> 命令前需要配置<code>_config.yml</code>文件中<code>github</code>仓库相关信息。具体设置请继续往下看。</p>
+<hr>
+<h4 id="Fulid主题"><a href="#Fulid主题" class="headerlink" title="Fulid主题"></a>Fulid主题</h4><p>　　下载最新版本到博客<code>themes</code>主题目录下：可直接下载<code>zip</code>包解压到特定目录, 也可以直接使用<code>git</code>工具克隆仓库,<br>这里使用<code>git</code> 工具克隆, 如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">git clone https://github.com/fluid-dev/hexo-theme-fluid.git<br></code></pre></td></tr></table></figure>
+
+<p>此时<code>themes</code>目录如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/thems_fulid.png" srcset="/img/loading.gif" lazyload alt="thems_fulid.png"></p>
+<p>修改主目录下 <code>_config.yml</code> 配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">theme: fluid  # 指定主题<br>language: zh-CN  # 指定语言，会影响主题显示的语言，按需修改<br></code></pre></td></tr></table></figure>
+
+<h5 id="创建博客页"><a href="#创建博客页" class="headerlink" title="创建博客页"></a>创建博客页</h5><p>首次使用主题的「关于页」需要手动创建:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo new page about<br></code></pre></td></tr></table></figure>
+<p>创建成功后，编辑博客目录下 <code>/source/about/index.md</code>，添加 <code>layout</code> 属性。<br>修改后的文件示例如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs git">---<br>title: about<br>date: 2022-07-15 23:39:44<br>layout: about<br>---<br><br>　　关于自己有的时候真的没什么好写的，作者是一个工作几个年头的普通嵌入式软件开发工程师，目前从事物联网相关<br>开发，工作之余喜欢研究和自学各类有意思的技术，包括网络协议、计算机底层技术、系统调度以及硬件存储等等。<br>　　<br>　　随着技术的日新月异，AI、人工智能、机器学习等被推上了风口，程序员们秉持着 &quot;Change the World By Porgram&quot;, 为<br>世界舔砖加瓦，我一直觉得技术可以改变世界， 但是随着信息化时代的到来，越来越多的公司忙于业务的堆积，技术的积淀越来越少，正是出于这一点，作者打算在该站点分享自己工作和学习过程中的一些心得体会，让有相同技术爱好的人一起交流，促进技术的进步和发展，为开源世界做出星星般的贡献，也期待大家一起加入进来。<br><br>　　作者邮箱(EtcFlywy@126.com), 有问题可以相互交流。<br></code></pre></td></tr></table></figure>
+
+<p>本地启动博客</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo g -d<br>hexo s<br></code></pre></td></tr></table></figure>
+
+<p>浏览器访问 <code>http://localhost:4000</code>，<code>Fluid</code>主题风格页面如下</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E5%88%9D%E5%A7%8B%E5%8D%9A%E5%AE%A2%E6%A0%B7%E5%BC%8F.png" srcset="/img/loading.gif" lazyload alt="初始博客样式.png"></p>
+<h3 id="创建文章"><a href="#创建文章" class="headerlink" title="创建文章"></a>创建文章</h3><p>如下修改 <code>Hexo</code> 博客目录中的<code>_config.yml</code>，打开这个配置是为了在生成文章的时候生成一个同名的资源目录用于存放图片文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">post_asset_folder: true<br></code></pre></td></tr></table></figure>
+
+<p>执行如下命令:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo new post 工具篇之使用阿里云OSS搭建图床服务<br></code></pre></td></tr></table></figure>
+<p>执行完成后在 <code>source\_posts</code> 目录下生成了一个<code>md</code>文件和一个同名的资源目录(用于存放图片)<br>如下: <code>md</code> 博文和目录一一对应。<br><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87.png" srcset="/img/loading.gif" lazyload alt="测试博文.png"></p>
+<p>其中生成的目录用于存放该篇博文相关的资源文件。在资源目录测试文章中放一张图片 <code>test.png</code></p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E6%B5%8B%E8%AF%95%E5%8D%9A%E6%96%87%E8%B7%AF%E5%BE%84.png" srcset="/img/loading.gif" lazyload alt="测试博文路径.png"></p>
+<p>在测试文章<code>.md</code> 中添加内容如下，演示了图片的三种引用方式。</p>
+<ul>
+<li>第一种为官方推荐用法</li>
+<li>第二种为<code>markdown</code> 语法</li>
+<li>第三种和前两种图片存放位置不一样，是将图片放在<code>\source\images</code>目录下。</li>
+</ul>
+<p>这三种写法在 <code>md</code> 文件中图片是无法显示的，但是在页面上能正常显示。图片的引入方式可参考 <a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/asset-folders.html">官方文档</a> 有详细介绍</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs git">---<br>title: 测试文章<br>date: 2021-06-10 16:35:20<br>tags:<br>- 原创<br>categories:<br>- Java<br>---<br><br>这是一篇测试文章<br><br>&#123;% asset_img test.png 图片引用方法一 %&#125;<br><br>![图片引用方法二](test.png)<br><br>![图片引用方法三](/images/test.png)<br></code></pre></td></tr></table></figure>
+
+<h4 id="本地启动-1"><a href="#本地启动-1" class="headerlink" title="本地启动"></a>本地启动</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo g -d<br>hexo s<br></code></pre></td></tr></table></figure>
+
+<p>浏览器访问 <code>http://localhost:4000</code>，页面如下，文章添加成功</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E6%B5%8B%E8%AF%95%E6%96%87%E7%AB%A0%E5%8D%9A%E5%AE%A2%E6%BC%94%E7%A4%BA.png" srcset="/img/loading.gif" lazyload alt="测试文章博客演示.png"></p>
+<hr>
+<h3 id="个性化配置"><a href="#个性化配置" class="headerlink" title="个性化配置"></a>个性化配置</h3><h4 id="修改浏览器tab页名称"><a href="#修改浏览器tab页名称" class="headerlink" title="修改浏览器tab页名称"></a>修改浏览器tab页名称</h4><p>　　修改根目录下 <code>_config.yml</code> 中的 <code>title</code> 字段。</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E5%8D%9A%E5%AE%A2%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="博客主题配置.png"></p>
+<p>效果如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E6%B5%8F%E8%A7%88%E5%99%A8tab%E4%BF%AE%E6%94%B9%E6%95%88%E6%9E%9C%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="浏览器tab修改效果图.png"></p>
+<h4 id="博客标题"><a href="#博客标题" class="headerlink" title="博客标题"></a>博客标题</h4><p>主题目录 <code>themes\hexo-theme-fluid</code> 下 <code>_config.yml</code> 中的 <code>blog_title</code> 字段。</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E5%8D%9A%E5%AE%A2%E6%A0%87%E9%A2%98%E4%BF%AE%E6%94%B9.png" srcset="/img/loading.gif" lazyload alt="博客标题修改.png"></p>
+<h4 id="开启代码粘贴"><a href="#开启代码粘贴" class="headerlink" title="开启代码粘贴"></a>开启代码粘贴</h4><p>主题目录 <code>themes\hexo-theme-fluid</code> 下 <code>_config.yml</code> 中的 <code>copy_btn</code> 字段。</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E4%BB%A3%E7%A0%81%E5%9D%97%E7%B2%98%E8%B4%B4.png" srcset="/img/loading.gif" lazyload alt="代码块粘贴.png"></p>
+<p>效果如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E4%BB%A3%E7%A0%81%E5%9D%97%E7%B2%98%E8%B4%B4%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="代码块粘贴效果.png"></p>
+<h4 id="开启代码高亮"><a href="#开启代码高亮" class="headerlink" title="开启代码高亮"></a>开启代码高亮</h4><p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="高亮配置.png"></p>
+<p>效果如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E9%AB%98%E4%BA%AE%E9%85%8D%E7%BD%AE%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="高亮配置效果.png"></p>
+<h4 id="打印字体配置"><a href="#打印字体配置" class="headerlink" title="打印字体配置"></a>打印字体配置</h4><p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E6%89%93%E5%8D%B0%E5%AD%97%E4%BD%93%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="打印字体配置.png"></p>
+<h4 id="暗黑主题配置"><a href="#暗黑主题配置" class="headerlink" title="暗黑主题配置"></a>暗黑主题配置</h4><p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E6%9A%97%E9%BB%91%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="暗黑主题配置.png"></p>
+<p>效果图:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E6%9A%97%E9%BB%91%E4%B8%BB%E9%A2%98%E6%95%88%E6%9E%9C.png" srcset="/img/loading.gif" lazyload alt="暗黑主题效果.png"></p>
+<hr>
+<h3 id="添加阅读统计"><a href="#添加阅读统计" class="headerlink" title="添加阅读统计"></a>添加阅读统计</h3><p>　　访问统计基于第三方平台<code>leancloud</code>, 需要注册<code>leancloud</code>账号, <code>leancloud</code> 分为国内版本和国际版本, 国内版本需要实名认证, 国际版本不需要, 这里选择国际版本。账号注册完成以后, 需要创建一个应用如下：</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/leancloud%E8%AF%84%E8%AE%BA.png" srcset="/img/loading.gif" lazyload alt="leancloud评论.png"></p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/leancloud/appid.png" srcset="/img/loading.gif" lazyload alt="appid.png"></p>
+<p>打开主题目录 <code>themes\hexo-theme-fluid</code> 下的 <code>_config.yml</code> 文件，修改如下配置，添加到如下：<br>配置统计开关</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E7%BD%91%E7%AB%99%E8%AE%BF%E9%97%AE%E7%BB%9F%E8%AE%A1%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="网站访问统计配置.png"></p>
+<p>配置 <code>leancloud</code> 的 <code>app_id</code> 和 <code>app_key</code></p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E7%BD%91%E7%AB%99%E8%AE%BF%E5%AE%A2%E7%BB%9F%E8%AE%A1%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="网站访客统计配置.png"></p>
+<p>打开计数功能，统计来源改为 <code>leancloud</code></p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E8%AE%BE%E7%BD%AE%E7%BB%9F%E8%AE%A1%E6%95%B0%E6%8D%AE%E6%9D%A5%E6%BA%90.png" srcset="/img/loading.gif" lazyload alt="设置统计数据来源.png"></p>
+<p>页面效果:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E9%A1%B5%E9%9D%A2%E9%98%85%E8%AF%BB%E7%BB%9F%E8%AE%A1.png" srcset="/img/loading.gif" lazyload alt="页面阅读统计.png"></p>
+<p>页面底部展示网站的 <code>PV</code>、<code>UV</code> 统计数</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E5%BA%95%E9%83%A8pv_uv%E7%BB%9F%E8%AE%A1%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="底部pv_uv统计配置.png"></p>
+<p>效果图:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E5%BA%95%E9%83%A8pv_uv%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88.png" srcset="/img/loading.gif" lazyload alt="底部pv_uv效果预览.png"></p>
+<hr>
+<h4 id="导航栏添加"><a href="#导航栏添加" class="headerlink" title="导航栏添加"></a>导航栏添加</h4><p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%9B%BE%E6%A0%87%E6%B7%BB%E5%8A%A0.png" srcset="/img/loading.gif" lazyload alt="导航栏图标添加.png"></p>
+<p>这里作者添加了6个导航标签, 读者可自己裁剪。</p>
+<hr>
+<h4 id="底部眉脚设置"><a href="#底部眉脚设置" class="headerlink" title="底部眉脚设置"></a>底部眉脚设置</h4><p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E5%BA%95%E9%83%A8%E7%9C%89%E8%84%9A%E8%AE%BE%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="底部眉脚设置.png"></p>
+<p>效果如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E7%9C%89%E8%84%9A%E8%AE%BE%E7%BD%AE%E6%95%88%E6%9E%9C%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="眉脚设置效果图.png"></p>
+<hr>
+<h4 id="主页背景设置"><a href="#主页背景设置" class="headerlink" title="主页背景设置"></a>主页背景设置</h4><p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E4%B8%BB%E9%A1%B5%E8%83%8C%E6%99%AF%E8%AE%BE%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="主页背景设置.png"></p>
+<h4 id="统计字数和阅读时长"><a href="#统计字数和阅读时长" class="headerlink" title="统计字数和阅读时长"></a>统计字数和阅读时长</h4><p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E7%BB%9F%E8%AE%A1%E5%AD%97%E6%95%B0%E5%92%8C%E9%98%85%E8%AF%BB%E6%97%B6%E9%95%BF.png" srcset="/img/loading.gif" lazyload alt="统计字数和阅读时长.png"></p>
+<p>效果如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E7%BB%9F%E8%AE%A1%E5%AD%97%E6%95%B0%E5%92%8C%E9%98%85%E8%AF%BB%E6%97%B6%E9%95%BF%E9%A2%84%E8%A7%88.png" srcset="/img/loading.gif" lazyload alt="统计字数和阅读时长预览.png"></p>
+<h4 id="设置运行计时"><a href="#设置运行计时" class="headerlink" title="设置运行计时"></a>设置运行计时</h4><p>在主题目录下: <code>source</code> - <code>js</code> - <code>pluin.js</code> 文件</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E8%BF%90%E8%A1%8C%E8%AE%A1%E6%97%B6.png" srcset="/img/loading.gif" lazyload alt="运行计时.png"></p>
+<p>添加如下代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs js">!(<span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-comment">/** 计时起始时间，自行修改 **/</span><br>  <span class="hljs-keyword">var</span> start = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>(<span class="hljs-string">&quot;2022/02/18 00:00:00&quot;</span>);<br><br>  <span class="hljs-keyword">function</span> <span class="hljs-title function_">update</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">var</span> now = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Date</span>();<br>    now.<span class="hljs-title function_">setTime</span>(now.<span class="hljs-title function_">getTime</span>()+<span class="hljs-number">250</span>);<br>    days = (now - start) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> / <span class="hljs-number">24</span>;<br>    dnum = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(days);<br>    hours = (now - start) / <span class="hljs-number">1000</span> / <span class="hljs-number">60</span> / <span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * dnum);<br>    hnum = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(hours);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title class_">String</span>(hnum).<span class="hljs-property">length</span> === <span class="hljs-number">1</span> )&#123;<br>      hnum = <span class="hljs-string">&quot;0&quot;</span> + hnum;<br>    &#125;<br>    minutes = (now - start) / <span class="hljs-number">1000</span> /<span class="hljs-number">60</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * hnum);<br>    mnum = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">floor</span>(minutes);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title class_">String</span>(mnum).<span class="hljs-property">length</span> === <span class="hljs-number">1</span> )&#123;<br>      mnum = <span class="hljs-string">&quot;0&quot;</span> + mnum;<br>    &#125;<br>    seconds = (now - start) / <span class="hljs-number">1000</span> - (<span class="hljs-number">24</span> * <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * dnum) - (<span class="hljs-number">60</span> * <span class="hljs-number">60</span> * hnum) - (<span class="hljs-number">60</span> * mnum);<br>    snum = <span class="hljs-title class_">Math</span>.<span class="hljs-title function_">round</span>(seconds);<br>    <span class="hljs-keyword">if</span>(<span class="hljs-title class_">String</span>(snum).<span class="hljs-property">length</span> === <span class="hljs-number">1</span> )&#123;<br>      snum = <span class="hljs-string">&quot;0&quot;</span> + snum;<br>    &#125;<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;timeDate&quot;</span>).<span class="hljs-property">innerHTML</span> = <span class="hljs-string">&quot;牵着小可爱&amp;nbsp&quot;</span>+dnum+<span class="hljs-string">&quot;&amp;nbsp天&quot;</span>;<br>    <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(<span class="hljs-string">&quot;times&quot;</span>).<span class="hljs-property">innerHTML</span> = hnum + <span class="hljs-string">&quot;&amp;nbsp小时&amp;nbsp&quot;</span> + mnum + <span class="hljs-string">&quot;&amp;nbsp分&amp;nbsp&quot;</span> + snum + <span class="hljs-string">&quot;&amp;nbsp秒&quot;</span>;<br>  &#125;<br><br>  <span class="hljs-title function_">update</span>();<br>  <span class="hljs-built_in">setInterval</span>(update, <span class="hljs-number">1000</span>);<br>&#125;)();<br></code></pre></td></tr></table></figure>
+
+<p>效果如下：</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E8%AE%A1%E6%97%B6%E6%95%88%E6%9E%9C%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="计时效果图.png"></p>
+<hr>
+<h3 id="添加评论功能"><a href="#添加评论功能" class="headerlink" title="添加评论功能"></a>添加评论功能</h3><p>目前<code>fulid</code>主题的评论功能的代码已经写好了，需要读者开启，修改相关配置。位置在主题目录<code>themes\fulid</code> 下的<code>_config.yml</code>文件, 修改如下配置:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E5%BC%80%E5%90%AF%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F.png" srcset="/img/loading.gif" lazyload alt="开启评论系统.png"></p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/valine%E9%85%8D%E7%BD%AE.png" srcset="/img/loading.gif" lazyload alt="valine配置.png"></p>
+<p>效果图如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/valine%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E9%A2%84%E8%A7%88.png" srcset="/img/loading.gif" lazyload alt="valine评论系统预览.png"></p>
+<p>部署后可正常评论。</p>
+<h4 id="美化评论框"><a href="#美化评论框" class="headerlink" title="美化评论框"></a>美化评论框</h4><p>　　评论区美化需要加入一些自己代码, 也比较简答, 需要自己提前准备好图片素材, 不过介意是纯白背景, 否则不好看, 修改文件位于 <code>layout\_partials\comments</code>目录下<code>valine.ejs</code>文件, 添加如下代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs git">&lt;style&gt;<br>.v[data-class=v] .veditor &#123;<br>    background-image: url(https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/blog/welcome1.png);<br>    background-size: contain;<br>    background-repeat: no-repeat;<br>    background-position: right;<br>&#125;<br>&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+<p>此时评论系统效果如下：</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/valine%E8%AF%84%E8%AE%BA%E7%B3%BB%E7%BB%9F%E7%BE%8E%E5%8C%96%E6%95%88%E6%9E%9C%E5%9B%BE.png" srcset="/img/loading.gif" lazyload alt="valine评论系统美化效果图.png"></p>
+<p>如果<code>valine</code> 出现无法评论的问题, 可能是国际版版本的问题, 需要修改如下：<br>首先从 <code>leanclouud</code> 国际版账号下复制如下<code>URL</code>：</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E8%AF%84%E8%AE%BA%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%98.png" srcset="/img/loading.gif" lazyload alt="评论失效问题.png"></p>
+<p>修改主题下<code>_config.yml</code> 文件:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/valine%E8%AF%84%E8%AE%BA%E5%8C%BA%E5%A4%B1%E6%95%88%E9%97%AE%E9%A2%982.png" srcset="/img/loading.gif" lazyload alt="valine评论区失效问题2.png"></p>
+<p>重新评论即可。</p>
+<h4 id="评论系统邮件通知"><a href="#评论系统邮件通知" class="headerlink" title="评论系统邮件通知"></a>评论系统邮件通知</h4><p>　　邮件系统采用第三方插件<code>leancloud</code>, 借于其部署相关云函数。点击 <strong>云引擎</strong> - <strong>WEB</strong> - <strong>部署项目</strong> - <strong>-o-git部署</strong>, 点击 <strong>配置git</strong>, 输入如下:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">https://github.com/DesertsP/Valine-Admin.git<br></code></pre></td></tr></table></figure>
+
+<p>部署前还需要设置相关的一些自定义变量, 如下图:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E9%82%AE%E7%AE%B1%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8F%98%E9%87%8F.png" srcset="/img/loading.gif" lazyload alt="邮箱自定义变量.png"></p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E9%82%AE%E4%BB%B6%E9%83%A8%E7%BD%B2.png" srcset="/img/loading.gif" lazyload alt="邮件部署.png"></p>
+<p>再次进入到部署，如下图点击 部署， 略加等待，即可部署成功。</p>
+<p>这里要说一下, <code>SMTP</code> 邮件授权码需要自己去邮箱设置中开启<code>SMTP</code> 服务, 如下:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E9%82%AE%E4%BB%B6smtp%E6%8E%88%E6%9D%83%E7%A0%81.png" srcset="/img/loading.gif" lazyload alt="邮件smtp授权码.png"></p>
+<p>到此系统已经部署成功, 可以成功接收邮件, 但是存在一个问题, <code>leancloud</code> 系统存在强制休眠, 该休眠会导致有很大概率用户在评论时实例是休眠状态，从而导致邮件提醒的不可触发，即以上整个邮件系统并不是 <code>100%</code> 可用，迫切需要一种比较好的休眠策略。</p>
+<p><strong>解决措施:</strong></p>
+<ul>
+<li>使用定时器激活</li>
+<li>开一个自动唤醒定时器</li>
+</ul>
+<p>如下图:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/%E5%8D%9A%E5%AE%A2%E9%82%AE%E4%BB%B6%E5%AE%9A%E6%97%B6%E5%99%A8%E6%8E%A5%E5%8F%97.png" srcset="/img/loading.gif" lazyload alt="博客邮件定时器接受.png"></p>
+<p>到此邮件功能完成。</p>
+<hr>
+<h3 id="发布博客"><a href="#发布博客" class="headerlink" title="发布博客"></a>发布博客</h3><ul>
+<li>方法一：<br>安装<code>hexo-deployer-git</code><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">npm install hexo-deployer-git --save<br></code></pre></td></tr></table></figure></li>
+</ul>
+<p>修改根目录下的 <code>_config.yml</code>，配置 <code>GitHub</code> 相关信息</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs git">deploy:<br>  type: git<br>  repo: https://github.com/etcfly/etcfly.github.io.git<br>  branch: main<br>  token: ghp_3KakcaPHerunNRyMerofcFd9pblU282FSbsY<br></code></pre></td></tr></table></figure>
+
+<p>其中 <code>token</code> 为 <code>GitHub</code> 的 <code>Personal access tokens</code>，获取方式如下图</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/github_token.png" srcset="/img/loading.gif" lazyload alt="github_token.png"></p>
+<p>部署到<code>GitHub</code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">hexo g -d<br></code></pre></td></tr></table></figure>
+
+<p>浏览器访问 <code>https://etfly.github.io/</code>，部署成功</p>
+<ul>
+<li>方式二<br>直接将 <code>public</code> 目录中的文件和目录推送至 <code>GitHub</code> 仓库和分支中。</li>
+</ul>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/github%E4%BB%93%E5%BA%93%E6%8E%A8%E9%80%81.png" srcset="/img/loading.gif" lazyload alt="github仓库推送.png"></p>
+<hr>
+<h3 id="修改域名"><a href="#修改域名" class="headerlink" title="修改域名"></a>修改域名</h3><p>在如下目录:</p>
+<p><img src="https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/hexo/blog/CNAME.png" srcset="/img/loading.gif" lazyload alt="CNAME.png"></p>
+<p>创建一个<code>CNAME</code>文件, 内容是需要设定的域名:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs git">love-chai.top<br></code></pre></td></tr></table></figure>
+<p>我们这里设置为<code>love-chai.top</code>, 注意不需要加<code>https</code>。然后去对应的云服务商设定对应的<code>CNAME</code>解析即可。</p>
+<hr>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/yaorongke/article/details/119089190">GitHub Pages + Hexo搭建个人博客网站，史上最全教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43868299/article/details/108894568">Butterfly主题Valine评论美化</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/tzy1997/p/15664444.html">关于Hexo Valine 国际版 LeandCloud 评论失效的问题</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33154343/article/details/114580553">Hexo 部署 valine 评论的 leancloud 设置</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/aeneag/article/details/121330002">Valine评论+配置开启邮箱提醒</a></li>
+</ul>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="category-chain-item">博客搭建</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/%E5%8E%9F%E5%88%9B/">#原创</a>
+      
+        <a href="/tags/%E5%B7%A5%E5%85%B7/">#工具</a>
+      
+        <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">#博客搭建</a>
+      
+        <a href="/tags/Hexo/">#Hexo</a>
+      
+        <a href="/tags/GitHub/">#GitHub</a>
+      
+        <a href="/tags/Leancloud/">#Leancloud</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>使用Hexo+fulid+github搭建自己的博客网站</div>
+      <div>http://example.com/2022/07/19/使用Hexo-fulid-github搭建自己的博客网站/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>EtcFly</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年7月19日</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>更新于</div>
+          <div>2022年7月19日</div>
+        </div>
+      
+      <div class="license-meta-item">
+        <div>许可协议</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/07/17/linux%E5%AD%A6%E4%B9%A0%E4%B9%8B%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7/" title="linux学习之调试工具">
+                        <span class="hidden-mobile">linux学习之调试工具</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.4.17/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"3AEufnWAJdp8cFODp1DXvrQU-MdYXbMMI","appKey":"mGJiL6xVvYv21ygqfynJoCyO","path":"window.location.pathname","placeholder":"欢迎各位留言讨论!","avatar":"wavatar","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":true,"serverURLs":"https://3aeufnwa.api.lncldglobal.com","count":true,"master":"d3ebbea1ed788cbceffb15b783740c2f","tagMeta":["博主","小伙伴","访客"],"friends":["4300ec68e82de7bb12cff79d3893d1c5"],"emojiCDN":"https://i0.hdslb.com/bfs/emote/","emojiMaps":{"2020":"dc709fac0d361370bcf0d36d32adb97df7c95824.png","2021":"14d8996128d46dabd3a2ed6c172c8af918d7a5d2.png","微笑":"685612eadc33f6bc233776c6241813385844f182.png","OK":"4683fd9ffc925fa6423110979d7dcac5eda297f4.png","星星眼":"63c9d1a31c0da745b61cdb35e0ecb28635675db2.png","doge":"bba7c12aa51fed0199c241465560dfc2714c593e.png","妙啊":"b4cb77159d58614a9b787b91b1cd22a81f383535.png","吃瓜":"4191ce3c44c2b3df8fd97c33f85d3ab15f4f3c84.png","辣眼睛":"35d62c496d1e4ea9e091243fa812866f5fecc101.png","滑稽":"d15121545a99ac46774f1f4465b895fe2d1411c3.png","笑哭":"c3043ba94babf824dea03ce500d0e73763bf4f40.png","呲牙":"b5a5898491944a4268360f2e7a84623149672eb6.png","打call":"431432c43da3ee5aab5b0e4f8931953e649e9975.png","歪嘴":"4384050fbab0586259acdd170b510fe262f08a17.png","嫌弃":"de4c0783aaa60ec03de0a2b90858927bfad7154b.png","喜欢":"8a10a4d73a89f665feff3d46ca56e83dc68f9eb8.png","哦呼":"362bded07ea5434886271d23fa25f5d85d8af06c.png","酸了":"92b1c8cbceea3ae0e8e32253ea414783e8ba7806.png","大哭":"2caafee2e5db4db72104650d87810cc2c123fc86.png","害羞":"9d2ec4e1fbd6cb1b4d12d2bbbdd124ccb83ddfda.png","疑惑":"b7840db4b1f9f4726b7cb23c0972720c1698d661.png","调皮":"8290b7308325e3179d2154327c85640af1528617.png","喜极而泣":"485a7e0c01c2d70707daae53bee4a9e2e31ef1ed.png","奸笑":"bb84906573472f0a84cebad1e9000eb6164a6f5a.png","笑":"81edf17314cea3b48674312b4364df44d5c01f17.png","偷笑":"6c49d226e76c42cd8002abc47b3112bc5a92f66a.png","惊讶":"f8e9a59cad52ae1a19622805696a35f0a0d853f3.png","捂脸":"6921bb43f0c634870b92f4a8ad41dada94a5296d.png","阴险":"ba8d5f8e7d136d59aab52c40fd3b8a43419eb03c.png","囧":"12e41d357a9807cc80ef1e1ed258127fcc791424.png","呆":"33ad6000d9f9f168a0976bc60937786f239e5d8c.png","抠鼻":"cb89184c97e3f6d50acfd7961c313ce50360d70f.png","大笑":"ca94ad1c7e6dac895eb5b33b7836b634c614d1c0.png","惊喜":"0afecaf3a3499479af946f29749e1a6c285b6f65.png","无语":"44667b7d9349957e903b1b62cb91fb9b13720f04.png","鼓掌":"895d1fc616b4b6c830cf96012880818c0e1de00d.png","点赞":"1a67265993913f4c35d15a6028a30724e83e7d35.png","尴尬":"cb321684ed5ce6eacdc2699092ab8fe7679e4fda.png","灵魂出窍":"43d3db7d97343c01b47e22cfabeca84b4251f35a.png","委屈":"d2f26cbdd6c96960320af03f5514c5b524990840.png","傲娇":"010540d0f61220a0db4922e4a679a1d8eca94f4e.png","冷":"cb0ebbd0668640f07ebfc0e03f7a18a8cd00b4ed.png","疼":"905fd9a99ec316e353b9bd4ecd49a5f0a301eabf.png","吓":"9c10c5ebc7bef27ec641b8a1877674e0c65fea5d.png","生病":"0f25ce04ae1d7baf98650986454c634f6612cb76.png","吐":"06946bfe71ac48a6078a0b662181bb5cad09decc.png","捂眼":"c5c6d6982e1e53e478daae554b239f2b227b172b.png","嘘声":"e64af664d20716e090f10411496998095f62f844.png","思考":"cfa9b7e89e4bfe04bbcd34ccb1b0df37f4fa905c.png","再见":"fc510306bae26c9aec7e287cdf201ded27b065b9.png","翻白眼":"eba54707c7168925b18f6f8b1f48d532fe08c2b1.png","哈欠":"888d877729cbec444ddbd1cf4c9af155a7a06086.png","奋斗":"bb2060c15dba7d3fd731c35079d1617f1afe3376.png","墨镜":"3a03aebfc06339d86a68c2d893303b46f4b85771.png","难过":"a651db36701610aa70a781fa98c07c9789b11543.png","撇嘴":"531863568e5668c5ac181d395508a0eeb1f0cda4.png","抓狂":"4c87afff88c22439c45b79e9d2035d21d5622eba.png","生气":"3195714219c4b582a4fb02033dd1519913d0246d.png","口罩":"3ad2f66b151496d2a5fb0a8ea75f32265d778dd3.png","鸡腿":"c7860392815d345fa69c4f00ef18d67dccfbd574.png","月饼":"89b19c5730e08d6f12fadf6996de5bc2e52f81fe.png","雪花":"a41813c4edf8782047e172c884ebd4507ce5e449.png","视频卫星":"dce6fc7d6dfeafff01241924db60f8251cca5307.png","11周年":"d3b2d5dc028c75ae4df379f4c3afbe186d0f6f9b.png","干杯":"8da12d5f55a2c7e9778dcc05b40571979fe208e6.png","爱心":"ed04066ea7124106d17ffcaf75600700e5442f5c.png","锦鲤":"643d6c19c8164ffd89e3e9cdf093cf5d773d979c.png","胜利":"b49fa9f4b1e7c3477918153b82c60b114d87347c.png","加油":"c7aaeacb21e107292d3bb053e5abde4a4459ed30.png","抱拳":"89516218158dbea18ab78e8873060bf95d33bbbe.png","响指":"1b5c53cf14336903e1d2ae3527ca380a1256a077.png","保佑":"fafe8d3de0dc139ebe995491d2dac458a865fb30.png","支持":"3c210366a5585706c09d4c686a9d942b39feeb50.png","拥抱":"41780a4254750cdaaccb20735730a36044e98ef3.png","跪了":"f2b3aee7e521de7799d4e3aa379b01be032698ac.png","怪我咯":"07cc6077f7f7d75b8d2c722dd9d9828a9fb9e46d.png","黑洞":"e90ec4c799010f25391179118ccd9f66b3b279ba.png","老鼠":"8e6fb491eb1bb0d5862e7ec8ccf9a3da12b6c155.png","福到了":"5de5373d354c373cf1617b6b836f3a8d53c5a655.png","W-哈哈":"83d527303c8f62f494e6971c48836487e7d87b1b.png","凛冬-生气":"d90bd2fbc13a3cb8d313f6d675f20caf109f60a7.png","霜叶-疑问":"ada3aea8594e724511c1daad15fb3b23900d8e24.png","煌-震撼":"7bb39ac289bc97fe52af047020a9bf324ecdebe1.png","哭泣":"a61abafb8c39defc323b045f30072198007b1c89.png","哈哈":"e6449b0bae13b8c97cc65976ff8cdc2c16be0015.png","狗子":"6a997106af5bf490f22c80a7acf3be813ee755fc.png","羞羞":"f4f9171e4d8c3f30827a8b96ea1ce1beb825ad50.png","亲亲":"2f72bae7b834d499f259c833f7011d5ed8748fd1.png","耍帅":"d7a38b08d1f1cc35b19c35041f29ffcc48808e87.png","气愤":"069b029d17a086ab475fd331697a649e234850bb.png","高兴":"416570a8aca7be12fb2c36e4b846906653f6d294.png","doge-圣诞":"1afb5eb96846e0876071eeecb47be95dbf55f08d.png","妙啊-圣诞":"1cdb10e4b6c6743a1ec96f1579e3ef3045a8f225.png","呲牙-圣诞":"ae4395c1e29e9a2db0c9ccc4c0db05c414816e68.png","OK-圣诞":"75d1c99cce001d6d103a8fd406616be9f51621ab.png","星星眼-圣诞":"195641c30c55f34f9cd82c5e5c32d66a425c7723.png","吃瓜-圣诞":"aa6a3022e47b441c7f84d02cacc063a728a561e0.png","滑稽-圣诞":"5874276ea716d0e9797f827dcfca4332acf8f0de.png","辣眼睛-圣诞":"8080adfe5acdfd0b6b09bd91db24ea7334ac7b44.png","打call-圣诞":"2b04dd2d0e55d978ee485e1f7f3c5e355493ab78.png","捂脸-圣诞":"9af59557383770c398daac81583e6c4d27d83da7.png","十周年":"1eacd3f7816e70aff9c1b1a2e9605240466f599b.png","加油武汉":"eb966aaa5b690d3f9308a9f936f5b5a72a7f956b.png","粽子":"177999fb7d70d891fbf63b161f26b272e08dc1de.png","画风突变":"ba4de7a3f97644038b15195bdc9f82a8fd118e77.png","福":"802429a301ac5b35a0480d9526a070ce67cd8097.png","热词系列-知识增加":"142409b595982b8210b2958f3d340f3b47942645.png","热词系列-知识增加-圣诞":"d0cc76a75405413771f0a55453af3a12062cb64c.png","热词系列-爷青回":"a26189ff1e681bddef7f6533f9aabe7604731a3e.png","热词系列-好家伙":"63ec80dea3066bd9f449ba999ba531fa61f7b4eb.png","热词系列-芜湖起飞":"78d04c6ce78a613c90d510cd45fe7e25c57ba00b.png","热词系列-梦幻联动":"4809416be5ca787c2ec3e897e4fd022a58da6e0e.png","热词系列-泪目":"bba3703ab90b7d16fe9dbcb85ed949db687f8331.png","热词系列-保护":"55f8f6445ca7c3170cdfc5b16036abf639ce9b57.png","热词系列-害怕":"d77e2de26da143249f0c0ad7a608c27152c985bf.png","热词系列-爱了爱了":"2a165b555ba20391316366c664ed7891883dc5aa.png","热词系列-吹爆":"b528220f9c37256ed6a37f05bf118e44b08b81e5.png","热词系列-三连":"21f15fe11b7a84d2f2121c16dec50a4e4556f865.png","热词系列-可以":"e08543c71202b36c590094417fcfbb80c3506cd8.png","热词系列-希望没事":"6c0d2e6c486d1ba5afd6204a96e102652464a01d.png","热词系列-打卡":"a9cf77c78e1b9b40aa3ed4862402fba008ee2f51.png","热词系列-skr":"bd285ff94db16ad52557c3effe930d64663e8375.png","热词系列-battle":"f2f81c8e47db6252becd633a5d1ee14e15df2ea8.png","热词系列-DNA":"f6eb74f8230588f61a298af89061a7d75c5762e5.png","热词系列-妙啊":"0e98299d7decf5eaffad854977946075c3e91cb8.png","热词系列-这次一定":"a01ca28923daa7cc896c42f27deb4914e20dd572.png","热词系列-AWSL":"c37f88cf799f9badf9d84b7671dc3dd98c0fc0c2.png","热词系列-递话筒":"98e6950e39fbb4dd1c576042063ca632074070ba.png","热词系列-你细品":"535e00658e7e47966f154d3a167fa2365ebc4321.png","热词系列-咕咕":"d8065c2e7ce48c929317a94553499a46fecc262a.png","热词系列-标准结局":"3de98174b510cf7dc5fd1bd08c5d881065e79137.png","热词系列-危":"5cc6c3357c4df544dd8de9d5c5c0cec97c7c9a56.png","热词系列-张三":"255a938f39cea625032b6650036b31aa26c50a3c.png","热词系列-害":"cbe798a194612958537c5282fcca7c3bcd2aa15c.png","热词系列-我裂开了":"29bd57ec4e8952880fea6c9e47aee924e91f10c4.png","热词系列-有内味了":"7ca61680a905b5b6e2e335c630e725b648b03b4d.png","热词系列-猛男必看":"c97064450528a0e45c7e7c365a15fbb13fd61d8c.png","热词系列-奥力给":"c9b8683827ec6c00fea5327c9bec14f581cef2aa.png","热词系列-问号":"c1d1e76c12180adc8558f47006fe0e7ded4154bb.png","热词系列-我哭了":"9e0b3877d649aaf6538fbdd3f937e240a9d808e4.png","热词系列-高产":"9db817cba4a7f4a42398f3b2ec7c0a8e0c247c42.png","热词系列-我酸了":"a8cbf3f6b8cd9377eeb15b9172f3cd683b2e4650.png","热词系列-真香":"e68497c775feaac1c3b1a6cd63a50cfb11b767c4.png","热词系列-我全都要":"d424d1ad8d14c1c9b8367842bc68c658b9229bc1.png","热词系列-神仙UP":"a49e0d0db1e7d35a0f7411be13208951ab448f03.png","热词系列-你币有了":"84820c2b147a8ca02f3c4006b63f76c6313cbfa0.png","热词系列-不愧是你":"9ff2e356797c57ee3b1675ade0883d2d2247be9b.png","热词系列-锤":"35668cc12ae25b9545420e4a85bf21a0bfc03e5d.png","热词系列-秀":"50782fbf5d9b7f48f9467b5c53932981e321eedc.png","热词系列-爷关更":"faad40c56447f1f8abcb4045c17ce159d113d1fd.png","热词系列-有生之年":"f41fdafe2d0fbb8e8bc1598d2cf37e355560103a.png","热词系列-镇站之宝":"24e7a6a6e6383c987215fb905e3ee070aca259b5.png","热词系列-我太南了":"a523f3e4c63e4db1232365765d0ec452f83be97e.png","热词系列-完结撒花":"ea9db62ff5bca8e069cd70c4233353a802835422.png","热词系列-大师球":"f30089248dd137c568edabcb07cf67e0f6e98cf3.png","热词系列-知识盲区":"ccc94600b321a28116081e49ecedaa4ee8728312.png","热词系列-“狼火”":"33ccd3617bfa89e9d1498b13b7542b63f163e5de.png","热词系列-你可真星":"54c8ddff400abfe388060cabfbb579280fdea1be.png","双生视界-星星眼":"8660b2eeb15d9cf6a7ecb4fdad66b15366623a33.png","双生视界-二胡爱豆":"9dcf4bc97143b64574cbb1865c74850eda5f554a.png","双生视界-惊讶":"67dd0a4443eaf2ec43d90bdcfd3011d9ed84dbf8.png","双生视界-问号":"018e9f627a5f0ae5fd8a54cd6c0b6f368b38b59c.png","双生视界-为友谊干杯":"587dc47855c47f5147689d7fd2cabd65ed878243.png","双生视界-无所谓":"cad0261d1b8afee6b26c6044bb0f89a16c313554.png","双生视界-傲娇脸":"d33421f2b2d8e07359c2468579155dc2609b326a.png","双生视界-叹气":"d471550062990d2aab313756b314ed1dcd0eef01.png","双生视界-暗中观察":"f47dcd2d6c5902ff050a59b60b705222c3fbc041.png","双生视界-推眼镜":"e602c2d6248b394fdfed808f8d82ef59e907ab38.png","双生视界-祈祷":"9159c23e7d3f7f52852b4dd8b3d8090f3c8c6365.png","双生视界-加油":"0f9bc49ee7bea906014dabab5925b9e94d5f4e04.png","双生视界-摸头":"055949523a71fd36902e164840baa99d56bfa7be.png","双生视界-比心":"9c9cc7f0be191832c8edfc6f9f72f66ea016f26b.png","碧蓝航线2020-在干嘛":"9c06bdeb30020a371ddc7e270a28c7e9258d015b.png","碧蓝航线2020-肚子饿":"bff006e519a559efb9de40650fc9380896d93cd7.png","碧蓝航线2020-心动":"52292b36f79846eab78fcf2d0c12968a3f275974.png","碧蓝航线2020-hentai":"35412053f8ff647dbe212da23732d40d9d199fe9.png","碧蓝航线2020-？！":"186d60f1c56ede58e90a80dab547707bad76d890.png","碧蓝航线2020-睡着了":"53a8e58439b1167e49bb12321ceba5ce1bc6ee11.png","碧蓝航线2020-对不起":"1155bccc622cff541a464ced243032162c24bcc9.png","碧蓝航线2020-加油":"b599816346acb31167fe2c9c8d8f73f54fdf368d.png","碧蓝航线2020-委屈":"01fab29ac4abffe30f08fca4b7649cf00b1c3152.png","碧蓝航线2020-晕":"a9e56cb4e2b0f3a8350304877d7c1142f65fe70c.png","明日方舟-喷喷":"10e7f252d5106d46cb47c666e4c2e693bfa66959.png","明日方舟-溜了":"a103c00f0f4be3bd674723802d712980196817f4.png","明日方舟-嘿嘿":"14dd3de8f576204ee6d9c4948f8fa360ae82041c.png","明日方舟-怎么回事":"6cb24d88e87d34584350559fb92da9104ad14d77.png","明日方舟-吃瓜":"b0c87e42fdb27b6683a3ae873a89383e789a38f3.png","明日方舟-不可以哦":"1a4e9cfe14ca3d5e35e25671f1dd3451d0f1e562.png","明日方舟-喧嚣的风":"c4d1b6fb903d2e6d74c0ab0a31029fe184c95c14.png","明日方舟-哭了":"553937828ebbacd15edb7f4c8b0d6ff94b2aafd0.png","明日方舟-不好意思":"9a411c1930b4679fd5ef5419ce5268c4271efe5c.png","明日方舟-一下就好":"7ec17d337981a9a01062160812324289801ed78c.png","萌妻食神-awsl":"98c3159d9f5a9b430673fd2c890a8702446e39e3.png","萌妻食神-喝奶茶":"0cd3fb06310a895966d9b995d6da607b1b273d42.png","萌妻食神-加鸡腿":"dea9dc10bc01a53b38d014812b2dff0c4803247e.png","萌妻食神-撒娇":"9ba56aa6b47883baa0c13e4dd651dab27ef714fb.png","萌妻食神-秀":"bcf0242ff713557a7fedd4eccaa216803ea8fcbc.png","萌妻食神-危":"da7f4a8543a58dea684e654b8322a489fbc61544.png","萌妻食神-中毒":"46672e56ad0cca4eb7f3d1eda8206613ae47f100.png","萌妻食神-主角buff":"c1e8a70bc76d928a9e78d59208774aaec930b7ef.png","萌妻食神-馋":"d1979c5ba302541a047bc13463b3dc167919a5fa.png","萌妻食神-饱了":"d0d8725c1c0a429a193ed1b5995f3a36cf78db14.png","百鬼幼儿园-加油":"bfa0cf8377987c81edb0e55c9d0664c863f509fd.png","百鬼幼儿园-惊讶":"9252fdff361ed5cce4ca6607f49f5b4d496bd224.png","百鬼幼儿园-尴尬":"ae923d9550c363b5d71cea40dc374d2bfb375d52.png","百鬼幼儿园-噗嗤":"fe0773c465d917b7e823641e21194ae6fc9937ff.png","百鬼幼儿园-气抖冷":"392142cb6e0c89e159b4c27cb9419a0650c54c04.png","百鬼幼儿园-点赞":"b51cc481fee291491eded5e25378ca1e2edcf416.png","百鬼幼儿园-小问号":"472c2454945fbf1288055f7028fe34bc463264c2.png","百鬼幼儿园-晕了":"6a78a11767714a9dab0a59c2ede37088d76e2ab4.png","百鬼幼儿园-哭哭":"e6d6bb9e209ca0215b1368f6a08803bde49419f1.png","百鬼幼儿园-生气":"983c8bb5cc65a673c83a5afab435299c0400e8a1.png","BW2020-欢迎":"ba2b81cdf3118c703c1ad4ef7e424087a33618cf.png","BW2020-请":"d775ba5c6f6f58ee272c869a58dd7dae1d1e9355.png","BW2020-你币没了":"b89e1742ac98ecdc37dbe08b3f01459ba83ca116.png","BW2020-你号没了":"46031209d17352d86821d5eab36e8a82c6e87e1c.png","BW2020-棒棒哦":"9c88ffb02d2e2904ca682871584f3b3a696c2348.png","BW2020-我全都要":"36408633cf896e73451b59ea1c87382aedfa1bd6.png","BW2020-贫穷":"ea42044e11e949ff221c7746db766e75378ac9eb.png","BW2020-期待":"9ce557b7630660ea80b313f0acfcae8b12c12114.png","BW2020-我太难了":"efb76d2fa70ee51382f90f239fe65a98cc13c5b5.png","BW2020-震惊":"8a1eef67bd3ede9bc29fbd76e9a8df091403d108.png","洛天依-goodjob":"a781b75de326488ba00c937f0d89b4eaba6a0ca0.png","洛天依-啊这":"dadc58388430910b08339280054f3a776e6a9968.png","BML云live-打call":"04b4fb889ad1c462eafda2828cae80fe532f14eb.png","天宝伏妖录-不满":"b056b1793891e5a3b34a46eed38ab21effa90ef6.png","天宝伏妖录-疑惑":"657818b36a8e33e8683a8ff371ad80dc960ebc4d.png","中国绊爱-吃惊":"c590a359bb2c9ec43f695dbe6a40ab03dddc0fcd.png","中国绊爱-疑惑":"e85f0568167fe5ecbc1c11911503ac9cd6f98339.png","雾山五行-6到无语":"ac4d94e66ae9b8f1deca0627acebe81a114f68e7.png","雾山五行-冲鸭":"b365b7324c9481d0eba0fb0acd6842628316d8d8.png","雾山五行-滑稽":"69b5d92f512c238dc8aa495fe53ab78984ddca33.png","雾山五行-3连":"55f0ad3a4e5eee6b2dbf748ef0dbc99e759bc98d.png","雾山五行-我可以":"74818081982d161516f8430fce4a3ea407398eb0.png","雾山五行-emmm":"592176e73766c397c7251f8016cbecdd82924278.png","雾山五行-爷关更":"0dcbc65e50ea0e9f842e00afe35a9fc9e40c99b8.png","雾山五行-真香":"ec8d6180e3251efd14e150f63238bfba0aebafaa.png","雾山五行-震惊":"023168735f6eef4de55624ad34669095bc643a7c.png","雾山五行-抓狂":"444647343e876f2966917bd3e372dca103bb9ed7.png","hanser-冲鸭":"24a647e732334db4b480fdceed213da5ad5b397f.png","hanser-问号":"cc068ea0960f979aa97f127f643b3258d4131ffd.png","hanser-打咩":"4e7bfda719083660577661517139e2216c2ab94a.png","hanser-暗中观察":"3d69c4b4f3a609a981ea7e3d0ee57271eecc63b9.png","hanser-痛哭":"6233f4a3e5ab2463fe8b1ad0be9ea44a251a011c.png","hanser-小天使":"397ff298ca19d058dcdb3e4819bff397f5677978.png","hanser-嚯牛奶":"2c15a8b64f5ef17391f811203d6d77b0fcb7f1da.png","最强蜗牛西能-Hi":"cacd7cd54a1d210cfacd79f5b1f061708c3dba4e.png","凹凸世界-你看看你":"0744b0d90986537934305d19447fd4ddfb877994.png","凹凸世界-hi":"023bf3b1f2ffbc5c40e93444c4282aeeb8dcffbd.png","凹凸世界-无语":"99b6a029aadd9b12f435460f6dbaf69b9d06f421.png","Cat-escort":"81784f53f5ca7004a90d316c81889d8161dc05a6.png","Cat-coffeebath":"f80cfd44e0f216f4171a549e869aab32d80d4c39.png","Cat-stealth":"21f7d24b1e8de29f2c61f64e70af9f6aec14e394.png","Cat-hightouch":"3d7264b8349bc1be6d45beebbcfab69e7b9895fc.png","Cat-lonely":"72a9d2f20fb79883bbed3cac914187545ac3a0cc.png","Cat-heart":"3f98c4debfe792a1969b99ae71f7f5d4bf00c3d5.png","Cat-slip":"a6e45e065ed17e2af03f7263784bc36d94b25e74.png","Cat-chips":"12d2d3ce0e72749c45706444cca580dc22148876.png","Cat-study":"9f6d28ecd7e33c3f5e7cd74cc36f4feedb42e995.png","Cat-dash":"0f2d1f99efd5df816c694da76e91a173fa643589.png","Cat-pressure":"c6c270e9989e7152457b907595a6e34064d0c1b2.png","Cat-hibye":"9e4955f479a1211d401fbaa71ceaf5186b9e57bd.png","Cat-confuse":"107ebcbd4dd5895f4595ea6db963dc4566809c6e.png","Cat-ignore":"94de4f63a5f965ee8312a88e4c57c07c0174acce.png","Cat-agree":"48b00f75518a727d64c385fe8ca2fa49aeb08c77.png","Cat-fight":"e39c491906d0fcd0176eede702305655d44044c5.png","Cat-splash":"9513157fed2425ed2caa4eb9bc84a0bca80df9bc.png","Cat-calledme":"aacb6fb852f6acbbc8386ecef76c98b77178e23e.png","Cat-sleep":"39b964d10bde1634f136b662f5b624fcb3bcedb8.png","Cat-congrats":"98f6e73340d9ed43403242fc842e42508d38bba6.png","约战-咕咕咕":"259e9c54962481ad9d602f3964cfc53480aec319.png","约战-抱抱":"6b4a875cf8337c8303cf5d50e83abd5c8ac98b89.png","约战-优秀":"5c258df3f2b293d38c46b5a6d1cc1b23c15bcd1e.png","约战-哈哈哈":"102429ef4472311f4302d090f1cfca17d5c22578.png","阿库娅-才女才女":"17a7afaabf31847bfe9b6a876f9abbab5c772197.png","阿库娅-害羞":"8953fa1c257c48c9ad62363cd6e2de103d77fa85.png","阿库娅-不关我事":"2d4dbec9642e9a76859a33eef49705aa0957ba85.png","阿库娅-惊讶":"01c6134e28b3de73b7af38dad8f6176523604830.png","阿库娅-洋葱问号":"cd8ece00df1c19075077187bfb3aeb259678a5c5.png","神楽Mea-拜托拜托":"2acfdf866cb9d5bc6efa4dcfbe1baebd0bbb3550.png","神楽Mea-不可以":"21b61235610e77bd43e9b7dcd382cfc2cbc7feb9.png","神楽Mea-给我钱":"974c4f3235570125e72eda6c664300d882945000.png","神楽Mea-哈哈哈":"d4e82312c2b7ae24db07dc0748e82ed3f6a88d1b.png","神楽Mea-哭给你看":"d167505d1c2ce0b39ec8c8067b28dae02152873c.png","神楽Mea-理解一下":"d21660312d5bcc063cdcae2022b3e68a5b57e3da.png","神楽Mea-略略略":"dd0870cc8d7245f89c02dbe32ecf94c4d28e05c6.png","神楽Mea-啾咪":"50bc780ccba96dc0d8170f70b9671eea69f02abf.png","神楽Mea-咩":"80bfbba75128aaff8cf6dfe2ee427543aa28e9a5.png","神楽Mea-你很可爱":"dade9e98431c10884291e7fd1f5e94a04234a4ec.png","神楽Mea-不满么":"85d4f513ea20b1328ca82bf35979577b7841dd51.png","神楽Mea-我错了":"b17d7f543cee4ee00716e4ba8b88d1e0e7d9d410.png","神楽Mea-嘲讽":"fc54866b7729bdc1bd7b013c31c1b5a26eeba78e.png","神楽Mea-kimo":"644c67b7e47042dddeb29c4e4ed8ccc576fabe8a.png","神楽Mea-戳便便":"c2f1414549d0ab115ff6c8c3f15efbd22a4eab26.png","新科娘-点赞":"5bfe27f5e4a6ad02ee59d9b8bd20fc9d8184587a.png","新科娘-这题不会":"78a1b73de15a4755764bfe8bbac45cde681ac7c0.png","新科娘-我哭了":"2ae4ae0d6e52569984b41c9b41e9f66fc123bdc3.png","初音未来-抱抱":"193259652bf6d72a9c52f8111fcd412b31d79298.png","初音未来-nice":"7f3445c37e0cacaeeeb9a9bbbc7138872ddfbc19.png","初音未来-GKD":"44caa7ec800837d8860482c214ac792f4c37c490.png","初音未来-问号":"eaa4e51f78ff3ba6b7a1606d0fb44482515b4424.png","初音未来-吃惊":"4c262d6c0686391ef129f0c2dcca0a600018f47d.png","初音未来-干杯":"c5d1de20038102c003c04bb7505de51b91e39fd5.png","初音未来-端碗":"3de27d6f8e01b1a8db09a64a56d3a744b33ad435.png","初音未来-害怕":"7fedbd2eb20d6e30985b02c086392f1386db2b9c.png","初音未来-加油":"4943a9be0a3134125c7d585b4dafde79a9a1990a.png","初音未来-哭了":"db9b01e5808967a32ed644b490ab47faf0f29ce3.png","七海-比心":"ecb4142b45c98f3f9938a45baf7b5a56017328af.png","七海-尴尬":"c15eff7ae3425cb2cf8b9fd666b19ee98b5c3bf3.png","元龙-嘲讽":"4e6916a48a28c35e6ccf0bcf117fe131d8da247a.png","元龙-偷笑":"f2d1b3369cd101c7e76b9e622c52946e12eab8e7.png","元龙-生气":"839729a7cf43d960d4c0a0c57386f6ad3ec8929d.png","元龙-哭哭":"bd017024114ddccbe78e91d513fdde2fc2137ed3.png","元龙-嫌弃":"9705f85463bde8e1f8be939a5caaed2f82ad096b.png","元龙-时代变了":"08579c27468224cc2c03d142f57f9c09ffa534fa.png","元龙-好汉饶命":"3e267ed30aa9be74ed59e77e75b64e3ac5a9d2a1.png","元龙-捂脸":"acd37e3530f80e88ea6b8b4fa2e1bd1b1912e114.png","元龙-我错了":"d4a061a8473929187962f1ff675ccb6a773f7122.png","元龙-我投降":"31caf8622e4d1a919e10dc825259500c38aa6fa3.png","琉绮Ruki-？？？":"043a092820fe53ce92e817c4479450abb9f6e46a.png","三周年-问号":"50c4d94a0c1c43cc0faa211f6c9db1cefa892e05.png","三周年-诚信互点":"275d8d1704202bffeea873e8987fbd66e93adab4.png","三周年-这次一定":"3b8efa08b5e13cda9a07b2cea7de4ed6ee19e644.png","三周年-我全都要":"c829dbb621e5b1a8580d2ffee76c9551a4e58e76.png","三周年-谢谢老板":"ae0832fbcf2c3649f4bdd5ae4703917d688350f2.png","三周年-预定一时爽":"c22d58c33fc322e1aaa260c7fbe2e1cbcc8fb15a.png","海国之境-爱你哦":"c54402eb7d3dff754f48b38208b2da68d12a4b9a.png","天秤座01-完美":"40102381f4d5aa1f9a00496483aa1c9f1b30b249.png","七濑胡桃-吧唧吧唧":"f546bd678e03bd8e6c69cfdd261371f1d92b4af0.png","七濑胡桃-熬夜":"6644424251c41faa839baea017b3fe0883403a5f.png","狂三-哒哒哒":"2545a15ae77e75d5e29f2b9f64c333654b3680d6.png","全职高手-点赞":"7bb36cd11f1282e5ce817d7e99b9f2f356901f6a.png","一起看电竞-别浪":"34c78804e4761dbadbd925e59e9a2073f6696c60.png","一起看电竞-冲冲冲":"50f4bb75fea784b790cfd6f702b301060d6f9814.png","一起看电竞-别奶了":"7f3888ce359c09519820699b80b7e99b78ac0d73.png","一起看电竞-救心丸":"0032bf807a4098c5a51d3babcca80cd0987b6f2a.png","乐正龙牙3rd-打鼓":"926d6ab8fa50d07124f3fc7cae2f7125b774ae37.png","宇宙机器人-AWSL":"a456a86658c2d4654b8411c983776c5df88ff88f.png","宇宙机器人-佛":"41d252382b1d6fc2b45f01285469fc757ac11a75.png","宇宙机器人-衰":"22d5c0654aa65609683ce4ac5352bfb27af5e013.png","宇宙机器人-我可以":"a8650d0f2632410621a5f3cfe0a909fd3a16eafa.png","宇宙机器人-凝视":"0cfadc834d6206dfcf3412191f1d8a12b4e21c28.png","宇宙机器人-炸裂":"8d94ccb211716e2b33ad6e341b5e95807374fe36.png","宇宙机器人-起飞":"69a8bd062e7a13cea4161b87be6d0ce0a02b4247.png","宇宙机器人-前方高能":"7106278224fb7c9650c2a94931220869851c74fb.png","宇宙机器人-快跑":"06856b2d9030842e40ed25f617f3e3b7f6bc947c.png","登乐V计划-心动":"2bf7e8afe9abf70966bec404e9d0d7104e8f50b2.png"},"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+<style>
+.v[data-class=v] .veditor {
+    background-image: url(https://oss-image-markdown.oss-cn-hangzhou.aliyuncs.com/image/markdown/blog/welcome1.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+</style>
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://github.com/EtcFly" target="_blank" rel="nofollow noopener"><span>EtcFly</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/EtcFly/" target="_blank" rel="nofollow noopener"><span>ChaiChai</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="leancloud-site-pv-container" style="display: none">
+        总访问量 
+        <span id="leancloud-site-pv"></span>
+         次
+      </span>
+    
+    
+      <span id="leancloud-site-uv-container" style="display: none">
+        总访客数 
+        <span id="leancloud-site-uv"></span>
+         人
+      </span>
+    
+    
+
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script defer src="/js/leancloud.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
