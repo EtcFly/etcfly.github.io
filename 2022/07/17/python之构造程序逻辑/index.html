@@ -18,16 +18,16 @@
   <meta name="author" content="EtcFly">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1、实现计算最大公约数和最小公倍数1234567891011121314151617181920212223242526# 最大公约数def gcd(x, y):    tmp &#x3D; x if x &lt;&#x3D; y else y    for i in range(tmp, 0, -1):        if x % i &#x3D;&#x3D; 0 and y % i &#x3D;&#x3D; 0:            return i">
+    <meta name="description" content="版权归作者所有, 转载请保留该部分声明。本文作者：EtcFly ❤ ChaiChai原文地址：https:&#x2F;&#x2F;love-chai.top             1、实现计算最大公约数和最小公倍数1234567891011121314151617181920212223242526# 最大公约数def gcd(x, y):    tmp &#x3D; x if x &lt;&#x3D; y">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python之构造程序逻辑">
 <meta property="og:url" content="http://example.com/2022/07/17/python%E4%B9%8B%E6%9E%84%E9%80%A0%E7%A8%8B%E5%BA%8F%E9%80%BB%E8%BE%91/index.html">
 <meta property="og:site_name" content="牵着老婆走天涯">
-<meta property="og:description" content="1、实现计算最大公约数和最小公倍数1234567891011121314151617181920212223242526# 最大公约数def gcd(x, y):    tmp &#x3D; x if x &lt;&#x3D; y else y    for i in range(tmp, 0, -1):        if x % i &#x3D;&#x3D; 0 and y % i &#x3D;&#x3D; 0:            return i">
+<meta property="og:description" content="版权归作者所有, 转载请保留该部分声明。本文作者：EtcFly ❤ ChaiChai原文地址：https:&#x2F;&#x2F;love-chai.top             1、实现计算最大公约数和最小公倍数1234567891011121314151617181920212223242526# 最大公约数def gcd(x, y):    tmp &#x3D; x if x &lt;&#x3D; y">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/python.png">
 <meta property="article:published_time" content="2022-07-17T08:40:34.000Z">
-<meta property="article:modified_time" content="2022-07-17T08:44:13.079Z">
+<meta property="article:modified_time" content="2022-07-19T13:46:22.906Z">
 <meta property="article:author" content="EtcFly">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="python">
@@ -258,7 +258,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          745 字
+          810 字
         
       </span>
     
@@ -321,7 +321,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2 天前
+                    本文最后更新于：2 分钟前
                   
                 
               </p>
@@ -329,7 +329,11 @@
             
               <div class="markdown-body">
                 
-                <h3 id="1、实现计算最大公约数和最小公倍数"><a href="#1、实现计算最大公约数和最小公倍数" class="headerlink" title="1、实现计算最大公约数和最小公倍数"></a>1、实现计算最大公约数和最小公倍数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 最大公约数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gcd</span>(<span class="hljs-params">x, y</span>):<br>    tmp = x <span class="hljs-keyword">if</span> x &lt;= y <span class="hljs-keyword">else</span> y<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(tmp, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> x % i == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> y % i == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> i<br>            <br><span class="hljs-comment"># 最小公倍数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">lcm</span>(<span class="hljs-params">x, y</span>)<br>    <span class="hljs-keyword">return</span> x * y // gcd(a, y)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    a = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;输入a:&quot;</span>))<br>    b = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;输入b:&quot;</span>))<br><br>    result = gcd(a, b)<br>    <span class="hljs-keyword">if</span> result == <span class="hljs-literal">None</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;err!&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;最大公约束是:%d&quot;</span> %(result))<br><br>    result = lcm(a, b)<br>    <span class="hljs-keyword">if</span> result == <span class="hljs-literal">None</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;err!&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;最小公倍数是:%d&quot;</span> %(result))<br></code></pre></td></tr></table></figure>
+                <div class="note note-success">
+            <p>版权归作者所有, 转载请保留该部分声明。<br>本文作者：EtcFly ❤ ChaiChai<br>原文地址：<a target="_blank" rel="noopener" href="https://love-chai.top/">https://love-chai.top</a></p>
+          </div>
+
+<h3 id="1、实现计算最大公约数和最小公倍数"><a href="#1、实现计算最大公约数和最小公倍数" class="headerlink" title="1、实现计算最大公约数和最小公倍数"></a>1、实现计算最大公约数和最小公倍数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># 最大公约数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">gcd</span>(<span class="hljs-params">x, y</span>):<br>    tmp = x <span class="hljs-keyword">if</span> x &lt;= y <span class="hljs-keyword">else</span> y<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(tmp, <span class="hljs-number">0</span>, -<span class="hljs-number">1</span>):<br>        <span class="hljs-keyword">if</span> x % i == <span class="hljs-number">0</span> <span class="hljs-keyword">and</span> y % i == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> i<br>            <br><span class="hljs-comment"># 最小公倍数</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">lcm</span>(<span class="hljs-params">x, y</span>)<br>    <span class="hljs-keyword">return</span> x * y // gcd(a, y)<br><br><span class="hljs-keyword">if</span> __name__ == <span class="hljs-string">&#x27;__main__&#x27;</span>:<br>    a = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;输入a:&quot;</span>))<br>    b = <span class="hljs-built_in">int</span>(<span class="hljs-built_in">input</span>(<span class="hljs-string">&quot;输入b:&quot;</span>))<br><br>    result = gcd(a, b)<br>    <span class="hljs-keyword">if</span> result == <span class="hljs-literal">None</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;err!&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;最大公约束是:%d&quot;</span> %(result))<br><br>    result = lcm(a, b)<br>    <span class="hljs-keyword">if</span> result == <span class="hljs-literal">None</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;err!&quot;</span>)<br>    <span class="hljs-keyword">else</span>:<br>        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;最小公倍数是:%d&quot;</span> %(result))<br></code></pre></td></tr></table></figure>
 
 <h3 id="2、实现判断一个数是不是回文数的函数"><a href="#2、实现判断一个数是不是回文数的函数" class="headerlink" title="2、实现判断一个数是不是回文数的函数"></a>2、实现判断一个数是不是回文数的函数</h3><figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs stata">def func1(x):<br>    tmp = x<br>    <span class="hljs-keyword">total</span> = 0<br>    <span class="hljs-keyword">while</span> tmp &gt; 0:<br>        <span class="hljs-keyword">total</span> = <span class="hljs-keyword">total</span> * 10 + tmp % 10<br>        tmp <span class="hljs-comment">//= 10</span><br>    <span class="hljs-keyword">return</span> x == <span class="hljs-keyword">total</span><br></code></pre></td></tr></table></figure>
 <h3 id="3、实现判断一个数是不是素数的函数"><a href="#3、实现判断一个数是不是素数的函数" class="headerlink" title="3、实现判断一个数是不是素数的函数"></a>3、实现判断一个数是不是素数的函数</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">func2</span>(<span class="hljs-params">x</span>):<br>    <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">2</span>, x):<br>        <span class="hljs-keyword">if</span> x % i == <span class="hljs-number">0</span>:<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">True</span><br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">False</span><br></code></pre></td></tr></table></figure>
@@ -402,7 +406,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年7月17日</div>
+          <div>2022年7月19日</div>
         </div>
       
       <div class="license-meta-item">

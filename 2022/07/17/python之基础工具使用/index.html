@@ -18,16 +18,16 @@
   <meta name="author" content="EtcFly">
   <meta name="keywords" content="">
   
-    <meta name="description" content="hashlib库md5计算123456import hashlibhashdata &#x3D; hashlib.md5(&amp;#x27;this is a test!&amp;#x27;.encode(encoding&#x3D;&amp;#x27;utf-8&amp;#x27;))hashdata.update(&amp;#x27;this is a new&amp;#x27;.encode(encoding&#x3D;&amp;#x27;utf-8&amp;#x27;))prin">
+    <meta name="description" content="版权归作者所有, 转载请保留该部分声明。本文作者：EtcFly ❤ ChaiChai原文地址：https:&#x2F;&#x2F;love-chai.top             hashlib库md5计算123456import hashlibhashdata &#x3D; hashlib.md5(&amp;#x27;this is a test!&amp;#x27;.encode(encoding&#x3D;&amp;#x27;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python之基础工具使用">
 <meta property="og:url" content="http://example.com/2022/07/17/python%E4%B9%8B%E5%9F%BA%E7%A1%80%E5%B7%A5%E5%85%B7%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="牵着老婆走天涯">
-<meta property="og:description" content="hashlib库md5计算123456import hashlibhashdata &#x3D; hashlib.md5(&amp;#x27;this is a test!&amp;#x27;.encode(encoding&#x3D;&amp;#x27;utf-8&amp;#x27;))hashdata.update(&amp;#x27;this is a new&amp;#x27;.encode(encoding&#x3D;&amp;#x27;utf-8&amp;#x27;))prin">
+<meta property="og:description" content="版权归作者所有, 转载请保留该部分声明。本文作者：EtcFly ❤ ChaiChai原文地址：https:&#x2F;&#x2F;love-chai.top             hashlib库md5计算123456import hashlibhashdata &#x3D; hashlib.md5(&amp;#x27;this is a test!&amp;#x27;.encode(encoding&#x3D;&amp;#x27;">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/img/python.png">
 <meta property="article:published_time" content="2022-07-17T08:59:25.000Z">
-<meta property="article:modified_time" content="2022-07-17T09:01:36.058Z">
+<meta property="article:modified_time" content="2022-07-19T13:46:42.324Z">
 <meta property="article:author" content="EtcFly">
 <meta property="article:tag" content="原创">
 <meta property="article:tag" content="python">
@@ -269,7 +269,7 @@
         
         
         
-          14 分钟
+          15 分钟
         
       </span>
     
@@ -321,7 +321,7 @@
               <p class="note note-info">
                 
                   
-                    本文最后更新于：2 天前
+                    本文最后更新于：2 分钟前
                   
                 
               </p>
@@ -329,7 +329,11 @@
             
               <div class="markdown-body">
                 
-                <h3 id="hashlib库"><a href="#hashlib库" class="headerlink" title="hashlib库"></a>hashlib库</h3><h4 id="md5计算"><a href="#md5计算" class="headerlink" title="md5计算"></a>md5计算</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><br>hashdata = hashlib.md5(<span class="hljs-string">&#x27;this is a test!&#x27;</span>.encode(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>hashdata.update(<span class="hljs-string">&#x27;this is a new&#x27;</span>.encode(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br><br><span class="hljs-built_in">print</span>(hashdata.hexdigest())<br></code></pre></td></tr></table></figure>
+                <div class="note note-success">
+            <p>版权归作者所有, 转载请保留该部分声明。<br>本文作者：EtcFly ❤ ChaiChai<br>原文地址：<a target="_blank" rel="noopener" href="https://love-chai.top/">https://love-chai.top</a></p>
+          </div>
+
+<h3 id="hashlib库"><a href="#hashlib库" class="headerlink" title="hashlib库"></a>hashlib库</h3><h4 id="md5计算"><a href="#md5计算" class="headerlink" title="md5计算"></a>md5计算</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><br>hashdata = hashlib.md5(<span class="hljs-string">&#x27;this is a test!&#x27;</span>.encode(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>hashdata.update(<span class="hljs-string">&#x27;this is a new&#x27;</span>.encode(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br><br><span class="hljs-built_in">print</span>(hashdata.hexdigest())<br></code></pre></td></tr></table></figure>
 
 <h4 id="sha1计算"><a href="#sha1计算" class="headerlink" title="sha1计算"></a>sha1计算</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> hashlib<br><br>hashdata = hashlib.sha1(<span class="hljs-string">&#x27;this is a test!&#x27;</span>.encode(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br>hashdata.update(<span class="hljs-string">&#x27;this is a new&#x27;</span>.encode(encoding=<span class="hljs-string">&#x27;utf-8&#x27;</span>))<br><span class="hljs-built_in">print</span>(hashdata.hexdigest())<br><br>byte = hashdata.digest()<br><span class="hljs-built_in">print</span>(byte.rpartition)<br></code></pre></td></tr></table></figure>
 
@@ -412,7 +416,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>更新于</div>
-          <div>2022年7月17日</div>
+          <div>2022年7月19日</div>
         </div>
       
       <div class="license-meta-item">
